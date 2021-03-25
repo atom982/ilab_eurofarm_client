@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="shortcut icon" href="/static/favicon.ico" />
+  <title>ATOM | Eurofarm Centar</title>
+</head>
+<script type="text/javascript" src="/static/rsvp-3.1.0.min.js"></script>
+<script type="text/javascript" src="/static/sha-256.min.js"></script>
+<script type="text/javascript" src="/static/qz-tray.js"></script>
+<script type="text/javascript" src="/static/request-cert.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<body>
+  <div id="app"></div>
+</body>
+
+<script>
+  qz.security.setCertificatePromise(function (resolve, reject) {
+    $.ajax({ url: cert, cache: false, dataType: "text" }).then(
+      resolve,
+      reject
+    );
+  });
+
+  qz.security.setSignaturePromise(function (toSign) {
+    return function (resolve, reject) {
+      $.ajax(request + toSign).then(resolve, reject);
+    };
+  });
+  qz.websocket.connect().then(function () { });
+
+  function printEPL(ime, sid, rbr, godiste, datum, link, code, site, prioritet, protokol, svrha) {
+
+    var date = datum.slice(8, 10) + "." + datum.slice(5, 7) + "." + datum.slice(0, 4) + " " + datum.slice(-5);
+    var labelwidth = 50;
+    var labelheight = 25;
+    var smallq = "320";
+    var bigQ = "200,24";
+    var xDiff = 10;
+    var yDiff = 10;
+    var printer = "";
+    var secondprinter = "";
+    var purpose = "";
+    var CITO = prioritet;
+    var str1 = "";
+    var str2 = ""
+
+    if (prioritet === "NORMALAN") {
+      CITO = "";
+
+      str1 = 'A165,144,0,2,1,1,N,"' + CITO + '"\n';
+    }
+
+    if (prioritet === "HITAN") {
+      CITO = "CITO";
+      str1 = 'A227,144,0,2,1,1,N,"' + " " + CITO + " " + '"\n';
+    }
+
+    if (protokol != undefined && protokol != null && protokol != "") {
+      str2 = 'A28,144,0,2,1,1,N,"' + " " + protokol + " " + '"\n'
+    }
+
+    // Eurofarm Centar
+
+    if(svrha === "Putovanje"){
+      purpose = "TRIP"
+    }else if(svrha === "Procjena zdravstvenog stanja"){
+      purpose = "PRZS"
+    }else if(svrha === "Kontakt sa zaraženom osobom"){
+      purpose = "KSZO"
+    }else{
+      purpose = "*"
+    }
+
+    // console.log("Protokol: " + protokol)
+    // console.log("Svrha: " + purpose)
+
+    qz.printers
+      .find()
+      .then(function (data) {
+        var list = [];
+
+        for (var i = 0; i < data.length; i++) {
+          list.push(data[i]);
+        }
+
+        var condition = false
+
+        list.forEach((element) => {
+          if (element === "Zebra") {
+            condition = true
+            printer = "Zebra";
+          } else if (element === "WizardLAB(ZPL)") {
+            condition = true
+            printer = "WizardLAB(ZPL)";
+          } else {
+            if (condition === false) {
+              printer = "\\\laboratorija-pc\\Zebra";
+            }
+          }
+        });
+
+        if (printer === "Zebra" || printer === "WizardLAB(ZPL)" || printer === "\\\laboratorija-pc\\Zebra") {
+          console.warn("Zebra printer found.");
+
+          var config = qz.configs.create(printer, {
+            size: {
+              width: labelwidth,
+              height: labelheight,
+            },
+            units: "mm",
+          });
+
+          qz.print(config, [
+            "\nN\n",
+            "q" + smallq + "\n",
+            "Q" + bigQ + "\n",
+            "I8,B\n",
+
+            {
+              type: "raw",
+              format: "image",
+              data: link,
+              options: {
+                language: "EPL",
+                x: xDiff,
+                y: yDiff,
+              },
+            },
+
+            'A28,0,0,2,1,1,N,"' + ime + '"\n',
+            'A28,20,0,2,1,1,N,"' + date + " " + purpose + '"\n',
+            'A28,40,0,2,1,1,N,"' + " " + code + " " + '"\n',
+            str2,
+            str1,
+
+            "X153,34,2,153,17\n",
+            "X224,34,2,224,17\n",
+            "X28,37,1,296,37\n",
+            "\nP1,1\n",
+          ]).catch(function (e) {
+            console.error(e);
+          });
+        } else {
+          console.warn("Zebra printer not found.");
+
+          var config = qz.configs.create(secondprinter, {
+            size: {
+              width: labelwidth,
+              height: labelheight,
+            },
+            units: "mm",
+          });
+
+          qz.print(config, [
+            "\nN\n",
+            "q" + smallq + "\n",
+            "Q" + bigQ + "\n",
+            "I8,B\n",
+
+            {
+              type: "raw",
+              format: "image",
+              data: link,
+              options: {
+                language: "EPL",
+                x: xDiff,
+                y: yDiff,
+              },
+            },
+
+            'A28,0,0,2,1,1,N,"' + ime + '"\n',
+            'A28,20,0,2,1,1,N,"' + date + " " + purpose + '"\n',
+            'A28,40,0,2,1,1,N,"' + " " + code + " " + '"\n',
+            str2,
+            str1,
+
+            "X153,34,2,153,17\n",
+            "X224,34,2,224,17\n",
+            "X28,37,1,296,37\n",
+            "\nP1,1\n",
+          ]).catch(function (e) {
+            console.error(e);
+          });
+        }
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
+  }
+</script>
+
+</html>
