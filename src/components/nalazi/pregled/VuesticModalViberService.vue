@@ -22,10 +22,13 @@
               <!--Container-->
               <div class="modal-body">
                 <slot></slot>
-                <div v-show="!viberData.valid">
+                <div v-show="$store.state.viber === false">
+          <strong>{{ "Nemate odgovarajuće privilegije." }}</strong>
+        </div>
+                <div v-show="!viberData.valid && $store.state.viber === true">
                   <strong>{{ "Telefonski broj nije validan." }}</strong>
                 </div>
-                <div v-show="viberData.valid">
+                <div v-show="viberData.valid && $store.state.viber === true">
                   <strong>{{ "Telefonski broj :" }}&nbsp;&nbsp;
                     
                     
@@ -201,6 +204,7 @@ export default {
         ime: "",
         prezime: "",
         godiste: "",
+        spol: "",
       })
     },
     transition: {
@@ -339,12 +343,9 @@ export default {
         .then((res) => {
           console.log(res.data);
 
-          setTimeout(() => {
-            this.show = false;
-            this.isLoading = false
-            window.removeEventListener("keyup", this.listenKeyUp);
-            
-          }, 2500);
+          this.show = false;
+          this.isLoading = false
+          window.removeEventListener("keyup", this.listenKeyUp);
          
           if (res.data.success) {
             // Success

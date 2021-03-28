@@ -114,6 +114,58 @@
       </vuestic-widget>
     </div>
 
+    <!-- Međunarodni aerodrom Sarajevo -->
+    <div
+      v-show="
+        $store.state.dashboard != undefined && $store.state.dashboard.PJC && $store.state.userId != 'Administrator'
+      "
+      class="col-md-6 col-xl-4"
+    >
+      <vuestic-widget class="danger-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <div v-if="true" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "SJJ" }}
+            </div>
+            <!-- Data Loaded -->
+            <div v-if="(SJJ.rt > 0 || SJJ.ag) && loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="SJJ.rt > 0" style="color: #e34a4a">{{
+                SJJ.rt
+              }}</span>
+              <span v-show="SJJ.rt === 0" style="color: #4ae387">{{
+                SJJ.rt
+              }}</span>
+              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span v-show="SJJ.ag > 0" style="color: #e34a4a">{{
+                SJJ.ag
+              }}</span>
+              <span v-show="SJJ.ag === 0" style="color: #4ae387">{{
+                SJJ.ag
+              }}</span>
+            </div>
+            <!-- No Data Found -->
+            <div
+              v-if="SJJ.rt === 0 && SJJ.ag === 0 && loaded"
+              class="stats-number"
+            >
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span style="color: #4ae387">{{ SJJ.rt }}</span>
+              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #4ae387">{{ SJJ.ag }}</span>
+            </div>
+            <!-- Data Not Loaded -->
+            <div v-if="!loaded" style="color: #c0c0c0" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+            <div class="stats-title">{{ " " }}</div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
     <!-- Međunarodni aerodrom Tuzla -->
     <div
       v-show="

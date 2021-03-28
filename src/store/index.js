@@ -52,6 +52,7 @@ const store = new Vuex.Store({
     },
 
     prijem: 1,
+    viber: false,
 
     configuration: {
       unos: {
@@ -167,6 +168,7 @@ const store = new Vuex.Store({
       state.dashboard = userData.dashboard;
       state.prijem = userData.prijem;
       state.configuration = userData.configuration;
+      state.viber = userData.viber;
       state.access = userData.access;
       state.display = userData.display;
       state.reports = userData.reports;
@@ -529,6 +531,7 @@ const store = new Vuex.Store({
               dashboard: res.data.data.dashboard,
               prijem: res.data.data.prijem,
               configuration: res.data.data.configuration,
+              viber: res.data.data.viber,
               access: res.data.data.access,
               display: res.data.data.display,
               reports: res.data.data.reports,

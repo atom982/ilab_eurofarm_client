@@ -3,8 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <vuestic-widget
-          style="color: #e34a4a"
-          headerText="Provjera nalaza po broju protokola"
+          headerText="Provjera nalaza - po broju protokola"
         >
           <div class="row">
             <div class="col-md-4">
@@ -39,6 +38,8 @@
               <div v-if="kod != ''" class="form-group with-icon-left">
                 <div class="input-group">
                   <input
+                   onpaste="return false;"
+                                autocomplete="off"
                     id="number-input-icon-left"
                     title=" "
                     v-model="number"
@@ -97,7 +98,11 @@
               />
             
           </div>
-          <div class="row">
+
+
+
+
+          <div class="row" v-if="false">
             <div class="col-md-4">
               <button
                 v-if="true"
@@ -114,17 +119,36 @@
             </div>
 
 
-
-
-
-
-
-
-
-
-           
-
           </div>
+
+
+
+
+
+
+           <div class="row">
+                <div class="col-md-12">
+                  <div
+                   
+                    class="btn-container"
+                  >
+                    <button
+                    @click.prevent="Check"
+                :disabled="
+                  kod === '' || number.trim() === '' || isNaN(number.trim())
+                "
+                    
+                      style="text-transform: none; color: #e34a4a"
+                      class="btn btn-sm btn-secondary-warning wizard-next pull-left"
+                    >
+                      <i class="fa fa-check-square-o"></i>
+                      {{ " Provjeri nalaz" }}
+                    </button>
+
+                    
+                  </div>
+                </div>
+              </div>
         </vuestic-widget>
       </div>
     </div>
@@ -132,11 +156,10 @@
     <div v-if="exists" class="row">
       <div class="col-md-12">
         <vuestic-widget
-          style="color: #e34a4a"
           :headerText="'Broj protokola: ' + protokol"
         >
           <div class="row">
-            <div style="white-space: break-spaces" class="col-md-4">
+            <div style="white-space: break-spaces" class="col-md-6">
               <span>&nbsp;{{ message }}</span
               ><br />
               <span>{{ nalaz.ime }}</span>
@@ -149,36 +172,92 @@
             </div>
 
             <div style="white-space: break-spaces" class="col-md-6">
+              
               <span>&nbsp;{{ nalaz.uzorkovan }}</span
               ><br />
               <span>{{ nalaz.reported }}</span
               ><br />
               <span>{{ nalaz.uzorak }}</span
               ><br />
+              <span>{{ nalaz.analiza }}</span
+              ><br />
               <span>{{ nalaz.rezultat }}</span
               ><br />
             </div>
 
-            <div class="col-md-4">
-              <!--  <div class="form-group">
-                <div class="input-group">
-                  <input
-                    id="number-input-icon-left"
-                    title=" "
-                    name="number-input-icon-left"
-                    disabled
-                  />
-                  <label class="control-label" for="number-input-icon-left">{{
-                    "Unesite vrijednost varijable"
-                  }}</label>
-                  <i class="bar"></i>
-                </div>
-              </div> -->
-            </div>
+            
           </div>
         </vuestic-widget>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div v-if="!exists" class="row">
+      <div class="col-md-12">
+        <vuestic-widget
+          :headerText="'Unesite broj protokola'"
+        >
+          <div class="row">
+            <div style="white-space: break-spaces" class="col-md-6">
+              <span>&nbsp;{{ "" }}</span
+              ><br />
+              <span>{{ "" }}</span>
+              <span>{{ "" }}</span
+              ><br />
+              <span>{{ "" }}</span
+              ><br />
+              <span>{{ "" }}</span
+              ><br />
+            </div>
+
+            <div style="white-space: break-spaces" class="col-md-6">
+              
+              <span>&nbsp;{{ "" }}</span
+              ><br />
+              <span>{{ "" }}</span
+              ><br />
+              <span>{{ "" }}</span
+              ><br />
+              <span>{{ "" }}</span
+              ><br />
+              <span>{{ "" }}</span
+              ><br />
+            </div>
+
+            
+          </div>
+        </vuestic-widget>
+      </div>
+    </div>
+
+
+
 
     <div class="row">
       <div class="col-md-12">
@@ -234,6 +313,7 @@ export default {
         spol: "",
         uzorkovan: "",
         reported: "",
+        analiza: "",
         uzorak: "",
         rezultat: "",
       },
@@ -323,7 +403,7 @@ export default {
               .split("-");
 
             this.nalaz.lokacija = res.data.nalaz.lokacija.lokacija;
-            this.nalaz.ime = res.data.nalaz.patient.ime;
+            this.nalaz.ime = "Ime i prezime: " + res.data.nalaz.patient.ime;
             this.nalaz.prezime = res.data.nalaz.patient.prezime;
             this.nalaz.godiste = "Godište: " + godiste;
             this.nalaz.spol = "Spol: " + res.data.nalaz.patient.spol;
@@ -346,7 +426,27 @@ export default {
               kreirano[0] +
               " " +
               res.data.nalaz.updated_at.substring(11, 16);
-            this.nalaz.uzorak = "Tip uzorka: Bris nazofarinksa i orofarinksa";
+
+              // console.log(res.data.nalaz)
+
+              this.nalaz.analiza = "Analiza: " + res.data.nalaz.analysis
+
+              switch (res.data.nalaz.analysis) {
+                case "COVID 19 RT PCR Test":
+                  this.nalaz.uzorak = "Tip uzorka: Bris nazofarinksa i orofarinksa";
+                  
+                  break;
+
+                case "COVID 19 Antigen Test":
+                  this.nalaz.uzorak = "Tip uzorka: Bris nazofarinksa";
+                  
+                  break;
+              
+                default:
+                  this.nalaz.uzorak = "Nema podataka";
+                  break;
+              }
+            
             this.nalaz.rezultat =
               "Rezultat: " + res.data.nalaz.rezultat.toUpperCase();
 
@@ -368,6 +468,7 @@ export default {
             this.nalaz.prezime = "";
             this.nalaz.godiste = "";
             this.nalaz.spol = "";
+            this.nalaz.analiza = "";
             this.nalaz.uzorkovan = "";
             this.nalaz.reported = "";
             this.nalaz.uzorak = "";

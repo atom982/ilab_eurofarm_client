@@ -317,7 +317,8 @@
     >
       <div slot="title">
           {{ "" }}
-          <span>{{ "Slanje nalaza na ‎Viber Messenger" }}</span>
+          <span v-if="$store.state.viber === true">{{ "Slanje nalaza na ‎Viber Messenger" }}</span>
+          <span v-if="$store.state.viber === false" style="color: #e34a4a">{{ "401: Not Authorized" }}</span>
         </div>
         <div>         
         </div>
@@ -736,15 +737,16 @@ export default {
       pacLokacija: "",
       note: "",
 
-      viberData: {
-      
+      viberData: {      
         timestamp: "",
         uzorak: "",
         telefon: "",
+        valid: false,
+        protokol: "",
         ime: "",
         prezime: "",
-        godiste: "",
-      
+        godiste: "",        
+        spol: "",      
       },
     };
   },
@@ -1188,8 +1190,7 @@ export default {
             var valid = false
           }
 
-          this.viberData = {
-      
+          this.viberData = {      
             timestamp: niz[0].timestamp,
             uzorak: niz[0].uzorak,
             telefon: niz[0].vKontakt,
@@ -1198,7 +1199,7 @@ export default {
             ime: niz[0].pacijent.ime,
             prezime: niz[0].pacijent.prezime,
             godiste: niz[0].vGodiste,
-          
+            spol: niz[0].pacijent.spol,          
           }
 
           // return value.match(/\d/g).length > 10;
