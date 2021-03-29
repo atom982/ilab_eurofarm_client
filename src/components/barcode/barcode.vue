@@ -74,9 +74,16 @@
                 </div>
               </div>
 
+              <div class="row" v-if="podruznica != ''">
+                <div class="col-md-12">
+                  {{ "Podružnica: " }}
+                  <span style="color: #e34a4a">{{ podruznica }}</span>
+                </div>
+              </div>
+
               <div class="row">
                 <div class="col-md-12">
-                  {{ "Alaniza: " }}
+                  {{ "Analiza: " }}
                   <span style="color: #e34a4a">{{ analiza }}</span>
                 </div>
               </div>
@@ -289,6 +296,7 @@ export default {
       spol: "",
       godiste: "",
       uzorkovao: "",
+      podruznica: "",
       simptomi: false,
       purpose: "",
       analiza: "",
@@ -402,13 +410,13 @@ export default {
             this.simptomi = false;
             this.prezime = "";
             this.analiza = "";
-            this.prioritet = "",
-            this.barcode = false;
+            (this.prioritet = ""), (this.barcode = false);
             this.sampledTime = "";
             this.tip = "";
             this.spol = "";
             this.godiste = "";
             this.uzorkovao = "";
+            this.podruznica = "";
 
             this.toastText = "Uzorak uspješno zaprimljen.";
             this.toastIcon = "fa-check";
@@ -452,13 +460,13 @@ export default {
       this.simptomi = false;
       this.prezime = "";
       this.analiza = "";
-       this.prioritet = "",
-      this.barcode = false;
+      (this.prioritet = ""), (this.barcode = false);
       this.sampledTime = "";
       this.tip = "";
       this.spol = "";
       this.godiste = "";
       this.uzorkovao = "";
+      this.podruznica = "";
 
       this.text = "";
       this.prihvati = false;
@@ -594,7 +602,6 @@ export default {
                   this.prioritet = "Nema podataka";
                 }
 
-                
                 this.barcode = false;
 
                 var uzorkovan = JSON.stringify(res.data.uzorak.datum)
@@ -622,7 +629,17 @@ export default {
 
                 this.spol = res.data.uzorak.patient.spol;
                 this.godiste = datr;
-                this.uzorkovao = res.data.uzorak.site.opis;
+
+                if (res.data.uzorak.site.opis.includes("+")) {
+                  var temp = res.data.uzorak.site.opis.split("+");
+
+                  this.uzorkovao = temp[0];
+                  this.podruznica = temp[1];
+                } else {
+                  this.uzorkovao = res.data.uzorak.site.opis;
+                  this.podruznica = "";
+                }
+
                 this.prihvati = true;
                 this.isLoading = false;
               }
