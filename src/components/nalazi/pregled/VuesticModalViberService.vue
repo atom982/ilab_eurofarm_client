@@ -263,9 +263,9 @@ export default {
       isLoading: false,
       fullPage: true,
 
-      ba: false,
-      en: false,
-      de: false
+      ba: true,
+      en: true,
+      de: true
     };
   },
   computed: {
@@ -371,9 +371,9 @@ export default {
       }
     },
     open() {
-      this.ba = false
-      this.en = false
-      this.de = false
+      this.ba = true
+      this.en = true
+      this.de = true
       this.show = true;
       // console.log(this.viberData)
       window.addEventListener("keyup", this.listenKeyUp);
