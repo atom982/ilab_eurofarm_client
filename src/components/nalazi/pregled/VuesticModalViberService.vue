@@ -363,6 +363,7 @@ export default {
       this.$emit("cancel");
       bus.$emit("Error");
       this.show = false;
+      this.isLoading = false
       window.removeEventListener("keyup", this.listenKeyUp);
     },
     clickMask() {

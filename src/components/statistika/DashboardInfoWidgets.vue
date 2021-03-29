@@ -60,7 +60,8 @@
     <!-- Međunarodni aerodrom Sarajevo -->
     <div
       v-show="
-        $store.state.dashboard != undefined && $store.state.dashboard.SJJ
+        $store.state.dashboard != undefined && 
+        $store.state.dashboard.SJJ
       "
       class="col-md-6 col-xl-4"
     >
@@ -117,7 +118,9 @@
     <!-- Međunarodni aerodrom Sarajevo -->
     <div
       v-show="
-        $store.state.dashboard != undefined && $store.state.dashboard.PJC && $store.state.userId != 'Administrator'
+        $store.state.dashboard != undefined && 
+        $store.state.dashboard.PJC && 
+        $store.state.userId != 'Administrator'
       "
       class="col-md-6 col-xl-4"
     >
@@ -169,7 +172,8 @@
     <!-- Međunarodni aerodrom Tuzla -->
     <div
       v-show="
-        $store.state.dashboard != undefined && $store.state.dashboard.TZL
+        $store.state.dashboard != undefined && 
+        $store.state.dashboard.TZL
       "
       class="col-md-6 col-xl-4"
     >
@@ -179,6 +183,60 @@
           'blue-widget': $store.state.site != '5f9f70a1444e51a464db259a',
         }"
       >
+        <div class="info-widget-inner">
+          <div class="stats">
+            <div v-if="true" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "TZL" }}
+            </div>
+            <!-- Data Loaded -->
+            <div v-if="(TZL.rt > 0 || TZL.ag) && loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="TZL.rt > 0" style="color: #e34a4a">{{
+                TZL.rt
+              }}</span>
+              <span v-show="TZL.rt === 0" style="color: #4ae387">{{
+                TZL.rt
+              }}</span>
+              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span v-show="TZL.ag > 0" style="color: #e34a4a">{{
+                TZL.ag
+              }}</span>
+              <span v-show="TZL.ag === 0" style="color: #4ae387">{{
+                TZL.ag
+              }}</span>
+            </div>
+            <!-- No Data Found -->
+            <div
+              v-if="TZL.rt === 0 && TZL.ag === 0 && loaded"
+              class="stats-number"
+            >
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span style="color: #4ae387">{{ TZL.rt }}</span>
+              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #4ae387">{{ TZL.ag }}</span>
+            </div>
+            <!-- Data Not Loaded -->
+            <div v-if="!loaded" style="color: #c0c0c0" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+            <div class="stats-title">{{ " " }}</div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <!-- Međunarodni aerodrom Tuzla -->
+    <div
+      v-show="
+        $store.state.dashboard != undefined && 
+        $store.state.dashboard.PJC && 
+        $store.state.userId != 'Administrator'
+      "
+      class="col-md-6 col-xl-4"
+    >
+      <vuestic-widget class="danger-widget"      >
         <div class="info-widget-inner">
           <div class="stats">
             <div v-if="true" class="stats-number">
