@@ -332,7 +332,33 @@ export default {
           className: this.className,
         });
         return;
+      } else {
+        
+        // min 8 letter password,
+        // with at least a symbol,
+        // upper and lower case letters
+        // and a number
+
+        /* var re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        item = re.test(this.novaSifra);
+
+        if (!item) {
+          this.toastText = "Nova šifra ne zadovoljava kriterij.";
+          this.toastIcon = "fa-warning";
+          this.toastPosition = "top-right";
+          this.className = "vuestic-toast-warning";
+
+          this.showToast(this.toastText, {
+            icon: this.toastIcon,
+            position: this.toastPosition,
+            duration: this.toastDuration,
+            fullWidth: this.isToastFullWidth,
+            className: this.className,
+          });
+        } */
+        
       }
+
 
       if (item) {
         http
