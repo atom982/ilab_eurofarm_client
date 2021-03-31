@@ -432,7 +432,7 @@
                             <label
                               class="control-label"
                               for="tlp-input-icon-left"
-                            >{{'KONTAKT TELEFON'}}</label>
+                            >{{'KONTAKT TELEFON (3876xxxxxxx)'}}</label>
                             <i class="bar"></i>
                           </div>
                         </div>

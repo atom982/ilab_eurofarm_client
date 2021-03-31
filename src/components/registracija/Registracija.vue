@@ -517,7 +517,7 @@ export default {
       lpassport: "IDENTIFIKACIJSKI DOKUMENT",
       llanguage: "JEZIK NALAZA",
       lchosenAdress: "ADRESA STANOVANJA",
-      ltelefon: "KONTAKT TELEFON",
+      ltelefon: "KONTAKT TELEFON (3876xxxxxxx)",
       lemail: "KONTAKT E-MAIL",
 
       // Eurofarm Centar
@@ -645,7 +645,7 @@ export default {
           this.lpassport = "IDENTIFIKACIJSKI DOKUMENT";
           this.llanguage = "JEZIK NALAZA";
           this.lchosenAdress = "ADRESA STANOVANJA";
-          this.ltelefon = "KONTAKT TELEFON";
+          this.ltelefon = "KONTAKT TELEFON (3876xxxxxxx)";
           this.lemail = "KONTAKT E-MAIL";
 
           break;
@@ -675,7 +675,7 @@ export default {
           this.lpassport = "IDENTIFICATION DOCUMENT";
           this.llanguage = "LANGUAGE OF MEDICAL REPORT";
           this.lchosenAdress = "RESIDENTIAL ADDRESS";
-          this.ltelefon = "TELEPHONE NUMBER";
+          this.ltelefon = "TELEPHONE NUMBER (3876xxxxxxx)";
           this.lemail = "E-MAIL ADDRESS";
 
           break;
@@ -705,7 +705,7 @@ export default {
           this.lpassport = "AUSWEISDOKUMENT";
           this.llanguage = "SPRACHE DES BERICHTS";
           this.lchosenAdress = "WOHNADRESSE";
-          this.ltelefon = "TELEFONNUMMER";
+          this.ltelefon = "TELEFONNUMMER (3876xxxxxxx)";
           this.lemail = "E-MAIL ADRESSE";
 
           break;
