@@ -499,6 +499,8 @@ export default {
 
     Naljepnica(data) {
 
+      console.log(data)
+
       var prioritet = "NORMALAN";
 
       if (data.prioritet === true) {
