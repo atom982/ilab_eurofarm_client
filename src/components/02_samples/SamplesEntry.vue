@@ -1095,6 +1095,7 @@ export default {
             response = res.data.data[0];
 
             res.data.data.forEach((element) => {
+              var site = this.$store.state.site
               temp = element.datum.split("-");
               datum =
                 temp[2].substring(0, 2) +
@@ -1105,19 +1106,72 @@ export default {
                 " " +
                 temp[2].substring(3, 8);
 
-              printEPL(
-                element.patient,
-                element.sid,
-                element.pid,
-                element.godiste,
-                element.datum,
-                element.link,
-                element.code,
-                this.$store.state.site,
-                element.prioritet,
-                element.protokol,
-                element.purpose
-              );
+
+                var niz = [1];
+
+                // console.log(site)
+
+                switch (site) {
+
+                  
+                  case "5c69f68c338fe912f99f833b": // Poslovna jedinica Centralna laboratorija
+                    niz = [1,2];
+                    
+                    break;
+                  case "5f9f705e444e51a464db2543": // Međunarodni aerodrom Sarajevo
+                    niz = [1,2,3,4];
+                    
+                    break;
+                  case "5f9f70a1444e51a464db259a": // Međunarodni aerodrom Tuzla
+                     niz = [1,2,3,4];
+                    
+                    break;
+                  case "5fb81465900f08738c6985e7": // Poliklinika Sunce - Zenica
+                    niz = [1];
+                    
+                    break;
+                  case "60508f5ff0a3cf9c7860f5ad": // PZU HBL Laboratorija - Istočno Sarajevo
+                    niz = [1];
+                    
+                    break;
+                  case "60508f95f0a3cf9c7860f5bd": // HBL Laboratorija - Novo Sarajevo
+                    niz = [1];
+                    
+                    break;
+                  case "60509039f0a3cf9c7860f5e1": // HBL Laboratorija - Dobrinja
+                    niz = [1];
+                    
+                    break;
+                
+                  default:
+                    niz = [1,2];
+                    
+                    break;
+                }
+
+
+                niz.forEach(function(i) {
+
+                  printEPL(
+                    element.patient,
+                    element.sid,
+                    element.pid,
+                    element.godiste,
+                    element.datum,
+                    element.link,
+                    element.code,
+                    site,
+                    element.prioritet,
+                    element.protokol,
+                    element.purpose
+                  );
+
+                });
+
+
+
+
+              
             });
 
             router.push("/prijem");

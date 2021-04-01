@@ -271,7 +271,7 @@ export default {
   name: "barcode",
   data() {
     return {
-      barcode: false,
+      barcode: true,
       filterText: "",
       site: "",
       uzorak: "",
@@ -410,7 +410,7 @@ export default {
             this.simptomi = false;
             this.prezime = "";
             this.analiza = "";
-            (this.prioritet = ""), (this.barcode = false);
+            (this.prioritet = ""), (this.barcode = true);
             this.sampledTime = "";
             this.tip = "";
             this.spol = "";
@@ -460,7 +460,7 @@ export default {
       this.simptomi = false;
       this.prezime = "";
       this.analiza = "";
-      (this.prioritet = ""), (this.barcode = false);
+      (this.prioritet = ""), (this.barcode = true);
       this.sampledTime = "";
       this.tip = "";
       this.spol = "";
@@ -602,7 +602,7 @@ export default {
                   this.prioritet = "Nema podataka";
                 }
 
-                this.barcode = false;
+                this.barcode = true;
 
                 var uzorkovan = JSON.stringify(res.data.uzorak.datum)
                   .substring(1, 11)
