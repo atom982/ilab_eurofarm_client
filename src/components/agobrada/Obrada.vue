@@ -2222,6 +2222,21 @@ End of Microbiology Modal |
         </div>
       </vuestic-modal-error>
 
+      <vuestic-modal-error
+        :show.sync="show"
+        ref="staticModalVerifyResult"
+        cancelText="ZATVORI"
+        okText="POTVRDI"
+      >
+        <div slot="title">
+          {{ "" }}
+          <span style="color: #e34a4a">{{ "400: Bad Request" }}</span>
+        </div>
+        <div>
+          <strong>{{ "Rezultat nije validan." }}</strong>
+        </div>
+      </vuestic-modal-error>
+
       <vuestic-modal-exclamation
         :show.sync="show"
         ref="staticModalExclamation"
@@ -10855,6 +10870,9 @@ End of Microbiology Sample Check |
 
       if (!this.$store.state.configuration.verify.ag) {
         this.$refs.staticModalVerifyPrivilege.open();
+      } else if (this.rezultati[0].rezultat.trim() === ""){
+        // console.log(this.rezultati)
+        this.$refs.staticModalVerifyResult.open();
       } else{
         // Paste Code Here
         this.rezultati.forEach((element) => {
