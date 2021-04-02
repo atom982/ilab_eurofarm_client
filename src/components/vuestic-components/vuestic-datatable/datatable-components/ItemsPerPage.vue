@@ -58,8 +58,20 @@ export default {
   },
   mounted() {
     bus.$on("setItemsPerPage", data => {
-      // console.log("BUS (ItemsPerPage): " + data);
-      this.selectedItemsPerPage(data);
+
+      // Za RT PCR Nalazi
+      // Za Antigen Nalazi
+
+      var current = this.$router.currentRoute.path;
+      if (current.includes("obrada/pregled")) {
+        this.selectedItemsPerPage("RADNA LISTA");
+        // console.log("x (RADNA LISTA)");
+      } else {
+        this.selectedItemsPerPage("DANAS");
+        // console.log("x (DANAS)");
+      }
+
+      
     });
   },
   beforeDestroy() {
@@ -77,7 +89,6 @@ export default {
       bus.$emit("selectedItemsPerPage");
       this.selected = optionValue;
       this.$emit("items-per-page", this.selected);
-
       bus.$emit("ItemsPerPage", optionValue);
     }
   }

@@ -158,6 +158,12 @@ export default {
       }
     },
     setSite(locale) {
+
+      // console.log("Setting Site...")
+
+      this.$store.dispatch("filterChange", "");
+      this.$store.dispatch("FilterBarChange", "");
+
       this.izbor = locale;
       this.options.forEach(element => {
         if (element.sifra === locale) {
@@ -180,30 +186,44 @@ export default {
       this.$store.dispatch("siteClear");
       var current = this.$router.currentRoute.path;
 
+      // console.log(current)
+
+      if (current.includes("rtnalazi/pregled")) {
+        router.push("/rtnalazi/pregled/" + "?site=" + this.$store.state.site);
+        this.$refs.close.click();
+      } else
+
+      if (current.includes("agnalazi/pregled")) {
+        router.push("/agnalazi/pregled/" + "?site=" + this.$store.state.site);
+        this.$refs.close.click();
+      } else
+
       if (current.includes("nalazi/pregled")) {
         router.push("/nalazi/pregled/" + "?site=" + this.$store.state.site);
         this.$refs.close.click();
-      } else if (current.includes("nalazi/outbox")) {
+      } else 
+      
+      if (current.includes("nalazi/outbox")) {
         router.push("/nalazi/outbox/" + "?site=" + this.$store.state.site);
         this.$refs.close.click();
-      } else if (current.includes("rtobrada/") && !current.includes("kontrole/")) {
+      } else 
+      
+      if (current.includes("rtobrada/") && !current.includes("kontrole/")) {
         router.push("/rtobrada/pregled/" + "?site=" + this.$store.state.site);
         this.$refs.close.click();
-      } else if (current.includes("agobrada/") && !current.includes("kontrole/")) {
+      } else 
+      
+      if (current.includes("agobrada/") && !current.includes("kontrole/")) {
         router.push("/agobrada/pregled/" + "?site=" + this.$store.state.site);
         this.$refs.close.click();
-      } 
-      // else if (current.includes("obrada/") && !current.includes("kontrole/")) {
-      //   router.push("/obrada/pregled/" + "?site=" + this.$store.state.site);
-      //   this.$refs.close.click();
-      // } else if (current.includes("kontrole/")) {
-      //   router.push("/kontrole/obrada/pregled/" + "?site=" + this.$store.state.site);
-      //   this.$refs.close.click();
-      // } 
-      else if (current.includes("samples")) {
+      } else 
+      
+      if (current.includes("samples")) {
         router.push("/prijem/" + "?site=" + this.$store.state.site);
         this.$refs.close.click();
-      } else {
+      } else 
+      
+      {
         router.push(current + "?site=" + this.$store.state.site);
         this.$refs.close.click();
       }

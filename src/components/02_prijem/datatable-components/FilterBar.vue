@@ -29,6 +29,7 @@ export default {
   },
   mounted() {
     bus.$on("Filter", data => {
+      console.log("FilterBar (Patients): " + data);
       this.filterText = data;
     });
   },

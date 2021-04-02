@@ -3,11 +3,15 @@ import statistika from "./statistika";
 import prijem from "./prijem";
 import barcode from "./barcode";
 import naljepnice from "./naljepnice";
-import rtobrada from "./rtobrada";
-import agobrada from "./agobrada";
-// import nalazi from "./nalazi";
-import pdf from "./pdf";
-import email from "./email";
+
+import rtobrada from "./rtobrada"; // CoV2 RT PCR
+import agobrada from "./agobrada"; // CoV2 Antigen
+
+import rtnalazi from "./rtnalazi"; // RT PCR Nalazi
+import agnalazi from "./agnalazi"; // Antigen Nalazi
+import pdf from "./pdf"; // Pregled nalaza
+import email from "./email"; // Elektronska pošta
+
 import protokol from "./protokol";
 import reports from "./reports";
 import narucioci from "./narucioci";
@@ -16,10 +20,7 @@ import kontrole from "./kontrole";
 import inventar from "./inventar";
 import thermometer from "./loger";
 import mikrobiologija from "./mikrobiologija";
-
-// Partneri - Pošiljaoc, Naručioc i Izvršioc
 import partneri from "./partneri";
-
 import postavke from "./postavke";
 import integracija from "./integracija";
 import excel from "./excel";
@@ -33,28 +34,24 @@ const state = {
     barcode,
     naljepnice,
 
-    rtobrada,
-    agobrada,
+    rtobrada, // CoV2 RT PCR
+    agobrada, // CoV2 Antigen
 
-    // nalazi,
-    pdf,
-    email,
+    rtnalazi, // RT PCR Nalazi
+    agnalazi, // Antigen Nalazi
+    pdf, // Pregled nalaza
+    email, // Elektronska pošta
+
     protokol,
     postavke,
     narucioci,
-    reports,
-    
+    reports,    
     analize,
     kontrole,
     inventar,
     thermometer,
     mikrobiologija,
-
-    // Partneri - Pošiljaoc, Naručioc i Izvršioc
-
-    partneri,
-
-    
+    partneri,  
     integracija,
     excel,
     analysers,

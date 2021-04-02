@@ -58,10 +58,10 @@
                               style="color: #e34a4a"
                                onpaste="return false;"
                                 autocomplete="off"
-                                id="drp-input-icon-left"
+                                id="udrp-input-icon-left"
                                 title=" "
                                 v-model="datumrodjenja"
-                                name="drp-input-icon-left"
+                                name="udrp-input-icon-left"
                                 required
                               />
                               <i
@@ -70,7 +70,7 @@
                               <label
                               style="color: #e34a4a"
                                 class="control-label"
-                                for="drp-input-icon-left"
+                                for="udrp-input-icon-left"
                                 >{{ "DDMMGGGG" }}</label
                               >
                            

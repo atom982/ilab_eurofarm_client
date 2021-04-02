@@ -80,13 +80,16 @@ export default {
       }
     },
     setDropdownDefaultIzbor() {
+      // console.log("Setting Sidebar...")
       var current = this.$router.currentRoute.path;
       if (current.includes("obrada/pregled")) {
         this.$store.dispatch("dropdownChange", "RADNA LISTA");
         this.$store.dispatch("filterChange", "");
+        this.$store.dispatch("FilterBarChange", "");
       } else {
         this.$store.dispatch("dropdownChange", "DANAS");
         this.$store.dispatch("filterChange", "");
+        this.$store.dispatch("FilterBarChange", "");
       }
     }
   },

@@ -22,138 +22,24 @@
               <!--Container-->
               <div class="modal-body">
                 <slot></slot>
-                <div v-show="$store.state.viber === false">
-          <strong>{{ "Nemate odgovarajuće privilegije." }}</strong>
-        </div>
-                <div v-show="!viberData.valid && $store.state.viber === true">
-                  <strong>{{ "Telefonski broj nije validan." }}</strong>
-                </div>
-                <div v-show="viberData.valid && $store.state.viber === true">
-                  <strong>{{ "Telefonski broj :" }}&nbsp;&nbsp;
-                    
-                    
-                    <span style="color: #db76df"
-                      >{{ viberData.telefon }}</span
-                    >
-                                
-                    
-                    
-                    
-                    
-                    </strong>
-                  <div style="min-height: 12px"></div>
-
-
-
-
-
- <div
-               
-                class="row"
-              >
-              <div class="col-md-1"></div>
-                <div class="col-md-8">
-                  <div class="form-check abc-checkbox abc-checkbox-primary">
-                    <input
-                      class="form-check-input"
-                      id="ba"
-                      type="checkbox"
-                      v-model="ba"
-                    />
-                    <label class="form-check-label" for="ba">
-                      <span class="abc-label-text">{{
-                        "Bosanski jezik"
-                      }}</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-
-
-              <div
-               
-                class="row"
-              >
-              <div class="col-md-1"></div>
-                <div class="col-md-8">
-                  <div class="form-check abc-checkbox abc-checkbox-primary">
-                    <input
-                      class="form-check-input"
-                      id="en"
-                      type="checkbox"
-                      v-model="en"
-                    />
-                    <label class="form-check-label" for="en">
-                      <span class="abc-label-text">{{
-                        "Engleski jezik"
-                      }}</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-               <div
-               
-                class="row"
-              >
-              <div class="col-md-1"></div>
-                <div class="col-md-8">
-                  <div class="form-check abc-checkbox abc-checkbox-primary">
-                    <input
-                      class="form-check-input"
-                      id="de"
-                      type="checkbox"
-                      v-model="de"
-                    />
-                    <label class="form-check-label" for="de">
-                      <span class="abc-label-text">{{
-                        "Njemački jezik"
-                      }}</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-
-
-
-
-
-                  
-                </div>
               </div>
               <!--Footer-->
               <div class="modal-footer">
                 <slot name="footer">
                   <button
                     type="button"
-                    v-if="!noButtons && !viberData.valid"
-                    :class="cancelClass"
-                    @click="cancel"
-                    :disabled="cancelDisabled"
-                  >{{ "ZATVORI" }}</button>
-                  <button
-                    type="button"
-                    v-if="!noButtons && viberData.valid"
+                    v-if="!noButtons"
                     :class="cancelClass"
                     @click="cancel"
                     :disabled="cancelDisabled"
                   >{{ cancelText }}</button>
-                  <button
+                  <!-- <button
                     type="button"
                     v-if="!noButtons"
                     :class="okClass"
                     @click="ok"
-                    :disabled="okDisabled || !viberData.valid || isLoading || (!ba && !en && !de)"
-                  >{{ okText }}</button>
+                    :disabled="okDisabled"
+                  >{{ okText }}</button>-->
                 </slot>
               </div>
             </div>
@@ -162,51 +48,16 @@
         <div class="modal-backdrop"></div>
       </div>
     </transition>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="col-md-6">
-          <loading
-            :active.sync="isLoading"
-            :can-cancel="false"
-            :on-cancel="onCancel"
-            color="#4ae387"
-            :is-full-page="fullPage"
-          ></loading>
-        </div>
-        <div class="col-md-6">
-          <button v-if="false" @click.prevent="Test">{{ "Loading..." }}</button>
-        </div>
-      </div>
-    </div>
-
   </div>
 </template>
 
 <script>
 import { http } from "../../../../config/config.js";
 import { bus } from "../../../main";
-import Vue from "vue";
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
-  name: "vuestic-modal-viber-service",
+  name: "vuestic-modal-data",
   props: {
-    viberData: {
-      type: Object,
-      default: () => ({
-        timestamp: "",
-        uzorak: "",
-        telefon: "",
-        valid: false,
-        protokol: "",
-        ime: "",
-        prezime: "",
-        godiste: "",
-        spol: "",
-      })
-    },
     transition: {
       type: String,
       default: "modal"
@@ -259,13 +110,7 @@ export default {
   data() {
     return {
       show: false,
-      duration: 500,
-      isLoading: false,
-      fullPage: true,
-
-      ba: true,
-      en: true,
-      de: true
+      duration: 500
     };
   },
   computed: {
@@ -287,9 +132,6 @@ export default {
       ""
     );
   },
-  components: {
-    Loading,
-  },
   watch: {
     show(value) {
       if (value) {
@@ -305,17 +147,6 @@ export default {
     }
   },
   methods: {
-
-
-    Test() {
-      this.isLoading = true;
-
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 2000);
-    },
-    onCancel() {},
-
     listenKeyUp(event) {
       if (event.key === "Escape") {
         this.cancel();
@@ -323,47 +154,13 @@ export default {
     },
     ok() {
       this.$emit("ok");
-
-      this.isLoading = true
-      // Viber Service
-      // console.log(this.viberData)
-
-      
-      http
-        .post("nalazi/viber/service", {
-          token: this.$store.state.token,
-          site: this.$store.state.site,
-          viberData: this.viberData,
-          jezici: {
-            ba: this.ba,
-            en: this.en,
-            de: this.de,
-          }
-        })
-        .then((res) => {
-          // console.log(res.data);
-
-          this.show = false;
-          this.isLoading = false
-          window.removeEventListener("keyup", this.listenKeyUp);
-         
-          if (res.data.success) {
-            // Success
-          } else {
-            // Greška
-          }
-        });
-    
-
-
-      
-      
+      this.show = false;
+      window.removeEventListener("keyup", this.listenKeyUp);
     },
     cancel() {
       this.$emit("cancel");
       bus.$emit("Error");
       this.show = false;
-      this.isLoading = false
       window.removeEventListener("keyup", this.listenKeyUp);
     },
     clickMask() {
@@ -372,11 +169,7 @@ export default {
       }
     },
     open() {
-      this.ba = true
-      this.en = true
-      this.de = true
       this.show = true;
-      // console.log(this.viberData)
       window.addEventListener("keyup", this.listenKeyUp);
     },
     close() {

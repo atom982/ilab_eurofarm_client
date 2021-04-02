@@ -185,7 +185,7 @@ const store = new Vuex.Store({
       // console.log(day_end)
 
       if(!isNaN(total_days)){
-        console.log(total_days)
+        // console.log(total_days)
       }
       
 
@@ -241,6 +241,7 @@ const store = new Vuex.Store({
       }
     },
     changeFilterBar(state, data) {
+      // console.log("Data from STORE: " + data)
       state.pretraga.filterBar = data;
     },
     changeItemsPerPage(state, data) {

@@ -110,6 +110,26 @@ function generateRoutesFromMenu(menu = [], routes = []) {
     }
   };
 
+  var rtnalazi = {
+    path: "/rtnalazi/pregled/:id",
+    component: lazyLoading("rtnalazi/pregled/nalaz"),
+    props: true,
+    meta: {
+      title: "rtnalaz",
+      requiredAuth: true
+    }
+  };
+
+  var agnalazi = {
+    path: "/agnalazi/pregled/:id",
+    component: lazyLoading("agnalazi/pregled/nalaz"),
+    props: true,
+    meta: {
+      title: "agnalaz",
+      requiredAuth: true
+    }
+  };
+
   var outbox = {
     path: "/nalazi/outbox/:id",
     component: lazyLoading("nalazi/outbox/nalaz"),
@@ -166,6 +186,9 @@ function generateRoutesFromMenu(menu = [], routes = []) {
 
   routes.push(agobrada);
   routes.push(rtobrada);
+
+  routes.push(rtnalazi);
+  routes.push(agnalazi);
 
   // routes.push(obrada);
 

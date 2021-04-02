@@ -90,10 +90,10 @@
                         style="color: #e34a4a"
                         onpaste="return false;"
                         autocomplete="off"
-                        id="drp-input-icon-left"
+                        id="rdrp-input-icon-left"
                         title=" "
                         v-model="datumrodjenja"
-                        name="drp-input-icon-left"
+                        name="rdrp-input-icon-left"
                         required
                       />
                       <i
@@ -102,7 +102,7 @@
                       <label
                         style="color: #e34a4a"
                         class="control-label"
-                        for="drp-input-icon-left"
+                        for="rdrp-input-icon-left"
                         >{{ ldateofb }}</label
                       >
                       <i class="bar"></i>

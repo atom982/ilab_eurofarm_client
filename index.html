@@ -51,12 +51,15 @@
 
     if (prioritet === "NORMALAN") {
       CITO = "";
+      code += "";
 
       str1 = 'A165,144,0,2,1,1,N,"' + CITO + '"\n';
     }
 
     if (prioritet === "HITAN") {
       CITO = "CITO";
+      code += " - hitno";
+
       str1 = 'A227,144,0,2,1,1,N,"' + " " + CITO + " " + '"\n';
     }
 
@@ -64,10 +67,13 @@
       str2 = 'A28,144,0,2,1,1,N,"' + " " + protokol + " " + '"\n'
     }
 
+    // console.log(code)
+    CITO = godiste
+
     // Eurofarm Centar
 
     if(svrha === "Putovanje"){
-      purpose = "TRIP"
+      purpose = "Put"
     }else if(svrha === "Procjena zdravstvenog stanja"){
       purpose = "PRZS"
     }else if(svrha === "Kontakt sa zaraženom osobom"){
@@ -91,7 +97,7 @@
         var condition = false
 
         list.forEach((element) => {
-          console.log(element)
+          // console.log(element)
 
           // ZDesigner GC420t (EPL)
           // \\\SAV-LAB-01.ad.poliklinika-atrijum.ba\\ZDesigner GC420t (EPL)

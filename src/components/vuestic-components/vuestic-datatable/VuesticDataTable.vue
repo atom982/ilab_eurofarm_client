@@ -406,12 +406,12 @@
         <div class="form-group">
           <div class="input-group">
             <input
-              id="adr-input-icon-left"
+              id="lok-input-icon-left"
               title=" "
-              name="adr-input-icon-left"
+              name="lok-input-icon-left"
               disabled
             />
-            <label class="control-label" for="adr-input-icon-left"
+            <label class="control-label" for="lok-input-icon-left"
               >{{ "Pošiljaoc pacijenta: " }}
               <span style="color: #4ae387">{{ pacLokacija }}</span>
             </label>
@@ -420,22 +420,7 @@
         </div>
 
         <div class="form-group" v-if="$store.state.note && note != ''">
-          <!-- <div class="input-group">
-                              <input
-                                id="adr-input-icon-left"
-                                title=" "
-                                name="adr-input-icon-left"
-                                disabled
-                              />
-                              <label
-                                class="control-label"
-                                for="adr-input-icon-left"
-                                >{{ "Bilješka o pacijentu: "}}
-                                 <span style="color:#4ae387;">{{"Trenutno u izradi..."}}</span>
-                                 </label
-                              >
-                              <i class="bar"></i>
-                            </div> -->
+         
 
           <div class="input-group">
             <textarea type="text" v-model="note"></textarea>
@@ -759,26 +744,24 @@ export default {
 
     // console.log(current)
 
-    if (
-      current.includes("obrada/pregled") &&
-      !this.$store.state.mikrobioloski
-    ) {
+    if (current.includes("obrada/pregled")) {
       this.$store.dispatch("dropdownChange", "RADNA LISTA");
+      this.$emit("items-per-page", "RADNA LISTA");
       this.$store.dispatch("filterChange", "");
-    } else if (
-      current.includes("obrada/pregled") &&
-      this.$store.state.mikrobioloski
-    ) {
-      this.$store.dispatch("dropdownChange", "Mikrobiologija");
-      this.$store.dispatch("filterChange", "");
-    } else if (!current.includes("nalazi/pregled")) {
+      this.$store.dispatch("FilterBarChange", "");
+    } else 
+    
+    
+    if (current.includes("nalazi/pregled")) {
       this.$store.dispatch("dropdownChange", "DANAS");
+      this.$emit("items-per-page", "DANAS");
       this.$store.dispatch("filterChange", "");
-    } else if (current.includes("kontrole/")) {
-      this.$store.dispatch("dropdownChange", "RADNA LISTA");
-      this.$store.dispatch("filterChange", "");
+      this.$store.dispatch("FilterBarChange", "");
     } else {
-      // Do nothing
+      this.$store.dispatch("dropdownChange", "DANAS");
+      this.$emit("items-per-page", "DANAS");
+      this.$store.dispatch("filterChange", "");
+      this.$store.dispatch("FilterBarChange", "");
     }
 
     this.perPage = this.$store.state.dropdown;
@@ -799,6 +782,7 @@ export default {
     }
 
     bus.$on("UzorakFromCollapse", (data) => {
+      console.log("From colapse")
       router.push("/nalazi/pregled/" + data.sample);
     });
 
@@ -1089,6 +1073,7 @@ export default {
       var niz = args[0];
 
       // Eurofarm Centar - Laboratorija
+      // console.log(niz[1].name)
 
       if (niz[1].name === "icon" && niz[0].barcode != undefined) {
         // console.log(niz[0].pacijent)
@@ -1176,6 +1161,34 @@ export default {
         if (niz[1].name === "de") {
           // console.log(niz[2].target.id)
           router.push("/nalazi/pregled/" + niz[2].target.id + "_German");
+        }
+
+        if (niz[1].name === "rtnalazipregled") {
+          router.push("/rtnalazi/pregled/" + niz[2].target.id);
+        }
+
+        if (niz[1].name === "rten") {
+          // console.log(niz[2].target.id)
+          router.push("/rtnalazi/pregled/" + niz[2].target.id);
+        }
+
+        if (niz[1].name === "rtde") {
+          // console.log(niz[2].target.id)
+          router.push("/rtnalazi/pregled/" + niz[2].target.id + "_German");
+        }
+
+        if (niz[1].name === "agnalazipregled") {
+          router.push("/agnalazi/pregled/" + niz[2].target.id);
+        }
+
+        if (niz[1].name === "agen") {
+          // console.log(niz[2].target.id)
+          router.push("/agnalazi/pregled/" + niz[2].target.id);
+        }
+
+        if (niz[1].name === "agde") {
+          // console.log(niz[2].target.id)
+          router.push("/agnalazi/pregled/" + niz[2].target.id + "_German");
         }
 
         if (niz[1].name === "viber") {
