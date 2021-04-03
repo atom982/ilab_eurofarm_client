@@ -19,6 +19,7 @@ const store = new Vuex.Store({
   },
   state: {
     userId: null,
+    main: false,
     language: null,
     customer: false,
     token: null,
@@ -162,6 +163,18 @@ const store = new Vuex.Store({
       state.customer = userData.customer;
       state.token = userData.token;
       state.site = userData.site;
+
+      // console.log(userData.site)
+
+      if(state.site === "5c69f68c338fe912f99f833b"){
+        state.main = true;
+        console.log('PZU "EUROFARM-CENTAR POLIKLINIKA" Sarajevo')
+        console.log('Podružnica Centralna Laboratorija, Sarajevo')
+      }else{
+        console.log("Not Main Site.")
+        state.main = false;
+      }
+
       state.idleTime = userData.idleTime;
       state.pid_bcode = userData.pid_bcode;
       state.default_route = userData.default_route;
@@ -219,7 +232,7 @@ const store = new Vuex.Store({
       state.password = null;
     },
     changeSite(state, site) {
-      state.site = site;
+      state.site = site;      
     },
     changeDropdown(state, dropdown) {
       state.dropdown = dropdown;

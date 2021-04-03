@@ -2166,6 +2166,8 @@ export default {
                     .gubitaksposobnostigovorailikretanja,
                 };
 
+                // console.log("Unosim novog pacijenta...")
+
                 http
                   .post("pacijenti/unos/save", {
 

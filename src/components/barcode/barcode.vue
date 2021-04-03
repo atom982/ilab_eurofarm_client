@@ -364,7 +364,9 @@ export default {
           token: this.$store.state.token,
           uzorak: this.uzorak,
           sampled: true,
-          sampled_by: this.$store.state.site,
+          // PZU "EUROFARM-CENTAR POLIKLINIKA" Sarajevo
+          // Podružnica Centralna Laboratorija, Sarajevo
+          sampled_by: "5c69f68c338fe912f99f833b",
           statusUzorka: "U OBRADI",
         })
         .then((res) => {

@@ -56,6 +56,7 @@
       v-bind:medium="true"
       ref="modalPatientEdit"
       :okText="potvrdi"
+      :timestamp="timestamp"
       :cancelText="odustani"
       :patient="patient_data"
     >
@@ -71,6 +72,36 @@
         </div>
       </div>
     </patient-edit>
+
+    <vuestic-modal-error
+      :show.sync="show"
+      ref="staticModalNotAuthorizedEntry"
+      cancelText="ZATVORI"
+      okText="POTVRDI"
+    >
+      <div slot="title">
+        {{ "" }}
+        <span style="color: #e34a4a">{{ "401: Not Authorized" }}</span>
+      </div>
+      <div>
+        <strong>{{ "Nemate odgovarajuće privilegije." }}</strong>
+      </div>
+    </vuestic-modal-error>
+
+    <vuestic-modal-error
+      :show.sync="show"
+      ref="staticModalNotAuthorizedEdit"
+      cancelText="ZATVORI"
+      okText="POTVRDI"
+    >
+      <div slot="title">
+        {{ "" }}
+        <span style="color: #e34a4a">{{ "401: Not Authorized" }}</span>
+      </div>
+      <div>
+        <strong>{{ "Nemate odgovarajuće privilegije." }}</strong>
+      </div>
+    </vuestic-modal-error>
 
     <div class="row">
       <div class="col-md-12">
@@ -173,7 +204,48 @@ export default {
       show: true,
       potvrdi: "SAČUVAJ",
       odustani: "ZATVORI",
-      patient_data: {},
+      patient_data: {
+        _id: "",
+        entry_disabled: false,
+        izdavanje: "",
+        duhan: "",
+        dijabetes: "",
+        symptoms: {
+          pacijentbezsimptoma: true,
+          povišenatjelesnatemperatura: false,
+          suhikašalj: false,
+          umor: false,
+          bolovi: false,
+          grlobolja: false,
+          proljev: false,
+          konjunktivitis: false,
+          glavobolja: false,
+          gubitakosjetaokusailimirisa: false,
+          osipilipromjenabojeprstijunarukamailinogama: false,
+          otežanodisanjeiligubitakdaha: false,
+          bolilipritisakuprsima: false,
+          gubitaksposobnostigovorailikretanja: false,
+        },
+        purpose: "",
+        analysis: "",
+        referenca: "",
+        note: "",
+        passport: "",
+        language: [""],
+        telefon: "",
+        email: "",
+        adresa: "",
+        created_at: null,
+        updated_at: null,
+        created_by: "",
+        updated_by: "",
+        jmbg: "",
+        ime: "",
+        prezime: "",
+        spol: "",
+        site: "",
+        __v: 0,
+      },
 
       isLoading: false,
       fullPage: true,
@@ -185,6 +257,7 @@ export default {
       toastDuration: 2500,
       isToastFullWidth: false,
       className: "",
+      timestamp:"",
     };
   },
   mounted() {
@@ -208,7 +281,14 @@ export default {
     onCancel() {},
 
     unosPacijenta() {
-      this.$refs.largeModalPatient.open();
+      if (
+        this.$store.state.main === true &&
+        this.$store.state.site != "5c69f68c338fe912f99f833b"
+      ) {
+        this.$refs.staticModalNotAuthorizedEntry.open();
+      } else {
+        this.$refs.largeModalPatient.open();
+      }
     },
     prikaziDetalje: function (args) {
       var niz = args[0];
@@ -219,17 +299,40 @@ export default {
       ) {
         if (niz[1].name === "detalji") {
           this.pacijent = niz[0].id;
-          this.Patient();
+          this.patient_data = niz[0].patient;
+
+          if (
+            this.$store.state.main === true &&
+            this.$store.state.site != "5c69f68c338fe912f99f833b"
+          ) {
+            this.$refs.staticModalNotAuthorizedEdit.open();
+          } else {
+            this.isLoading = true;
+            setTimeout(() => {
+              this.isLoading = false;
+              this.timestamp = (
+                new Date().getTime() -
+                new Date().getTimezoneOffset() * 60000
+              ).toString();
+              this.$refs.modalPatientEdit.open();
+              
+            }, 500);
+            
+          }
         }
         if (niz[1].name === "prijem") {
           // console.log(JSON.stringify(args[0][0].prijem))
-          if(JSON.stringify(args[0][0].prijem).includes("disabled")){
-
-          }else{
-            router.push("/samples/" + args[0][0].id);
-
+          if (JSON.stringify(args[0][0].prijem).includes("disabled")) {
+          } else {
+            if (
+              this.$store.state.main === true &&
+              this.$store.state.site != "5c69f68c338fe912f99f833b"
+            ) {
+              this.$refs.staticModalNotAuthorizedEdit.open();
+            } else {
+              router.push("/samples/" + args[0][0].id);
+            }
           }
-          
         }
         if (niz[1].name === "icon") {
           // console.log(niz[0].patient)
@@ -238,30 +341,6 @@ export default {
           // }
         }
       }
-    },
-    Patient() {
-      this.isLoading = true;
-
-      http
-        .get(
-          "pacijenti/detalji/" +
-            this.pacijent +
-            "?token=" +
-            this.$store.state.token +
-            "&site=" +
-            this.$store.state.site,
-          {}
-        )
-        .then((res) => {
-          if (res.data.pacijent.jmbg != undefined) {
-            this.patient_data = res.data.pacijent;
-
-            setTimeout(() => {
-              this.isLoading = false;
-              this.$refs.modalPatientEdit.open();
-            }, 500);
-          }
-        });
     },
     onFilterSet(filterText, event) {
       this.filterString = "";
