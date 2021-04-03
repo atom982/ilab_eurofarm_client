@@ -22,6 +22,9 @@ import InitialPassword from "src/components/layout/navbar/InitialPassword.vue";
 import PatientEdit from "src/components/02_prijem/PatientEdit.vue";
 import ModalSamplesEntryCommenting from "src/components/02_samples/Commenting.vue";
 import ModalSamplesEntryCalendar from "src/components/02_samples/Calendar.vue";
+
+import ModalEurofarmCalendar from "src/components/obrada/Calendar.vue";
+
 import VuesticModalDelete from "src/components/obrada/components/VuesticModalDelete";
 import VuesticModalEdit from "src/components/obrada/components/VuesticModalEdit";
 import VuesticModalReport from "src/components/reports/VuesticModal";
@@ -191,6 +194,7 @@ const VuesticComponentsPlugin = {
       ModalSamplesEntryCommenting
     );
     Vue.component(ModalSamplesEntryCalendar.name, ModalSamplesEntryCalendar);
+    Vue.component(ModalEurofarmCalendar.name, ModalEurofarmCalendar);
     Vue.component(LabAssayDelete.name, LabAssayDelete);
     Vue.component(AnaAssayDelete.name, AnaAssayDelete);
     Vue.component(ModalS.name, ModalS);

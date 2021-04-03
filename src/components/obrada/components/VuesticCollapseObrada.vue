@@ -82,19 +82,21 @@
           >&nbsp;&nbsp;</span>
 
               <!-- Bilješka o pacijentu -->
-        <!--   <span v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'">
+      <span v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN' && 
+        $router.currentRoute.path.includes('rtobrada/rezultati')">
             <i
               style="font-size: 20px;"
-              class="fa fa-user-o fa-lg icon-left wizard-back pull-left"
-              id="user-o"
+              class="fa fa-calendar fa-lg icon-left wizard-back pull-left"
+              id="calendar"
               title=""
             ></i>
           </span>
             <span
-            v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'"
+            v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN' && 
+          $router.currentRoute.path.includes('rtobrada/rezultati')" 
             style="diplay: inline-block; width: 25px;"
             class="col-md-3 pull-left"
-          >&nbsp;&nbsp;</span> -->
+          >&nbsp;&nbsp;</span> 
           <!-- Pošiljaoc pacijenta -->
         
            <span
@@ -314,6 +316,9 @@ export default {
           break;
         case "user-o": // Bilješka o pacijentu
           bus.$emit("note-o", this.sample);
+          break;
+        case "calendar": // Vrijeme uzorkovanja
+          bus.$emit("openCalendarObrada", this.sample);
           break;
         case "edit": // Uređivanje uzorka
           bus.$emit("edit", this.sample);

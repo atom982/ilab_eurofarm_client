@@ -3178,6 +3178,53 @@ End of Microbiology Modal |
           </div>
         </div>
       </patient-evaluation-multi>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <eurofarm-modal-calendar
+        :show.sync="showCalendar"
+        :sample="$store.state.sid"
+        :vrijeme="calendar"
+        ref="staticModalSamplesEntryCalendarObrada"
+      >
+        <div slot="title">{{ "Vrijeme uzorkovanja" }}</div>
+      </eurofarm-modal-calendar>
+
+
+
+
+
     </div>
 
     <div class="row">
@@ -3482,7 +3529,9 @@ End of Microbiology Data |
       lokacijeObj: [],
       posiljaocObj: {},
       pacijentObj: {},
-      handshake: true
+      handshake: true,
+      showCalendar: true,
+      calendar: ""
     };
   },
   components: {
@@ -6147,10 +6196,91 @@ End of | Microbiology Bus from Modal
       
     });
 
+
+
+
+
+
+
+
+    bus.$on("openCalendarObrada", () => {
+      // console.log(this.$store.state.sid)
+
+       this.isLoading = true;
+
+          http
+          .post("/uzorci/calendar/get", {
+            id: this.$store.state.sid,
+            token: this.$store.state.token,
+            site: this.$store.state.site,
+          })
+          .then((res) => {
+            // console.log(res.data.calendar)
+            if(res.data.success){
+              
+              this.calendar = res.data.calendar
+              setTimeout(() => {
+                this.isLoading = false;
+                this.$refs.staticModalSamplesEntryCalendarObrada.open();
+              }, 300);
+              
+
+            }else{
+              this.isLoading = false;
+             
+              console.warn("Greška prilikom pokušaja izmjene vremena uzorkovanja.")
+
+            }
+            
+            
+          });      
+
+
+    });
+
+
+
+
+    bus.$on("setCalendarObrada", (time) => {
+      // console.log("Set Date and time:")
+
+      // console.log(time)
+
+       
+
+       this.isLoading = true;
+
+          http
+          .post("/uzorci/calendar/set", {
+            id: this.$store.state.sid,
+            calendar: time,
+            token: this.$store.state.token,
+            site: this.$store.state.site,
+          })
+          .then((res) => {
+            // console.log(res.data.calendar)
+            if(res.data.success){
+              
+            this.calendar = time
+            this.isLoading = false;
+              
+
+            }else{
+              this.isLoading = false;
+             
+              console.warn("Greška prilikom pokušaja izmjene vremena uzorkovanja.")
+
+            }
+            
+            
+          });       
+    });
   },
 
   beforeDestroy() {
 
+    bus.$off("openCalendarObrada");
+    bus.$off("setCalendarObrada");
     bus.$off("PartnerChange");
 
     bus.$off("Parametar");
