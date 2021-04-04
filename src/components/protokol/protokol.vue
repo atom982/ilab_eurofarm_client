@@ -332,6 +332,13 @@ export default {
         "HLI",
         "HLN",
         "HLD",
+        "PJU",
+        "PJI",
+        "PJV",
+        "PJT",
+        "PJG",
+        "PJB",
+        "PJR",
       ],
     };
   },

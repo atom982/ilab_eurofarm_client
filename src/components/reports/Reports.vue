@@ -2,7 +2,7 @@
   <div class="form-elements">
     <div class="row">
       <div class="col-md-12">
-        <vuestic-widget :headerText="izbor + ' za ' + site">
+        <vuestic-widget :headerText="izbor + ' za: ' + site">
           <div class="row" style="min-height: 350px">
             <div class="col-md-12">
               <div class="col-md-8">
@@ -29,8 +29,9 @@
                           <!-- Međunarodni aerodrom Tuzla ne radi COVID 19 RT PCR Test -->
                           <!-- 5f9f70a1444e51a464db259a -->
                           <a
-                            v-if="true && 
-                              $store.state.site != '5f9f70a1444e51a464db259a' 
+                            v-if="
+                              true &&
+                              $store.state.site != '5f9f70a1444e51a464db259a'
                             "
                             href="#"
                             :class="{
@@ -48,11 +49,12 @@
                           </a>
 
                           <a
-                            v-if="true && 
-                              $store.state.site === '5f9f70a1444e51a464db259a' 
+                            v-if="
+                              true &&
+                              $store.state.site === '5f9f70a1444e51a464db259a'
                             "
                             href="#"
-                            style="color: #acb5be;"
+                            style="color: #acb5be"
                           >
                             <div>{{ "COVID 19 RT PCR Test" }}</div>
                           </a>
@@ -67,11 +69,12 @@
                           <!-- HBL Laboratorija - Dobrinja ne radi COVID 19 Antigen Test -->
                           <!-- 60509039f0a3cf9c7860f5e1 -->
                           <a
-                            v-if="true && 
-                              $store.state.site != '5fb81465900f08738c6985e7' && 
+                            v-if="
+                              true &&
+                              $store.state.site != '5fb81465900f08738c6985e7' &&
                               $store.state.site != '60508f5ff0a3cf9c7860f5ad' &&
                               $store.state.site != '60508f95f0a3cf9c7860f5bd' &&
-                              $store.state.site != '60509039f0a3cf9c7860f5e1' 
+                              $store.state.site != '60509039f0a3cf9c7860f5e1'
                             "
                             href="#"
                             :class="{
@@ -87,16 +90,20 @@
                               {{ "COVID 19 Antigen Test" }}
                             </div>
                           </a>
-                          
-                           <a
-                            v-if="true && 
-                              $store.state.site === '5fb81465900f08738c6985e7' || 
-                              $store.state.site === '60508f5ff0a3cf9c7860f5ad' ||
-                              $store.state.site === '60508f95f0a3cf9c7860f5bd' ||
-                              $store.state.site === '60509039f0a3cf9c7860f5e1' 
+
+                          <a
+                            v-if="
+                              (true &&
+                                $store.state.site ===
+                                  '5fb81465900f08738c6985e7') ||
+                              $store.state.site ===
+                                '60508f5ff0a3cf9c7860f5ad' ||
+                              $store.state.site ===
+                                '60508f95f0a3cf9c7860f5bd' ||
+                              $store.state.site === '60509039f0a3cf9c7860f5e1'
                             "
                             href="#"
-                            style="color: #acb5be;"
+                            style="color: #acb5be"
                           >
                             <div>{{ "COVID 19 Antigen Test" }}</div>
                           </a>
@@ -210,7 +217,7 @@ export default {
       date_picked: false,
 
       timestamp: "",
-  
+
       site: "Poslovna jedinica Centralna laboratorija",
       opis: "PJC",
 
@@ -295,44 +302,66 @@ export default {
 
   beforeMount() {
     switch (this.$store.state.site) {
-      // Poliklinika Eurofarm Centar - Poslovna jedinica Centralna laboratorija
       case "5c69f68c338fe912f99f833b":
-        this.site = "Poslovna jedinica Centralna laboratorija";
+        this.site = "Podružnica Centralna Laboratorija, Sarajevo";
         this.opis = "PJC";
         break;
-
-      case "5f9f705e444e51a464db2543": // Međunarodni aerodrom Sarajevo
+      case "5f9f705e444e51a464db2543":
         this.site = "Međunarodni aerodrom Sarajevo";
         this.opis = "SJJ";
         break;
-
-      case "5f9f70a1444e51a464db259a": // Međunarodni aerodrom Tuzla
+      case "5f9f70a1444e51a464db259a":
         this.site = "Međunarodni aerodrom Tuzla";
         this.opis = "TZL";
         break;
-
-      case "5fb81465900f08738c6985e7": // Poliklinika Sunce - Zenica
+      case "5fb81465900f08738c6985e7":
         this.site = "Poliklinika Sunce - Zenica";
         this.opis = "PSZ";
         break;
-
-      // PZU HBL Laboratorija - Istočno Sarajevo
       case "60508f5ff0a3cf9c7860f5ad":
         this.site = "PZU HBL Laboratorija - Istočno Sarajevo";
         this.opis = "HLI";
         break;
-
-      case "60508f95f0a3cf9c7860f5bd": // HBL Laboratorija - Novo Sarajevo
+      case "60508f95f0a3cf9c7860f5bd":
         this.site = "HBL Laboratorija - Novo Sarajevo";
         this.opis = "HLN";
         break;
-
-      case "60509039f0a3cf9c7860f5e1": // HBL Laboratorija - Dobrinja
+      case "60509039f0a3cf9c7860f5e1":
         this.site = "HBL Laboratorija - Dobrinja";
         this.opis = "HLD";
         break;
+      case "6068b249f68be9eab36b4fdb":
+        this.site = "Podružnica 1. Unitic, Sarajevo";
+        this.opis = "PJU";
+        break;
+      case "6068b2d5f68be9eab36b5003":
+        this.site = "Podružnica 2. IUS, Sarajevo";
+        this.opis = "PJI";
+        break;
+      case "6068b346f68be9eab36b502f":
+        this.site = "Podružnica Visoko";
+        this.opis = "PJV";
+        break;
+      case "6068b3b3f68be9eab36b5088":
+        this.site = "Podružnica Tuzla";
+        this.opis = "PJT";
+        break;
+      case "6068b471f68be9eab36b50f5":
+        this.site = "Podružnica Goražde";
+        this.opis = "PJG";
+        break;
+      case "6068b4fcf68be9eab36b511d":
+        this.site = "Podružnica Bugojno";
+        this.opis = "PJB";
+        break;
+      case "6068b55df68be9eab36b5175":
+        this.site = "Podružnica Trebinje";
+        this.opis = "PJR";
+        break;
 
       default:
+        this.site = "";
+        this.opis = "";
         break;
     }
   },
@@ -369,10 +398,7 @@ export default {
                 const url = window.URL.createObjectURL(new Blob([res.data]));
                 const link = document.createElement("a");
                 link.href = url;
-                link.setAttribute(
-                  "download",
-                  this.timestamp + ".xlsx"
-                );
+                link.setAttribute("download", this.timestamp + ".xlsx");
                 document.body.appendChild(link);
                 link.click();
 
@@ -453,7 +479,10 @@ export default {
                 link.click();
 
                 setTimeout(() => {
-                  this.timestamp = (new Date().getTime() - new Date().getTimezoneOffset() * 60000).toString();
+                  this.timestamp = (
+                    new Date().getTime() -
+                    new Date().getTimezoneOffset() * 60000
+                  ).toString();
                   this.datepicker.range = null;
                   this.date_picked = false;
                   this.isLoading = false;

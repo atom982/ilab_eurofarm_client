@@ -344,13 +344,20 @@ export default {
       }, 2000);
     },
     onCancel() {
-      // "5c69f68c338fe912f99f833b":  PJC (A), Poliklinika Eurofarm Centar - Poslovna jedinica Centralna laboratorija
+      // "5c69f68c338fe912f99f833b":  PJC (A), Podružnica Centralna Laboratorija, Sarajevo
       // "5f9f705e444e51a464db2543":  SJJ (B), Međunarodni aerodrom Sarajevo
       // "5f9f70a1444e51a464db259a":  TZL (C), Međunarodni aerodrom Tuzla
       // "5fb81465900f08738c6985e7":  PSZ (D), Poliklinika Sunce - Zenica
       // "60508f5ff0a3cf9c7860f5ad":  HLI (E), PZU HBL Laboratorija - Istočno Sarajevo
       // "60508f95f0a3cf9c7860f5bd":  HLN (F), HBL Laboratorija - Novo Sarajevo
       // "60509039f0a3cf9c7860f5e1":  HLD (G), HBL Laboratorija - Dobrinja
+      // "6068b249f68be9eab36b4fdb":  PJU (U), Podružnica 1. Unitic, Sarajevo
+      // "6068b2d5f68be9eab36b5003":  PJI (Z), Podružnica 2. IUS, Sarajevo
+      // "6068b346f68be9eab36b502f":  PJV (V), Podružnica Visoko
+      // "6068b3b3f68be9eab36b5088":  PJT (T), Podružnica Tuzla
+      // "6068b471f68be9eab36b50f5":  PJG (O), Podružnica Goražde
+      // "6068b4fcf68be9eab36b511d":  PJB (P), Podružnica Bugojno
+      // "6068b55df68be9eab36b5175":  PJR (R), Podružnica Trebinje
     },
 
     NewPatient() {
@@ -481,60 +488,47 @@ export default {
         // Barcode Scanner
 
         switch (this.filterText.trim()[4]) {
-          case "A":
-            // PJC
-            // Poliklinika Eurofarm Centar - Poslovna jedinica Centralna laboratorija
-
+          case "A": // Podružnica Centralna Laboratorija, Sarajevo
             this.site = "5c69f68c338fe912f99f833b";
-
             break;
-
-          case "B":
-            // SJJ
-            // Međunarodni aerodrom Sarajevo
-
+          case "B": // Međunarodni aerodrom Sarajevo
             this.site = "5f9f705e444e51a464db2543";
-
             break;
-
-          case "C":
-            // TZL
-            // Međunarodni aerodrom Tuzla
-
+          case "C": // Međunarodni aerodrom Tuzla
             this.site = "5f9f70a1444e51a464db259a";
-
             break;
-
-          case "D":
-            // PSZ
-            // Poliklinika Sunce - Zenica
-
+          case "D": // Poliklinika Sunce - Zenica
             this.site = "5fb81465900f08738c6985e7";
-
             break;
-
-          case "E":
-            // HLI
-            // PZU HBL Laboratorija - Istočno Sarajevo
-
+          case "E": // PZU HBL Laboratorija - Istočno Sarajevo
             this.site = "60508f5ff0a3cf9c7860f5ad";
-
             break;
-
-          case "F":
-            // HLN
-            // HBL Laboratorija - Novo Sarajevo
-
+          case "F": // HBL Laboratorija - Novo Sarajevo
             this.site = "60508f95f0a3cf9c7860f5bd";
-
             break;
-
-          case "G":
-            // HLD
-            // HBL Laboratorija - Dobrinja
-
+          case "G": // HBL Laboratorija - Dobrinja
             this.site = "60509039f0a3cf9c7860f5e1";
-
+            break;
+          case "U": // Podružnica 1. Unitic, Sarajevo
+            this.site = "6068b249f68be9eab36b4fdb";
+            break;
+          case "Z": // Podružnica 2. IUS, Sarajevo
+            this.site = "6068b2d5f68be9eab36b5003";
+            break;
+          case "V": // Podružnica Visoko
+            this.site = "6068b346f68be9eab36b502f";
+            break;
+          case "T": // Podružnica Tuzla
+            this.site = "6068b3b3f68be9eab36b5088";
+            break;
+          case "O": // Podružnica Goražde
+            this.site = "6068b471f68be9eab36b50f5";
+            break;
+          case "P": // Podružnica Bugojno
+            this.site = "6068b4fcf68be9eab36b511d";
+            break;
+          case "R": // Podružnica Trebinje
+            this.site = "6068b55df68be9eab36b5175";
             break;
 
           default:

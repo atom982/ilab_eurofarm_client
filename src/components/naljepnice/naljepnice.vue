@@ -302,42 +302,61 @@ export default {
   },
 
   beforeMount() {
-    // Međunarodni aerodrom Tuzla
     switch (this.$store.state.site) {
-      // Poliklinika Eurofarm Centar - Poslovna jedinica Centralna laboratorija
-      case "5c69f68c338fe912f99f833b":
+      case "5c69f68c338fe912f99f833b": // PJC (A), Podružnica Centralna Laboratorija, Sarajevo
         this.analize = ["CoV2 RT PCR", "CoV2 Antigen"];
         this.analiza = "CoV2 RT PCR";
         break;
-
-      case "5f9f705e444e51a464db2543": // Međunarodni aerodrom Sarajevo
+      case "5f9f705e444e51a464db2543": // SJJ (B), Međunarodni aerodrom Sarajevo
         this.analize = ["CoV2 RT PCR", "CoV2 Antigen"];
         this.analiza = "CoV2 RT PCR";
         break;
-
-      case "5f9f70a1444e51a464db259a": // Međunarodni aerodrom Tuzla
+      case "5f9f70a1444e51a464db259a": // TZL (C), Međunarodni aerodrom Tuzla
         this.analize = ["CoV2 Antigen"];
         this.analiza = "CoV2 Antigen";
         break;
-
-      case "5fb81465900f08738c6985e7": // Poliklinika Sunce - Zenica
+      case "5fb81465900f08738c6985e7": // PSZ (D), Poliklinika Sunce - Zenica
         this.analize = ["CoV2 RT PCR"];
         this.analiza = "CoV2 RT PCR";
         break;
-
-      // PZU HBL Laboratorija - Istočno Sarajevo
-      case "60508f5ff0a3cf9c7860f5ad":
+      case "60508f5ff0a3cf9c7860f5ad": // HLI (E), PZU HBL Laboratorija - Istočno Sarajevo
         this.analize = ["CoV2 RT PCR"];
         this.analiza = "CoV2 RT PCR";
         break;
-
-      case "60508f95f0a3cf9c7860f5bd": // HBL Laboratorija - Novo Sarajevo
+      case "60508f95f0a3cf9c7860f5bd": // HLN (F), HBL Laboratorija - Novo Sarajevo
         this.analize = ["CoV2 RT PCR"];
         this.analiza = "CoV2 RT PCR";
         break;
-
-      case "60509039f0a3cf9c7860f5e1": // HBL Laboratorija - Dobrinja
+      case "60509039f0a3cf9c7860f5e1": // HLD (G), HBL Laboratorija - Dobrinja
         this.analize = ["CoV2 RT PCR"];
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b249f68be9eab36b4fdb": // PJU (U), Podružnica 1. Unitic, Sarajevo
+        this.analize = ["CoV2 RT PCR", "CoV2 Antigen"];
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b2d5f68be9eab36b5003": // PJI (Z), Podružnica 2. IUS, Sarajevo
+        this.analize = ["CoV2 RT PCR", "CoV2 Antigen"];
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b346f68be9eab36b502f": // PJV (V), Podružnica Visoko
+        this.analize = ["CoV2 RT PCR", "CoV2 Antigen"];
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b3b3f68be9eab36b5088": // PJT (T), Podružnica Tuzla
+        this.analize = ["CoV2 RT PCR", "CoV2 Antigen"];
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b471f68be9eab36b50f5": // PJG (O), Podružnica Goražde
+        this.analize = ["CoV2 RT PCR", "CoV2 Antigen"];
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b4fcf68be9eab36b511d": // PJB (P), Podružnica Bugojno
+        this.analize = ["CoV2 RT PCR", "CoV2 Antigen"];
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b55df68be9eab36b5175": // PJR (R), Podružnica Trebinje
+        this.analize = ["CoV2 RT PCR", "CoV2 Antigen"];
         this.analiza = "CoV2 RT PCR";
         break;
 
@@ -498,8 +517,7 @@ export default {
     onCancel() {},
 
     Naljepnica(data) {
-
-      console.log(data)
+      console.log(data);
 
       var prioritet = "NORMALAN";
 

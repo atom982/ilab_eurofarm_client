@@ -50,6 +50,13 @@ const store = new Vuex.Store({
       HLI: false,
       HLN: false,
       HLD: false,
+      PJU : false,
+      PJI : false,
+      PJV : false,
+      PJT : false,
+      PJG : false,
+      PJB : false,
+      PJR : false,
     },
 
     prijem: 1,

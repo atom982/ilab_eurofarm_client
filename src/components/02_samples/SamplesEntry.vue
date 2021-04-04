@@ -1095,7 +1095,7 @@ export default {
             response = res.data.data[0];
 
             res.data.data.forEach((element) => {
-              var site = this.$store.state.site
+              var site = this.$store.state.site;
               temp = element.datum.split("-");
               datum =
                 temp[2].substring(0, 2) +
@@ -1106,72 +1106,74 @@ export default {
                 " " +
                 temp[2].substring(3, 8);
 
+              var niz = [1];
 
-                var niz = [1];
+              // console.log(site)
 
-                // console.log(site)
+              switch (site) {
+                case "5c69f68c338fe912f99f833b": // Podružnica Centralna Laboratorija, Sarajevo
+                  niz = [1, 2];
+                  break;
+                case "5f9f705e444e51a464db2543": // Međunarodni aerodrom Sarajevo
+                  niz = [1, 2, 3, 4];
+                  break;
+                case "5f9f70a1444e51a464db259a": // Međunarodni aerodrom Tuzla
+                  niz = [1, 2, 3, 4];
+                  break;
+                case "5fb81465900f08738c6985e7": // Poliklinika Sunce - Zenica
+                  niz = [1];
+                  break;
+                case "60508f5ff0a3cf9c7860f5ad": // PZU HBL Laboratorija - Istočno Sarajevo
+                  niz = [1];
+                  break;
+                case "60508f95f0a3cf9c7860f5bd": // HBL Laboratorija - Novo Sarajevo
+                  niz = [1];
+                  break;
+                case "60509039f0a3cf9c7860f5e1": // HBL Laboratorija - Dobrinja
+                  niz = [1];
+                  break;
+                case "6068b249f68be9eab36b4fdb": // Podružnica 1. Unitic, Sarajevo
+                  niz = [1, 2];
+                  break;
+                case "6068b2d5f68be9eab36b5003": // Podružnica 2. IUS, Sarajevo
+                  niz = [1, 2];
+                  break;
+                case "6068b346f68be9eab36b502f": // Podružnica Visoko
+                  niz = [1, 2];
+                  break;
+                case "6068b3b3f68be9eab36b5088": // Podružnica Tuzla
+                  niz = [1, 2];
+                  break;
+                case "6068b471f68be9eab36b50f5": // Podružnica Goražde
+                  niz = [1, 2];
+                  break;
+                case "6068b4fcf68be9eab36b511d": // Podružnica Bugojno
+                  niz = [1, 2];
+                  break;
+                case "6068b55df68be9eab36b5175": // Podružnica Trebinje
+                  niz = [1, 2];
+                  break;
 
-                switch (site) {
+                default:
+                  niz = [1, 2];
+                  break;
+              }
 
-                  
-                  case "5c69f68c338fe912f99f833b": // Poslovna jedinica Centralna laboratorija
-                    niz = [1,2];
-                    
-                    break;
-                  case "5f9f705e444e51a464db2543": // Međunarodni aerodrom Sarajevo
-                    niz = [1,2,3,4];
-                    
-                    break;
-                  case "5f9f70a1444e51a464db259a": // Međunarodni aerodrom Tuzla
-                     niz = [1,2,3,4];
-                    
-                    break;
-                  case "5fb81465900f08738c6985e7": // Poliklinika Sunce - Zenica
-                    niz = [1];
-                    
-                    break;
-                  case "60508f5ff0a3cf9c7860f5ad": // PZU HBL Laboratorija - Istočno Sarajevo
-                    niz = [1];
-                    
-                    break;
-                  case "60508f95f0a3cf9c7860f5bd": // HBL Laboratorija - Novo Sarajevo
-                    niz = [1];
-                    
-                    break;
-                  case "60509039f0a3cf9c7860f5e1": // HBL Laboratorija - Dobrinja
-                    niz = [1];
-                    
-                    break;
-                
-                  default:
-                    niz = [1,2];
-                    
-                    break;
-                }
-
-
-                niz.forEach(function(i) {
-
-                  printEPL(
-                    element.patient,
-                    element.sid,
-                    element.pid,
-                    element.godiste,
-                    element.datum,
-                    element.link,
-                    element.code,
-                    site,
-                    element.prioritet,
-                    element.protokol,
-                    element.purpose
-                  );
-
-                });
-
-
-
-
-              
+              niz.forEach(function (i) {
+                printEPL(
+                  element.patient,
+                  element.sid,
+                  element.pid,
+                  element.godiste,
+                  element.datum,
+                  element.link,
+                  element.code,
+                  site,
+                  element.prioritet,
+                  element.protokol,
+                  element.purpose
+                );
+              });
             });
 
             router.push("/prijem");
