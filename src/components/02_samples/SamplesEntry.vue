@@ -1121,7 +1121,7 @@ export default {
                   niz = [1, 2, 3, 4];
                   break;
                 case "5fb81465900f08738c6985e7": // Poliklinika Sunce - Zenica
-                  niz = [1];
+                  niz = [1, 2];
                   break;
                 case "60508f5ff0a3cf9c7860f5ad": // PZU HBL Laboratorija - Istočno Sarajevo
                   niz = [1];
