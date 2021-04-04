@@ -218,7 +218,7 @@ export default {
 
       timestamp: "",
 
-      site: "Poslovna jedinica Centralna laboratorija",
+      site: "Podružnica Centralna Laboratorija, Sarajevo",
       opis: "PJC",
 
       datepicker: {
