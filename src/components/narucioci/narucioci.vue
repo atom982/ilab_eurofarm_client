@@ -10,7 +10,7 @@
                 <div class="col-md-6">
                   <div class="form-group with-icon-left">
                     <div class="input-group">
-                      <vuestic-simple-select-bubble
+                      <vuestic-simple-select
                         :label="'Izbor naručioca analize'"
                         v-model="lokacija"
                         name="lokacija"
@@ -18,7 +18,7 @@
                         title=" "
                         ref="lokacija"
                         v-bind:options="lokacije"
-                      ></vuestic-simple-select-bubble>
+                      ></vuestic-simple-select>
                     </div>
                   </div>
                 </div>
@@ -313,12 +313,12 @@ export default {
             }
           });
 
-          this.lokacije.sort(function (a, b) {
-            return a.localeCompare(b, undefined, {
-              numeric: true,
-              sensitivity: "base",
-            });
-          });
+          // this.lokacije.sort(function (a, b) {
+          //   return a.localeCompare(b, undefined, {
+          //     numeric: true,
+          //     sensitivity: "base",
+          //   });
+          // });
 
           this.lokacija = this.lokacije[0];
           this.email = this.lokacijeInit[0].email;

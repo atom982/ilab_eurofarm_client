@@ -41,7 +41,7 @@
             <div v-show="lokacije.length > 1" style="min-height: 5px"></div>
 
             <div class="col-md-12">
-              <vuestic-simple-select-bubble
+              <vuestic-simple-select
                 v-show="lokacije.length > 1"
                 :label="'Izaberite pošiljaoca pacijenta'"
                 v-model="lokacija"
@@ -50,7 +50,7 @@
                 title=" "
                 ref="lokacijaSelect"
                 v-bind:options="lokacije"
-              ></vuestic-simple-select-bubble>
+              ></vuestic-simple-select>
             </div>
 
             <vuestic-accordion-samples-entry
@@ -733,31 +733,47 @@ export default {
       )
       .then((res) => {
         if (res.data.lokacije.length != 0) {
-          this.locations = res.data.lokacije;
-          this.lokacije = [];
-          res.data.lokacije.forEach((element) => {
-            this.lokacije.push(element.lokacija);
-            this.lokacijeInit.push(element);
-          });
+
+          
+          console.log(this.$store.state.configuration.unos.rt);
+
+          if (this.$store.state.configuration.unos.rt === false) {
+            
+            this.lokacije = [];
+
+            this.lokacije.push(res.data.lokacije[0].lokacija);
+            this.lokacijeInit.push(res.data.lokacije[0]);
+          } else {
+
+
+            this.lokacije = [];
+
+            res.data.lokacije.forEach((element) => {
+              this.lokacije.push(element.lokacija);
+              this.lokacijeInit.push(element);
+            });
+          }
         }
 
-        this.lokacije.sort(function (a, b) {
-          return a.localeCompare(b, undefined, {
-            numeric: true,
-            sensitivity: "base",
-          });
-        });
+        // this.lokacije.sort(function (a, b) {
+        //   return a.localeCompare(b, undefined, {
+        //     numeric: true,
+        //     sensitivity: "base",
+        //   });
+        // });
 
-        this.lokacijeInit.sort(function (a, b) {
-          return a.lokacija.localeCompare(b.lokacija, undefined, {
-            numeric: true,
-            sensitivity: "base",
-          });
-        });
+        // this.lokacijeInit.sort(function (a, b) {
+        //   return a.lokacija.localeCompare(b.lokacija, undefined, {
+        //     numeric: true,
+        //     sensitivity: "base",
+        //   });
+        // });
 
         if (this.lokacije.length < 2) {
           this.lokacija = this.lokacije[0];
         }
+
+        // console.log(this.lokacija)
       });
 
     http

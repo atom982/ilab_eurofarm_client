@@ -28,7 +28,7 @@
               <span v-show="PJC.rt === 0" style="color: #4ae387">{{
                 PJC.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="PJC.ag > 0" style="color: #e34a4a">{{
                 PJC.ag
               }}</span>
@@ -43,7 +43,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ PJC.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ PJC.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -86,7 +86,7 @@
               <span v-show="SJJ.rt === 0" style="color: #4ae387">{{
                 SJJ.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="SJJ.ag > 0" style="color: #e34a4a">{{
                 SJJ.ag
               }}</span>
@@ -101,7 +101,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ SJJ.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ SJJ.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -144,7 +144,7 @@
               <span v-show="TZL.rt === 0" style="color: #4ae387">{{
                 TZL.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="TZL.ag > 0" style="color: #e34a4a">{{
                 TZL.ag
               }}</span>
@@ -159,7 +159,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ TZL.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ TZL.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -201,7 +201,7 @@
               <span v-show="PSZ.rt === 0" style="color: #4ae387">{{
                 PSZ.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="PSZ.ag > 0" style="color: #e34a4a">{{
                 PSZ.ag
               }}</span>
@@ -216,7 +216,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ PSZ.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ PSZ.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -258,7 +258,7 @@
               <span v-show="HLI.rt === 0" style="color: #4ae387">{{
                 HLI.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="HLI.ag > 0" style="color: #e34a4a">{{
                 HLI.ag
               }}</span>
@@ -273,7 +273,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ HLI.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ HLI.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -315,7 +315,7 @@
               <span v-show="HLN.rt === 0" style="color: #4ae387">{{
                 HLN.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="HLN.ag > 0" style="color: #e34a4a">{{
                 HLN.ag
               }}</span>
@@ -330,7 +330,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ HLN.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ HLN.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -372,7 +372,7 @@
               <span v-show="HLD.rt === 0" style="color: #4ae387">{{
                 HLD.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="HLD.ag > 0" style="color: #e34a4a">{{
                 HLD.ag
               }}</span>
@@ -387,7 +387,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ HLD.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ HLD.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -429,7 +429,7 @@
               <span v-show="PJU.rt === 0" style="color: #4ae387">{{
                 PJU.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="PJU.ag > 0" style="color: #e34a4a">{{
                 PJU.ag
               }}</span>
@@ -444,7 +444,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ PJU.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ PJU.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -486,7 +486,7 @@
               <span v-show="PJI.rt === 0" style="color: #4ae387">{{
                 PJI.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="PJI.ag > 0" style="color: #e34a4a">{{
                 PJI.ag
               }}</span>
@@ -501,7 +501,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ PJI.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ PJI.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -543,7 +543,7 @@
               <span v-show="PJV.rt === 0" style="color: #4ae387">{{
                 PJV.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="PJV.ag > 0" style="color: #e34a4a">{{
                 PJV.ag
               }}</span>
@@ -558,7 +558,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ PJV.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ PJV.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -600,7 +600,7 @@
               <span v-show="PJT.rt === 0" style="color: #4ae387">{{
                 PJT.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="PJT.ag > 0" style="color: #e34a4a">{{
                 PJT.ag
               }}</span>
@@ -615,7 +615,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ PJT.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ PJT.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -657,7 +657,7 @@
               <span v-show="PJG.rt === 0" style="color: #4ae387">{{
                 PJG.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="PJG.ag > 0" style="color: #e34a4a">{{
                 PJG.ag
               }}</span>
@@ -672,7 +672,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ PJG.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ PJG.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -714,7 +714,7 @@
               <span v-show="PJB.rt === 0" style="color: #4ae387">{{
                 PJB.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="PJB.ag > 0" style="color: #e34a4a">{{
                 PJB.ag
               }}</span>
@@ -729,7 +729,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ PJB.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ PJB.ag }}</span>
             </div>
             <!-- Data Not Loaded -->
@@ -771,7 +771,7 @@
               <span v-show="PJR.rt === 0" style="color: #4ae387">{{
                 PJR.rt
               }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span v-show="PJR.ag > 0" style="color: #e34a4a">{{
                 PJR.ag
               }}</span>
@@ -786,7 +786,7 @@
             >
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <span style="color: #4ae387">{{ PJR.rt }}</span>
-              <span style="color: #282828; font-size: 22px">{{ " | " }}</span>
+              <span style="color: #282828; font-size: 22px">&nbsp;{{ " | " }}&nbsp;</span>
               <span style="color: #4ae387">{{ PJR.ag }}</span>
             </div>
             <!-- Data Not Loaded -->

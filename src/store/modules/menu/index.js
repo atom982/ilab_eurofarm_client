@@ -41,10 +41,9 @@ const state = {
     agnalazi, // Antigen Nalazi
     pdf, // Pregled nalaza
     email, // Elektronska pošta
-
-    protokol,
-    postavke,
     narucioci,
+    protokol,
+    postavke,    
     reports,    
     analize,
     kontrole,
