@@ -35,6 +35,8 @@
 
   function printEPL(ime, sid, rbr, godiste, datum, link, code, site, prioritet, protokol, svrha, izdavanje) {
 
+    // console.log(sid)
+
     var Lokacija = ""
 
     switch (site) {
@@ -100,8 +102,8 @@
         break;
     }
 
-    console.log("Lokacija: " + Lokacija)
-    console.log("Nalaz izdati: " + izdavanje)
+    // console.log("Lokacija: " + Lokacija)
+    // console.log("Nalaz izdati: " + izdavanje)
 
     var date = datum.slice(8, 10) + "." + datum.slice(5, 7) + "." + datum.slice(0, 4) + " " + datum.slice(-5);
     var labelwidth = 50;
@@ -113,38 +115,24 @@
     var printer = "";
     var secondprinter = "";
     var purpose = "";
-    var CITO = prioritet;
-    var str1 = "";
-    var str2 = ""
+    var str = ""
 
     if (prioritet === "NORMALAN") {
-      CITO = "";
-      code += "";
-
-      str1 = 'A165,144,0,2,1,1,N,"' + CITO + '"\n';
+      // date += "";
     }
 
     if (prioritet === "HITAN") {
-      CITO = "CITO";
-      code += " - hitno";
-
-      str1 = 'A227,144,0,2,1,1,N,"' + " " + CITO + " " + '"\n';
+      code = "*" + code;
     }
-
-    if (protokol != undefined && protokol != null && protokol != "") {
-      str2 = 'A28,144,0,2,1,1,N,"' + " " + protokol + " " + '"\n'
-    }
-
-    console.log(godiste)
 
     // Eurofarm Centar
 
     if(svrha === "Putovanje"){
-      purpose = "Put"
+      purpose = "Putovanje"
     }else if(svrha === "Procjena zdravstvenog stanja"){
-      purpose = "PRZS"
+      purpose = "Procjena"
     }else if(svrha === "Kontakt sa zaraženom osobom"){
-      purpose = "KSZO"
+      purpose = "Kontakt"
     }else{
       purpose = "*"
     }
@@ -182,6 +170,14 @@
           }
         });
 
+        var Korekcija = "                    ";
+
+        if (protokol != undefined && protokol != null && protokol != "") {
+          str = 'A28,161,0,2,1,1,N,"' + sid + "(" + protokol + ")" + Korekcija + '"\n'
+        } else{
+          str = 'A28,161,0,2,1,1,N,"' + sid + Korekcija + '"\n'
+        }
+
         if (printer === "Zebra" || printer === "WizardLAB(ZPL)" || printer === "\\\laboratorija-pc\\Zebra") {
           console.warn("Zebra printer found.");
 
@@ -210,16 +206,18 @@
               },
             },
 
-            'A28,0,0,2,1,1,N,"' + ime + '"\n',
-            'A28,20,0,2,1,1,N,"' + date + " " + purpose + '"\n',
-            'A28,40,0,2,1,1,N,"' + " " + code + " " + '"\n',
-            str2,
-            str1,
+            'A28,0,0,2,1,1,N,"' + Lokacija + '"\n',
+            'A28,20,0,2,1,1,N,"' + ime + Korekcija + '"\n',
+            'A28,40,0,2,1,1,N,"' + godiste + "(" + purpose + ")" + Korekcija + '"\n',
+            'A28,56,0,2,1,1,N,"' + code + "(" + izdavanje + ")" + Korekcija + '"\n',            
+            'A28,144,0,2,1,1,N,"' + date + " sati" + Korekcija + '"\n',
 
-            "X153,34,2,153,17\n",
-            "X224,34,2,224,17\n",
+              str,
+
+            "X28,17,1,296,17\n",
             "X28,37,1,296,37\n",
             "\nP1,1\n",
+
           ]).catch(function (e) {
             console.error(e);
           });
@@ -251,16 +249,18 @@
               },
             },
 
-            'A28,0,0,2,1,1,N,"' + ime + '"\n',
-            'A28,20,0,2,1,1,N,"' + date + " " + purpose + '"\n',
-            'A28,40,0,2,1,1,N,"' + " " + code + " " + '"\n',
-            str2,
-            str1,
+            'A28,0,0,2,1,1,N,"' + Lokacija + '"\n',
+            'A28,20,0,2,1,1,N,"' + ime + Korekcija + '"\n',
+            'A28,40,0,2,1,1,N,"' + godiste + "(" + purpose + ")" + Korekcija + '"\n',
+            'A28,56,0,2,1,1,N,"' + code + "(" + izdavanje + ")" + Korekcija + '"\n',            
+            'A28,144,0,2,1,1,N,"' + date + " sati" + Korekcija + '"\n',
 
-            "X153,34,2,153,17\n",
-            "X224,34,2,224,17\n",
+              str,
+
+            "X28,17,1,296,17\n",
             "X28,37,1,296,37\n",
             "\nP1,1\n",
+
           ]).catch(function (e) {
             console.error(e);
           });

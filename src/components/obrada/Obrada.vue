@@ -9392,7 +9392,7 @@ End of Microbiology Sample Check |
           // console.log(res.data)
           printEPL(
             res.data.name + " " + res.data.surname,
-            this.sid,
+            data.sid,
             res.data.pacijentRBr,
             res.data.godiste,
             res.data.datum,
