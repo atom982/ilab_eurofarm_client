@@ -1921,22 +1921,12 @@ End of Microbiology Modal |
         okText="POTVRDI"
       >
         <div slot="title">
-          <span style="color: #acb5be">{{ "Pacijent: " }}</span>
-          <span style="color: #e34a4a">{{ ime + " " + prezime }}</span>
+          {{ "" }}
+          <span style="color: #e34a4a">{{ "478: Attention Required" }}</span>
         </div>
-        <div class="form-group">
-                  <div class="col-md-12 info-widget-inner">
-                    <div class="col-md-12">
-                      <div class="col-md-12">
-                        <div class="input-group">
-                          <textarea type="text" v-model="note" required></textarea>
-                          <label class="control-label">{{'Bilješka o pacijentu'}}</label>
-                          <i class="bar"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div>
+          <strong>{{ "Jeste li sigurni da želite obrisati uzorak?" }}</strong>
+        </div>
       </vuestic-modal-delete>
 
       <!-- Unos komentara -->
@@ -4069,6 +4059,11 @@ End of Microbiology Watch |
       // this.$refs.staticModalDeleteSample.open();
     });
 
+    bus.$on("trash", (data) => {
+      this.sid = data.sid;
+      this.$refs.staticModalDeleteSample.open();
+    });
+
     bus.$on("edit", (data) => {
       this.sid = data.sid;
       this.$refs.staticModalEditSample.open();
@@ -4338,31 +4333,32 @@ End of Microbiology Get Sample Check |
     });
 
     bus.$on("Deleted", (data) => {
-      console.log(this.pacijent)
-      console.log(this.note)
+      // console.log(this.pacijent)
+      // console.log(this.note)
 
-      http
-        .post("pacijenti/biljeska/save", {
-          pacijent: this.pacijent,
-          note: this.note,
-          token: this.$store.state.token,
-          site: this.$store.state.site
-        })
-        .then(res => {
+      // http
+      //   .post("pacijenti/biljeska/save", {
+      //     pacijent: this.pacijent,
+      //     note: this.note,
+      //     token: this.$store.state.token,
+      //     site: this.$store.state.site
+      //   })
+      //   .then(res => {
 
-          console.log(res.data)
-          this.note = res.data.pacijent.note
-          this.noteInit = res.data.pacijent.note
-        });
+      //     console.log(res.data)
+      //     this.note = res.data.pacijent.note
+      //     this.noteInit = res.data.pacijent.note
+      //   });
 
-      // this.DeletedSample(data);
+      this.DeletedSample(data);
     });
+
     bus.$on("DeletedCancel", (data) => {
 
-      setTimeout(() => {
-        this.note = this.noteInit
+      // setTimeout(() => {
+      //   this.note = this.noteInit
         
-      }, 300);
+      // }, 300);
       
       
       // this.DeletedSample(data);
@@ -9546,7 +9542,8 @@ End of Microbiology Sample Check |
             this.$store.state.site,
             res.data.prioritet,
             res.data.protokol,
-            res.data.purpose
+            res.data.purpose,
+            res.data.izdavanje
           );
         });
     },
@@ -9689,6 +9686,11 @@ End of Microbiology Sample Check |
     },
 
     DeletedSample(data) {
+
+      // console.log(this.$store.state.configuration.delete)
+
+      router.push("/rtobrada/pregled");
+
       // this.uzorci.forEach((element) => {
       //   if (element.sid === data) {
       //     element.removed = false;

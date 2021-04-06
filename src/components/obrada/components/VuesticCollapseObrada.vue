@@ -62,6 +62,24 @@
               title=""
             ></i>
           </span>
+
+           <!-- Brisanje uzorka -->
+          <span v-show="show && expanded && sample.status === 'U OBRADI' && 
+        $store.state.configuration.delete === true">
+            <i
+              style="font-size: 20px;"
+              class="fa fa-trash fa-lg icon-left wizard-back pull-left"
+              id="trash"
+              title="Brisanje uzorka"
+            ></i>
+          </span>
+          <!--  -->
+          <span
+            v-show="show && expanded && sample.status === 'U OBRADI' && 
+        $store.state.configuration.delete === true"
+            style="diplay: inline-block; width: 25px;"
+            class="col-md-3 pull-left"
+          >&nbsp;&nbsp;</span>
          
            <!-- Unos komentara -->
           <span
@@ -313,6 +331,9 @@ export default {
       switch (event.target.id) {
         case "forward": // Više opcija
           this.expanded = true;
+          break;
+        case "trash": // Brisanje uzorka
+          bus.$emit("trash", this.sample);
           break;
         case "user-o": // Bilješka o pacijentu
           bus.$emit("note-o", this.sample);

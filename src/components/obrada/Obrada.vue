@@ -9401,7 +9401,8 @@ End of Microbiology Sample Check |
             this.$store.state.site,
             res.data.prioritet,
             res.data.protokol,
-            res.data.purpose
+            res.data.purpose,
+            res.data.izdavanje
           );
         });
     },

@@ -33,7 +33,75 @@
   });
   qz.websocket.connect().then(function () { });
 
-  function printEPL(ime, sid, rbr, godiste, datum, link, code, site, prioritet, protokol, svrha) {
+  function printEPL(ime, sid, rbr, godiste, datum, link, code, site, prioritet, protokol, svrha, izdavanje) {
+
+    var Lokacija = ""
+
+    switch (site) {
+      // PJC (A), Podružnica Centralna Laboratorija, Sarajevo
+      case "5c69f68c338fe912f99f833b": 
+        Lokacija = "Centralna Laboratorija"
+        break;
+      // SJJ (B), Međunarodni aerodrom Sarajevo
+      case "5f9f705e444e51a464db2543": 
+        Lokacija = "Aerodrom Sarajevo"
+        break;
+      // TZL (C), Međunarodni aerodrom Tuzla
+      case "5f9f70a1444e51a464db259a": 
+        Lokacija = "Aerodrom Tuzla"
+        break;
+      // PSZ (D), Poliklinika Sunce - Zenica
+      case "5fb81465900f08738c6985e7": 
+        Lokacija = "Poliklinika Sunce"
+        break;
+      // HLI (E), PZU HBL Laboratorija - Istočno Sarajevo
+      case "60508f5ff0a3cf9c7860f5ad": 
+        Lokacija = "HBL - Istočno Sarajevo"
+        break;
+      // HLN (F), HBL Laboratorija - Novo Sarajevo
+      case "60508f95f0a3cf9c7860f5bd": 
+        Lokacija = "HBL - Novo Sarajevo"
+        break;
+      // HLD (G), HBL Laboratorija - Dobrinja
+      case "60509039f0a3cf9c7860f5e1": 
+        Lokacija = "HBL - Dobrinja"
+        break;
+      // PJU (U), Podružnica 1. Unitic, Sarajevo
+      case "6068b249f68be9eab36b4fdb": 
+        Lokacija = "Podružnica 1. Unitic"
+        break;
+      // PJI (Z), Podružnica 2. IUS, Sarajevo
+      case "6068b2d5f68be9eab36b5003": 
+        Lokacija = "Podružnica 2. IUS"
+        break;
+      // PJV (V), Podružnica Visoko
+      case "6068b346f68be9eab36b502f": 
+        Lokacija = "Podružnica Visoko"
+        break;
+      // PJT (T), Podružnica Tuzla
+      case "6068b3b3f68be9eab36b5088": 
+        Lokacija = "Podružnica Tuzla"
+        break;
+      // PJG (O), Podružnica Goražde
+      case "6068b471f68be9eab36b50f5": 
+        Lokacija = "Podružnica Goražde"
+        break;
+      // PJB (P), Podružnica Bugojno
+      case "6068b4fcf68be9eab36b511d": 
+        Lokacija = "Podružnica Bugojno"
+        break;
+      // PJR (R), Podružnica Trebinje
+      case "6068b55df68be9eab36b5175": 
+        Lokacija = "Podružnica Trebinje"
+        break;
+
+      default:
+        Lokacija = "Nema podataka"
+        break;
+    }
+
+    console.log("Lokacija: " + Lokacija)
+    console.log("Nalaz izdati: " + izdavanje)
 
     var date = datum.slice(8, 10) + "." + datum.slice(5, 7) + "." + datum.slice(0, 4) + " " + datum.slice(-5);
     var labelwidth = 50;
@@ -67,8 +135,7 @@
       str2 = 'A28,144,0,2,1,1,N,"' + " " + protokol + " " + '"\n'
     }
 
-    // console.log(code)
-    CITO = godiste
+    console.log(godiste)
 
     // Eurofarm Centar
 

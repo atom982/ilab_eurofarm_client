@@ -538,7 +538,8 @@ export default {
         this.$store.state.site,
         prioritet,
         data.rezultat.sample.protokol,
-        data.svrha
+        data.svrha,
+        data.izdavanje
       );
     },
   },

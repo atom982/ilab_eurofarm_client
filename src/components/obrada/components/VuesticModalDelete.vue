@@ -185,25 +185,25 @@ export default {
 
       // console.log("Bilješka o pacijentu - Unos")
 
-      bus.$emit("Deleted", this.$store.state.sid);
+      // bus.$emit("Deleted", this.$store.state.sid);
 
-      setTimeout(() => {
-        this.show = false;
-      }, 300);
+      // setTimeout(() => {
+      //   this.show = false;
+      // }, 300);
       
 
-      // http
-      //   .post("uzorci/delete", {
-      //     id: this.$store.state.sid,
-      //     email: this.$store.state.user,
-      //     token: this.$store.state.token,
-      //     site: this.$store.state.site
-      //   })
-      //   .then(res => {
-      //     bus.$emit("Deleted", this.$store.state.sid);
+      http
+        .post("uzorci/delete", {
+          id: this.$store.state.sid,
+          email: this.$store.state.user,
+          token: this.$store.state.token,
+          site: this.$store.state.site
+        })
+        .then(res => {
+          bus.$emit("Deleted", this.$store.state.sid);
 
-      //     this.show = false;
-      //   });
+          this.show = false;
+        });
     }
   }
 };

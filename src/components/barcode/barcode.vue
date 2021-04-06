@@ -406,7 +406,8 @@ export default {
                 this.$store.state.site,
                 res.data.uzorak.prioritet,
                 res.data.uzorak.protokol,
-                res.data.uzorak.patient.purpose
+                res.data.uzorak.patient.purpose,
+                res.data.uzorak.patient.izdavanje
               );
             }
 

@@ -63,6 +63,7 @@ const store = new Vuex.Store({
     viber: false,
 
     configuration: {
+      delete: false,
       unos: {
         rt: false,
         ag: false,

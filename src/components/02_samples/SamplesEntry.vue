@@ -1187,7 +1187,8 @@ export default {
                   site,
                   element.prioritet,
                   element.protokol,
-                  element.purpose
+                  element.purpose,
+                  element.izdavanje
                 );
               });
             });
