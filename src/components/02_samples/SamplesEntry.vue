@@ -1131,10 +1131,10 @@ export default {
                   niz = [1, 2];
                   break;
                 case "5f9f705e444e51a464db2543": // Međunarodni aerodrom Sarajevo
-                  niz = [1, 2, 3, 4];
+                  niz = [1, 2, 3];
                   break;
                 case "5f9f70a1444e51a464db259a": // Međunarodni aerodrom Tuzla
-                  niz = [1, 2, 3, 4];
+                  niz = [1, 2];
                   break;
                 case "5fb81465900f08738c6985e7": // Poliklinika Sunce - Zenica
                   niz = [1, 2];
