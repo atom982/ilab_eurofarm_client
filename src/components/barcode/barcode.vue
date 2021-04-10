@@ -320,6 +320,7 @@ export default {
 
   watch: {
     filterText: function () {
+      this.filterText = this.filterText.replace("y","Z").replace("Y","Z"); // Keyboard layout
       this.filterText = this.filterText.toUpperCase().trim();
       this.text = "";
 
