@@ -1467,7 +1467,7 @@
           <div class="stats">
             <div v-if="true" class="stats-number">
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
-              {{ "Podružnica 1. Unitic, Sarajevo" }}
+              {{ "Podružnica 2. IUS, Sarajevo" }}
             </div>
 
             <div v-if="!loaded" class="stats-number">
