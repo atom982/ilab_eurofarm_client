@@ -16,29 +16,30 @@ export default {
       title: "",
       width: "7%"
     },
-
     {
       name: "agen",
       title: "",
       width: "7%"
     },
-
     {
       name: "agde",
       title: "",
       width: "7%"
-    }, // 12 + 21 = 33
-
+    }, 
     {
-      name: "pacdata",
-      title: "",
-      width: "2"
-    }, // 35
+      name: "email",
+      title: "email",
+      titleClass: 'text-center',
+      dataClass: 'text-center',
+      width: "5"
+    },
     {
       name: "viber",
       title: "viber",
-      width: "8"
-    }, // 43
+      titleClass: 'text-center',
+      dataClass: 'text-center',
+      width: "5"
+    }, 
     {
       name: "ime",
       sortField: "ime",
@@ -48,14 +49,13 @@ export default {
       name: "prezime",
       sortField: "prezime",
       width: "15%"
-    }, // 43 + 26 = 69
+    }, 
     {
       name: "kontakt",
       title: "kontakt",
 
       width: "13%"
-    },
-    
+    }, 
     {
       name: "izmjena",
       title: "datum",
@@ -65,13 +65,7 @@ export default {
       name: "time",
       title: "vrijeme",
       width: "8%"
-    },
-    // {
-    //   name: "biljeskaIcon",
-    //   title: "",
-    //   width: "2.5%",
-    // },
-    
+    },    
   ],
 
   sortFunctions: {

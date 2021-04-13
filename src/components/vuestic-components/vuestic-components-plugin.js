@@ -37,6 +37,7 @@ import VuesticModalError from "src/components/obrada/components/VuesticModalErro
 import VuesticModalHandshake from "src/components/obrada/components/VuesticModalHandshake";
 import VuesticModalData from "src/components/nalazi/pregled/VuesticModalData";
 import VuesticModalViberService from "src/components/nalazi/pregled/VuesticModalViberService";
+import VuesticModalEmailService from "src/components/nalazi/pregled/VuesticModalEmailService";
 import VuesticModalExclamation from "src/components/obrada/components/VuesticModalExclamation";
 import VuesticModalUzorci from "src/components/obrada/components/VuesticModalUzorci";
 import VuesticModalAparati from "src/components/obrada/components/VuesticModalAparati";
@@ -210,6 +211,7 @@ const VuesticComponentsPlugin = {
     Vue.component(VuesticModalHandshake.name, VuesticModalHandshake);
     Vue.component(VuesticModalData.name, VuesticModalData);
     Vue.component(VuesticModalViberService.name, VuesticModalViberService);
+    Vue.component(VuesticModalEmailService.name, VuesticModalEmailService);
     Vue.component(VuesticModalExclamation.name, VuesticModalExclamation);
     Vue.component(VuesticModalUzorci.name, VuesticModalUzorci);
     Vue.component(VuesticModalAparati.name, VuesticModalAparati);

@@ -324,6 +324,22 @@
         </div>
     </vuestic-modal-viber-service>
 
+    <vuestic-modal-email-service
+      :show.sync="show"
+      :emailData="emailData"
+      ref="staticModalEmailService"
+      cancelText="ODUSTANI"
+      okText="POŠALJI"
+    >
+      <div slot="title">
+          {{ "" }}
+          <span v-if="true">{{ "Slanje nalaza na e-mail adresu" }}</span>
+          <span v-if="false" style="color: #e34a4a">{{ "401: Not Authorized" }}</span>
+        </div>
+        <div>         
+        </div>
+    </vuestic-modal-email-service>
+
 
 
 
@@ -726,6 +742,18 @@ export default {
         timestamp: "",
         uzorak: "",
         telefon: "",
+        valid: false,
+        protokol: "",
+        ime: "",
+        prezime: "",
+        godiste: "",        
+        spol: "",      
+      },
+
+      emailData: {      
+        timestamp: "",
+        uzorak: "",
+        email: "",
         valid: false,
         protokol: "",
         ime: "",
@@ -1227,6 +1255,44 @@ export default {
           this.note = niz[0].pacijent.note.trim();
 
           this.$refs.staticModalViberService.open();
+        }
+
+        if (niz[1].name === "email") {
+          // console.log(niz[0].timestamp)
+          // console.log(niz[0].uzorak)
+          // console.log(niz[0].protokol)
+          // console.log(niz[0].kontakt)
+
+         if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(niz[0].pacijent.email.trim())){
+            var valid = true
+          }else{
+            var valid = false
+          }
+
+          this.emailData = {      
+            timestamp: niz[0].timestamp,
+            uzorak: niz[0].uzorak,
+            email: niz[0].pacijent.email.trim(),
+            valid: valid,
+            protokol: niz[0].protokol,
+            ime: niz[0].pacijent.ime,
+            prezime: niz[0].pacijent.prezime,
+            godiste: niz[0].vGodiste,
+            spol: niz[0].pacijent.spol,          
+          }
+
+          // return value.match(/\d/g).length > 10;
+
+          this.pacIme = niz[0].pacijent.ime;
+          this.pacPrezime = niz[0].pacijent.prezime;
+          this.pacGodiste = niz[0].godiste
+            .replace("<span>", "")
+            .replace("</span>", "");
+          this.pacAdresa = niz[0].pacijent.adresa.toUpperCase();
+          this.pacLokacija = niz[0].lokacija;
+          this.note = niz[0].pacijent.note.trim();
+
+          this.$refs.staticModalEmailService.open();
         }
 
         if (niz[1].name === "ime") {
