@@ -13,6 +13,7 @@ import pdf from "./pdf"; // Pregled nalaza
 import email from "./email"; // Elektronska pošta
 
 import protokol from "./protokol";
+import changelog from "./changelog"; // Change Log
 import reports from "./reports";
 import narucioci from "./narucioci";
 import analize from "./analize";
@@ -43,6 +44,7 @@ const state = {
     email, // Elektronska pošta
     narucioci,
     protokol,
+    changelog, // Change Log
     postavke,    
     reports,    
     analize,

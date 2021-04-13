@@ -170,6 +170,16 @@ function generateRoutesFromMenu(menu = [], routes = []) {
     }
   };
 
+  var changelog = {
+    path: "/changelog",
+    component: lazyLoading("changelog/changelog"),
+    props: true,
+    meta: {
+      title: "changelog",
+      requiredAuth: true
+    }
+  };
+
   for (let i = 0, l = menu.length; i < l; i++) {
     let item = menu[i];
     if (item.path) {
@@ -199,6 +209,8 @@ function generateRoutesFromMenu(menu = [], routes = []) {
   routes.push(evaluation);
   routes.push(loger);
   routes.push(registracija);
+
+  routes.push(changelog);
   return routes;
 }
 
