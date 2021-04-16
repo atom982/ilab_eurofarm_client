@@ -2,7 +2,7 @@
   <div class="vuestic-collapse">
     <div
       class="vuestic-collapse__header"
-      :class="{'vuestic-collapse__header--no-header': noHeader}"
+      :class="{ 'vuestic-collapse__header--no-header': noHeader }"
       @click="emitHeader($event)"
     >
       <template v-if="noHeader">
@@ -11,63 +11,100 @@
 
       <button
         v-else
-        style="text-transform: none;"
-        :class="{'vuestic-collapse__header__button btn btn-primary' : sample.status === 'ODOBREN' || sample.status === 'VERIFICIRAN', 
-        'vuestic-collapse__header__button btn btn-warning': sample.status === 'U OBRADI',
-        'vuestic-collapse__header__button btn btn-danger': sample.status === 'ZAPRIMLJEN',
-        'vuestic-collapse__header__button btn btn-info': sample.status === 'REALIZOVAN'
-      }"
+        style="text-transform: none"
+        :class="{
+          'vuestic-collapse__header__button btn btn-primary':
+            sample.status === 'ODOBREN' || sample.status === 'VERIFICIRAN',
+          'vuestic-collapse__header__button btn btn-warning':
+            sample.status === 'U OBRADI',
+          'vuestic-collapse__header__button btn btn-danger':
+            sample.status === 'ZAPRIMLJEN',
+          'vuestic-collapse__header__button btn btn-info':
+            sample.status === 'REALIZOVAN',
+        }"
       >
         <slot name="header" />
-          <span
-          v-if="sample.status === 'VERIFICIRAN' && !sample.tip.includes('Mikrobiologija')"
-          :id="id"
-          style="font-size:12px; color:#f7cc36;"
-          >
-            <span v-show="sample.status != 'ODOBREN'">{{' | '}}{{sample.status}}</span>
-            <span style="color:#ffffff;" v-show="sample.status === 'ODOBREN'">{{' | '}}{{"In progress..."}}</span>
-            <i v-if="false" class="fa fa-check"></i>
-          </span>
-          <span
-            v-if="sample.status != 'VERIFICIRAN' && !sample.tip.includes('Mikrobiologija')"
-            :id="id"
-            style="font-size:12px;"
-          ><span v-show="sample.status != 'ODOBREN'">{{' | '}}{{sample.status}}</span>
-          <span style="color:#ffffff;" v-show="sample.status === 'ODOBREN'">{{' | '}}{{"In progress..."}}</span>
-          </span>
         <span
-          v-if="sample.status === 'VERIFICIRAN' && sample.tip.includes('Mikrobiologija')"
+          v-if="
+            sample.status === 'VERIFICIRAN' &&
+            !sample.tip.includes('Mikrobiologija')
+          "
           :id="id"
-          style="font-size:12px; color:#f7cc36;"
+          style="font-size: 12px; color: #f7cc36"
         >
-          {{' | '}}{{sample.tip.match(/\(([^)]+)\)/)[1]}}
+          <span v-show="sample.status != 'ODOBREN'"
+            >{{ " | " }}{{ sample.status }}</span
+          >
+          <span style="color: #ffffff" v-show="sample.status === 'ODOBREN'"
+            >{{ " | " }}{{ "In progress..." }}</span
+          >
           <i v-if="false" class="fa fa-check"></i>
         </span>
         <span
-          v-if="sample.status != 'VERIFICIRAN' && sample.tip.includes('Mikrobiologija')"
+          v-if="
+            sample.status != 'VERIFICIRAN' &&
+            !sample.tip.includes('Mikrobiologija')
+          "
           :id="id"
-          style="font-size:12px;"
-        >{{' | '}}{{sample.tip.match(/\(([^)]+)\)/)[1]}}</span>
+          style="font-size: 12px"
+          ><span v-show="sample.status != 'ODOBREN'"
+            >{{ " | " }}{{ sample.status }}</span
+          >
+          <span style="color: #ffffff" v-show="sample.status === 'ODOBREN'"
+            >{{ " | " }}{{ "In progress..." }}</span
+          >
+        </span>
+        <span
+          v-if="
+            sample.status === 'VERIFICIRAN' &&
+            sample.tip.includes('Mikrobiologija')
+          "
+          :id="id"
+          style="font-size: 12px; color: #f7cc36"
+        >
+          {{ " | " }}{{ sample.tip.match(/\(([^)]+)\)/)[1] }}
+          <i v-if="false" class="fa fa-check"></i>
+        </span>
+        <span
+          v-if="
+            sample.status != 'VERIFICIRAN' &&
+            sample.tip.includes('Mikrobiologija')
+          "
+          :id="id"
+          style="font-size: 12px"
+          >{{ " | " }}{{ sample.tip.match(/\(([^)]+)\)/)[1] }}</span
+        >
 
-        <div id="block" class="col-md-7 pull-right" style="margin-right: 20px;">
+        <div id="block" class="col-md-7 pull-right" style="margin-right: 20px">
           <!-- Left Side -->
           <!-- Više opcija -->
           <span
-            v-show="show && !expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'"
+            v-show="
+              show &&
+              !expanded &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN'
+            "
           >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-forward fa-lg icon-left wizard-back pull-left"
               id="forward"
               title=""
             ></i>
           </span>
 
-           <!-- Brisanje uzorka -->
-          <span v-show="show && expanded && sample.status === 'U OBRADI' && 
-        $store.state.configuration.delete === true">
+          <!-- Brisanje uzorka -->
+          <span
+            v-show="
+              show &&
+              expanded &&
+              sample.status === 'U OBRADI' &&
+              $store.state.configuration.delete === true
+            "
+          >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-trash fa-lg icon-left wizard-back pull-left"
               id="trash"
               title="Brisanje uzorka"
@@ -75,18 +112,28 @@
           </span>
           <!--  -->
           <span
-            v-show="show && expanded && sample.status === 'U OBRADI' && 
-        $store.state.configuration.delete === true"
-            style="diplay: inline-block; width: 25px;"
+            v-show="
+              show &&
+              expanded &&
+              sample.status === 'U OBRADI' &&
+              $store.state.configuration.delete === true
+            "
+            style="diplay: inline-block; width: 25px"
             class="col-md-3 pull-left"
-          >&nbsp;&nbsp;</span>
-         
-           <!-- Unos komentara -->
+            >&nbsp;&nbsp;</span
+          >
+
+          <!-- Unos komentara -->
           <span
-            v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'"
+            v-show="
+              show &&
+              expanded &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN'
+            "
           >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-commenting fa-lg icon-left wizard-back pull-left"
               id="comment"
               title=""
@@ -94,52 +141,87 @@
           </span>
           <!--  -->
           <span
-            v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'"
-            style="diplay: inline-block; width: 25px;"
+            v-show="
+              show &&
+              expanded &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN'
+            "
+            style="diplay: inline-block; width: 25px"
             class="col-md-3 pull-left"
-          >&nbsp;&nbsp;</span>
+            >&nbsp;&nbsp;</span
+          >
 
-              <!-- Bilješka o pacijentu -->
-      <span v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN' && 
-        $router.currentRoute.path.includes('rtobrada/rezultati')">
+          <!-- Bilješka o pacijentu -->
+          <span
+            v-show="
+              show &&
+              expanded &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN' &&
+              $router.currentRoute.path.includes('rtobrada/rezultati')
+            "
+          >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-calendar fa-lg icon-left wizard-back pull-left"
               id="calendar"
               title=""
             ></i>
           </span>
-            <span
-            v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN' && 
-          $router.currentRoute.path.includes('rtobrada/rezultati')" 
-            style="diplay: inline-block; width: 25px;"
+          <span
+            v-show="
+              show &&
+              expanded &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN' &&
+              $router.currentRoute.path.includes('rtobrada/rezultati')
+            "
+            style="diplay: inline-block; width: 25px"
             class="col-md-3 pull-left"
-          >&nbsp;&nbsp;</span> 
+            >&nbsp;&nbsp;</span
+          >
           <!-- Pošiljaoc pacijenta -->
-        
-           <span
-            v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'"
+
+          <span
+            v-show="
+              show &&
+              expanded &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN'
+            "
           >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-handshake-o fa-lg icon-left wizard-back pull-left"
               id="handshake"
               title=""
             ></i>
           </span>
 
-             <span
-            v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'"
-            style="diplay: inline-block; width: 25px;"
+          <span
+            v-show="
+              show &&
+              expanded &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN'
+            "
+            style="diplay: inline-block; width: 25px"
             class="col-md-3 pull-left"
-          >&nbsp;&nbsp;</span>
-        
+            >&nbsp;&nbsp;</span
+          >
+
           <!-- Printanje naljepnice -->
           <span
-            v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'"
+            v-show="
+              show &&
+              expanded &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN'
+            "
           >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-barcode fa-lg icon-left wizard-back pull-left"
               id="barcode"
               title=""
@@ -149,26 +231,37 @@
 
           <span
             v-show="show"
-            style="diplay: inline-block; width: 25px;"
+            style="diplay: inline-block; width: 25px"
             class="col-md-3 pull-left"
-          >&nbsp;&nbsp;</span>
+            >&nbsp;&nbsp;</span
+          >
 
-       
           <!-- Manje opcija -->
           <span
-            v-show="show && expanded && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'"
+            v-show="
+              show &&
+              expanded &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN'
+            "
           >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-step-backward fa-lg icon-left wizard-back pull-left"
               id="backward"
               title=""
             ></i>
           </span>
           <!-- Odobrite rezultate -->
-          <span v-if="show && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'">
+          <span
+            v-if="
+              show &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN'
+            "
+          >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-check fa-lg icon-right wizard-back pull-right"
               id="check"
               title=""
@@ -184,9 +277,14 @@
             ></i>
           </span> -->
           <!-- Prikaz nalaza -->
-         
+
           <!--  -->
-          <span v-if="show && sample.status != 'VERIFICIRAN'" style="diplay: inline-block; width: 25px;" class="col-md-3 pull-right">&nbsp;&nbsp;</span>
+          <span
+            v-if="show && sample.status != 'VERIFICIRAN'"
+            style="diplay: inline-block; width: 25px"
+            class="col-md-3 pull-right"
+            >&nbsp;&nbsp;</span
+          >
           <!-- Verificirajte rezultate -->
           <!-- <span v-if="show && sample.status === 'ODOBREN'">
             <i
@@ -199,7 +297,7 @@
           <!-- Uklonite verifikaciju -->
           <span v-if="show && sample.status === 'VERIFICIRAN'">
             <i
-              style="font-size:22px;"
+              style="font-size: 22px"
               class="fa fa-lock fa-lg icon-right wizard-back pull-right"
               id="unlock"
               title=""
@@ -207,7 +305,7 @@
           </span>
           <span v-if="!show && sample.status === 'VERIFICIRAN'">
             <i
-              style="font-size:22px; color:#f7cc36;"
+              style="font-size: 22px; color: #f7cc36"
               class="fa fa-lock fa-lg icon-right wizard-back pull-right"
               id="unlock"
               title=""
@@ -215,35 +313,52 @@
           </span>
           <!-- Sačuvajte rezultate -->
 
-          
-
-          <span v-if="show && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN'">
+          <span
+            v-if="
+              show &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN'
+            "
+          >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-save fa-lg icon-right wizard-back pull-right"
               id="save"
               title=""
             ></i>
           </span>
 
-          <span v-if="show && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN' && retest">
+          <span
+            v-if="
+              show &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN' &&
+              retest
+            "
+          >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-save fa-lg icon-right wizard-back pull-right"
               id="save"
               title=""
             ></i>
           </span>
 
-          <span v-if="show && sample.status != 'ODOBREN' && sample.status != 'VERIFICIRAN' && retest">
+          <span
+            v-if="
+              show &&
+              sample.status != 'ODOBREN' &&
+              sample.status != 'VERIFICIRAN' &&
+              retest
+            "
+          >
             <i
-              style="font-size: 20px;"
+              style="font-size: 20px"
               class="fa fa-refresh fa-lg icon-right wizard-back pull-right"
               id="retest"
               title=""
             ></i>
           </span>
-
         </div>
       </button>
     </div>
@@ -262,34 +377,34 @@ export default {
   props: {
     value: {
       type: Boolean,
-      default: false
+      default: false,
     },
     retest: {
       type: Boolean,
-      default: false
+      default: false,
     },
     id: {
       type: String,
-      default: ""
+      default: "",
     },
     sample: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
-    noHeader: Boolean
+    noHeader: Boolean,
   },
   inject: {
     accordion: {
       default: () => ({
-        onChildChange: () => {}
-      })
-    }
+        onChildChange: () => {},
+      }),
+    },
   },
   data() {
     return {
       show: this.value,
       expanded: false,
-      clientHeight: ""
+      clientHeight: "",
     };
   },
   watch: {
@@ -300,10 +415,10 @@ export default {
         this.collapse();
       }
     },
-    clientHeight() {}
+    clientHeight() {},
   },
   mounted() {
-    bus.$on("SetClientHeight", sid => {
+    bus.$on("SetClientHeight", (sid) => {
       if (this.$slots.header[0].elm.id === sid) {
         const bodyContent = this.$refs.collapseBody;
         this.clientHeight = this.$slots.body[0].elm.clientHeight + 5 + "px";
@@ -400,8 +515,8 @@ export default {
     },
     toggle() {
       this.show ? this.collapse() : this.expand();
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -9557,8 +9557,6 @@ End of Microbiology Sample Check |
 
     DeletedSample(data) {
 
-      // console.log(this.$store.state.configuration.delete)
-
        router.push("/agobrada/pregled");
 
       // this.uzorci.forEach((element) => {
@@ -10867,8 +10865,6 @@ End of Microbiology Sample Check |
     },
 
     Approve(rezultati) {
-
-      // console.log(this.$store.state.configuration.verify.ag)
 
       if (!this.$store.state.configuration.verify.ag) {
         this.$refs.staticModalVerifyPrivilege.open();

@@ -66,26 +66,31 @@ const store = new Vuex.Store({
       delete: false,
       unos: {
         rt: false,
+        lp: false,
         ag: false,
         at: false,
       },
       obrada: {
         rt: false,
+        lp: false,
         ag: false,
         at: false,
       },
       protokol: {
         rt: false,
+        lp: false,
         ag: false,
         at: false,
       },
       sampled: {
         rt: false,
+        lp: false,
         ag: false,
         at: false,
       },
       verify: {
         rt: false,
+        lp: false,
         ag: false,
         at: false,
       },
@@ -130,6 +135,7 @@ const store = new Vuex.Store({
 
       store.getters.menuItems.forEach((item) => {
         item.meta.show = false;
+        item.meta.expanded = false;
         item.meta.default = false;
       });
 
@@ -140,18 +146,74 @@ const store = new Vuex.Store({
         }
       });
 
+      var Niz = []
+
       state.Sidebar.forEach((property) => {
         store.getters.menuItems.forEach((item) => {
+
+          
+
+          
+
           if (item.meta.title == property) {
+
+            // console.log(state.userId)
+
+            if(property === "Pregled nalaza" && state.userId.includes("@nalazi")){
+              item.meta.expanded = true;
+            }
+
+
+
+
+            if(item.children != undefined && item.children.length > 0){
+
+              var exists = false
+
+              item.children.forEach(child => {
+
+                exists = false
+
+                state.Sidebar.forEach(element => {
+                  if(element === child.meta.title){
+                    
+                    exists = true
+                    child.meta.show = true
+                  }
+                  
+                });
+                // console.log(child.meta.title)
+
+                if(exists === false){
+                  // console.log(child.meta.title)
+                  child.meta.show = false
+                  // Niz.push(child.meta.title)
+
+                  
+                }
+  
+                
+              });
+            }
+
+
+
+
+
+
             item.meta.show = true;
             item.meta.class = "primary";
 
-            // Provjera nalaza
+            // "Provjera nalaza", "Change Log", "Izvještaji", "Elektronska pošta", "Group email"
 
-            if (item.meta.title == "#") {
+            if (item.meta.title == "Provjera nalaza" || 
+              item.meta.title == "Change Log" || 
+              item.meta.title == "Izvještaji" || 
+             
+              item.meta.title == "Group email") {
               item.meta.show = true;
               state.note = true;
-              item.meta.class = "danger";
+              item.meta.class = "info";
             }
           }
         });
@@ -176,10 +238,10 @@ const store = new Vuex.Store({
 
       if(state.site === "5c69f68c338fe912f99f833b"){
         state.main = true;
-        console.log('PZU "EUROFARM-CENTAR POLIKLINIKA" Sarajevo')
-        console.log('Podružnica Centralna Laboratorija, Sarajevo')
+        // console.log('PZU "EUROFARM-CENTAR POLIKLINIKA" Sarajevo')
+        // console.log('Podružnica Centralna Laboratorija, Sarajevo')
       }else{
-        console.log("Not Main Site.")
+        // console.log("Not Main Site.")
         state.main = false;
       }
 

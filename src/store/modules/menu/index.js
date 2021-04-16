@@ -1,62 +1,30 @@
 import * as types from "../../mutation-types";
-import statistika from "./statistika";
-import prijem from "./prijem";
-import barcode from "./barcode";
-import naljepnice from "./naljepnice";
 
-import rtobrada from "./rtobrada"; // CoV2 RT PCR
-import agobrada from "./agobrada"; // CoV2 Antigen
-
-import rtnalazi from "./rtnalazi"; // RT PCR Nalazi
-import agnalazi from "./agnalazi"; // Antigen Nalazi
-import pdf from "./pdf"; // Pregled nalaza
+import statistika from "./statistika"; // Statistika
+import prijem from "./prijem"; // Prijem pacijenta
+import barcode from "./barcode"; // Prijem uzorka
+import naljepnice from "./naljepnice"; // Statusi uzoraka
+import obrada from "./obrada"; // Obrada uzoraka
+import nalazi from "./nalazi"; // Pregled nalaza
 import email from "./email"; // Elektronska pošta
-
-import protokol from "./protokol";
+import narucioci from "./narucioci"; // Group email
+import protokol from "./protokol"; // Provjera nalaza
 import changelog from "./changelog"; // Change Log
-import reports from "./reports";
-import narucioci from "./narucioci";
-import analize from "./analize";
-import kontrole from "./kontrole";
-import inventar from "./inventar";
-import thermometer from "./loger";
-import mikrobiologija from "./mikrobiologija";
-import partneri from "./partneri";
-import postavke from "./postavke";
-import integracija from "./integracija";
-import excel from "./excel";
-import analysers from "./analysers";
-import assays from "./assays";
+import reports from "./reports"; // Izvještaji
 
 const state = {
   items: [
-    statistika,
-    prijem,    
-    barcode,
-    naljepnice,
-
-    rtobrada, // CoV2 RT PCR
-    agobrada, // CoV2 Antigen
-
-    rtnalazi, // RT PCR Nalazi
-    agnalazi, // Antigen Nalazi
-    pdf, // Pregled nalaza
+    statistika, // Statistika
+    prijem, // Prijem pacijenta
+    barcode, // Prijem uzorka
+    naljepnice, // Statusi uzoraka
+    obrada, // Obrada uzoraka
+    nalazi, // Pregled nalaza
     email, // Elektronska pošta
-    narucioci,
-    protokol,
-    changelog, // Change Log
-    postavke,    
-    reports,    
-    analize,
-    kontrole,
-    inventar,
-    thermometer,
-    mikrobiologija,
-    partneri,  
-    integracija,
-    excel,
-    analysers,
-    assays
+    narucioci, // Group email
+    protokol, // Provjera nalaza
+    changelog, // Change Log  
+    reports, // Izvještaji    
   ]
 };
 

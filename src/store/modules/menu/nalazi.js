@@ -9,25 +9,26 @@ export default {
     show: false,
     iconClass: "vuestic-icon vuestic-icon-files"
   },
-
   children: [
     {
-      name: "nalazi-pregled",
-      path: "/nalazi/pregled",
-      component: lazyLoading("nalazi/pregled/pregled"),
+      name: "rt-nalazi-pregled",
+      path: "/rtnalazi/pregled",
+      component: lazyLoading("rtnalazi/pregled/pregled"),
       meta: {
-        title: "PDF dokumenti",
+        title: "CoV2 RT PCR nalazi",
+        show: false,
         requiredAuth: true
       }
     },
     {
-      name: "nalazi-outbox",
-      path: "/nalazi/outbox",
-      component: lazyLoading("nalazi/outbox/outbox"),
+      name: "ag-nalazi-pregled",
+      path: "/agnalazi/pregled",
+      component: lazyLoading("agnalazi/pregled/pregled"),
       meta: {
-        title: "Elektronska pošta",
+        title: "CoV2 Antigen nalazi",
+        show: false,
         requiredAuth: true
       }
-    }
+    },
   ]
 };

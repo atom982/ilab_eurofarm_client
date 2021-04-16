@@ -40,6 +40,7 @@
                 @click="setDropdownDefaultIzbor()"
                 v-for="childItem in item.children"
                 :key="childItem.name"
+                v-show="childItem.meta.show"
               >
                 <router-link
                   class="sidebar-link sidebar-submenu-link"

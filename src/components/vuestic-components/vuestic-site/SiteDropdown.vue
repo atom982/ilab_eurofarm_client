@@ -203,8 +203,13 @@ export default {
         this.$refs.close.click();
       } else 
       
-      if (current.includes("nalazi/outbox")) {
-        router.push("/nalazi/outbox/" + "?site=" + this.$store.state.site);
+      if (current.includes("nalazi/outbox/rt")) {
+        router.push("/nalazi/outbox/rt/" + "?site=" + this.$store.state.site);
+        this.$refs.close.click();
+      } else 
+
+      if (current.includes("nalazi/outbox/ag")) {
+        router.push("/nalazi/outbox/ag/" + "?site=" + this.$store.state.site);
         this.$refs.close.click();
       } else 
       

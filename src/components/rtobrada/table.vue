@@ -14,11 +14,6 @@
             :sortFunctions="sortFunctions"
             :apiMode="apiMode"
             :sekcija="sekcija"
-            
-            :rt="rt"
-            :ag="ag"
-            :at="at"
-
             :site="site"
             :token="token"
             :paginationPath="paginationPath"
@@ -53,11 +48,6 @@ export default {
       section: "",
       token: this.$store.state.token,
       site: this.$store.state.site,
-
-      rt: this.$store.state.configuration.obrada.rt,
-      ag: this.$store.state.configuration.obrada.ag,
-      at: this.$store.state.configuration.obrada.at,
-
       sve: true
     };
   },
@@ -93,11 +83,11 @@ export default {
         {}
       )
       .then(res => {
-        this.sekcije.push("COVID 19 RT PCR Test");
+        this.sekcije.push("Obrada uzoraka: COVID 19 RT PCR Test");
         if (!this.section.length) {
           this.section = this.sekcije[0];
         } else {
-          if (this.section === "COVID 19 RT PCR Test") {
+          if (this.section === "Obrada uzoraka: COVID 19 RT PCR Test") {
             this.sve = true;
           } else {
             this.sve = false;

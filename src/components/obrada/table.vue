@@ -14,11 +14,6 @@
             :sortFunctions="sortFunctions"
             :apiMode="apiMode"
             :sekcija="sekcija"
-            
-            :rt="rt"
-            :ag="ag"
-            :at="at"
-
             :site="site"
             :token="token"
             :paginationPath="paginationPath"
@@ -53,11 +48,6 @@ export default {
       section: "",
       token: this.$store.state.token,
       site: this.$store.state.site,
-
-      rt: this.$store.state.configuration.obrada.rt,
-      ag: this.$store.state.configuration.obrada.ag,
-      at: this.$store.state.configuration.obrada.at,
-
       sve: true
     };
   },

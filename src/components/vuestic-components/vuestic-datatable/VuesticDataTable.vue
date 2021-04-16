@@ -27,11 +27,6 @@
       :appendParams="moreParams"
       :perPage="brStr"
       :datum="perPage"
-
-      :rt="rt"
-      :ag="ag"
-      :at="at"
-
       :token="token"
       :site="site"
       v-on:vuetable:cell-clicked="(...args) => this.prikaziDetalje([args])"
@@ -680,10 +675,6 @@ export default {
 
       // Eurofarm Centar
 
-      rt: this.$store.state.configuration.obrada.rt,
-      ag: this.$store.state.configuration.obrada.ag,
-      at: this.$store.state.configuration.obrada.at,
-
       brStr: 10,
       colorClasses: {},
       moreParams: {},
@@ -1310,6 +1301,14 @@ export default {
 
             this.$refs.staticModalDataSymptoms.open();
           }
+        }
+
+        if (niz[1].name === "rtoutbox") {
+          router.push("/nalazi/outbox/rt/" + niz[2].target.id);
+        }
+
+        if (niz[1].name === "agoutbox") {
+          router.push("/nalazi/outbox/ag/" + niz[2].target.id);
         }
 
         if (niz[1].name === "outbox") {

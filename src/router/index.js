@@ -130,12 +130,22 @@ function generateRoutesFromMenu(menu = [], routes = []) {
     }
   };
 
-  var outbox = {
-    path: "/nalazi/outbox/:id",
-    component: lazyLoading("nalazi/outbox/nalaz"),
+  var rtoutbox = {
+    path: "/nalazi/outbox/rt/:id",
+    component: lazyLoading("rtoutbox/nalaz"),
     props: true,
     meta: {
-      title: "outbox",
+      title: "rtoutbox",
+      requiredAuth: true
+    }
+  };
+
+  var agoutbox = {
+    path: "/nalazi/outbox/ag/:id",
+    component: lazyLoading("agoutbox/nalaz"),
+    props: true,
+    meta: {
+      title: "agoutbox",
       requiredAuth: true
     }
   };
@@ -200,12 +210,13 @@ function generateRoutesFromMenu(menu = [], routes = []) {
   routes.push(rtnalazi);
   routes.push(agnalazi);
 
-  // routes.push(obrada);
-
   routes.push(kontrole);
   routes.push(predracun);
   routes.push(nalazi);
-  routes.push(outbox);
+
+  routes.push(rtoutbox);
+  routes.push(agoutbox);
+
   routes.push(evaluation);
   routes.push(loger);
   routes.push(registracija);

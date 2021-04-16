@@ -162,26 +162,32 @@
                             disabled:
                               uzorciItems.length > 0 ||
                               (category.categoryName ===
-                                'Molekularna mikrobiologija' &&
+                                'Molekularna mikrobiologija' && item.itemName === 'CoV2 RT PCR' &&
                                 !$store.state.configuration.unos.rt) ||
                               (category.categoryName ===
-                                'Rapid Diagnostic Tests' &&
+                                'Molekularna mikrobiologija' && item.itemName === 'CoV2 RT LAMP' &&
+                                !$store.state.configuration.unos.lp) ||
+                              (category.categoryName ===
+                                'Rapid Diagnostic Tests' && item.itemName === 'CoV2 Antigen' &&
                                 !$store.state.configuration.unos.ag) ||
                               (category.categoryName ===
-                                'Serološka dijagnostika' &&
+                                'Serološka dijagnostika' && (item.itemName === 'CoV2 IgM Ab' || item.itemName === 'CoV2 IgG Ab') &&
                                 !$store.state.configuration.unos.at),
 
                             'unchosen-link': !item.izabran,
                             'plain-link': item.izabran,
                             'disabled-link':
                               (category.categoryName ===
-                                'Molekularna mikrobiologija' &&
+                                'Molekularna mikrobiologija' && item.itemName === 'CoV2 RT PCR' &&
                                 !$store.state.configuration.unos.rt) ||
                               (category.categoryName ===
-                                'Rapid Diagnostic Tests' &&
+                                'Molekularna mikrobiologija' && item.itemName === 'CoV2 RT LAMP' &&
+                                !$store.state.configuration.unos.lp) ||
+                              (category.categoryName ===
+                                'Rapid Diagnostic Tests' && item.itemName === 'CoV2 Antigen' &&
                                 !$store.state.configuration.unos.ag) ||
                               (category.categoryName ===
-                                'Serološka dijagnostika' &&
+                                'Serološka dijagnostika' && (item.itemName === 'CoV2 IgM Ab' || item.itemName === 'CoV2 IgG Ab') &&
                                 !$store.state.configuration.unos.at),
                           }"
                           href="#"
@@ -303,6 +309,24 @@ export default {
           code: ["CoV2 RT PCR"],
           tip: "CoV2 RT PCR",
           opis: "CoV2 RT PCR",
+          patient: {},
+          testovi: [],
+          testoviTag: [],
+          hitno: false,
+          time: JSON.stringify(
+            new Date(
+              new Date().getTime() - new Date().getTimezoneOffset() * 60000
+            )
+          )
+            .slice(1, -9)
+            .replace("T", " "),
+          komentar: "",
+        },
+        {
+          ime: "Bris",
+          code: ["CoV2 RT LAMP"],
+          tip: "CoV2 RT LAMP",
+          opis: "CoV2 RT LAMP",
           patient: {},
           testovi: [],
           testoviTag: [],
@@ -734,17 +758,14 @@ export default {
       .then((res) => {
         if (res.data.lokacije.length != 0) {
 
-          
-          console.log(this.$store.state.configuration.unos.rt);
-
           if (this.$store.state.configuration.unos.rt === false) {
             
             this.lokacije = [];
 
             this.lokacije.push(res.data.lokacije[0].lokacija);
             this.lokacijeInit.push(res.data.lokacije[0]);
-          } else {
 
+          } else {
 
             this.lokacije = [];
 
@@ -753,6 +774,7 @@ export default {
               this.lokacijeInit.push(element);
             });
           }
+
         }
 
         // this.lokacije.sort(function (a, b) {
@@ -959,7 +981,20 @@ export default {
     onCancel() {},
 
     testEvent(event, category, item, cijena) {
+      
       this.initiatedEntry = true;
+
+      switch (item.itemName) {
+        
+        case "CoV2 IgG Ab":
+          setTimeout(() => {
+            document.getElementById("CoV2 IgM Ab").click();
+          }, 300);
+          break;
+
+        default:
+          break;
+      }
 
       switch (category.bundle) {
         case true:

@@ -2,16 +2,34 @@ import lazyLoading from "./lazyLoading";
 
 export default {
   name: "email",
-  path: "/nalazi/outbox",
-  component: lazyLoading("nalazi/outbox/outbox"),
   meta: {
-    default: false,
     expanded: false,
-    title: "Elektronska pošta",
+    title: "Elektronska pošta", 
     class: "primary",
     show: false,
-    iconClass: "fa fa-envelope",
-    requiredAuth: true
-  }
+    iconClass: "glyphicon glyphicon-envelope"
+  },
+  children: [
+    {
+      name: "rt-email",
+      path: "/nalazi/outbox/rt",
+      component: lazyLoading("rtoutbox/outbox"),
+      meta: {
+        title: "CoV2 RT PCR pošta",
+        show: false,
+        requiredAuth: true
+      }
+    },
+    {
+      name: "ag-email",
+      path: "/nalazi/outbox/ag",
+      component: lazyLoading("agoutbox/outbox"),
+      meta: {
+        title: "CoV2 Antigen pošta",
+        show: false,
+        requiredAuth: true
+      }
+    },
+  ]
 };
 
