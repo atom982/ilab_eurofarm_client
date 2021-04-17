@@ -4,13 +4,13 @@ export default {
       name: "kod",
       title: "kod",
       sortField: "kod",
-      width: "10%"     
+      width: "8%"     
     },    
     {
       name: "naziv",
       title: "naziv",
       sortField: "naziv",     
-      width: "10%"
+      width: "12%"
     },
     {
       name: "analit",
@@ -26,12 +26,12 @@ export default {
     {
       name: "analizator",
       title: "analizator",
-      width: "18%"
+      width: "15%"
     },
     {
       name: "metoda",
       title: "metoda",
-      width: "10%"
+      width: "13%"
     },
     
     {

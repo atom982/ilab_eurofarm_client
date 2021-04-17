@@ -40,6 +40,16 @@ export default {
         requiredAuth: true
       }
     },
+    {
+      name: "at-email",
+      path: "/nalazi/outbox/at",
+      component: lazyLoading("atoutbox/outbox"),
+      meta: {
+        title: "CoV2 Antitijela pošta",
+        show: false,
+        requiredAuth: true
+      }
+    },
   ]
 };
 

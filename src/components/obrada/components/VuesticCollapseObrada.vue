@@ -158,8 +158,10 @@
               show &&
               expanded &&
               sample.status != 'ODOBREN' &&
-              sample.status != 'VERIFICIRAN' &&
-              $router.currentRoute.path.includes('rtobrada/rezultati')
+              sample.status != 'VERIFICIRAN' && (
+                $router.currentRoute.path.includes('rtobrada/rezultati') ||
+              $router.currentRoute.path.includes('lpobrada/rezultati')
+              )              
             "
           >
             <i
@@ -174,8 +176,10 @@
               show &&
               expanded &&
               sample.status != 'ODOBREN' &&
-              sample.status != 'VERIFICIRAN' &&
-              $router.currentRoute.path.includes('rtobrada/rezultati')
+              sample.status != 'VERIFICIRAN' && (
+                $router.currentRoute.path.includes('rtobrada/rezultati') ||
+              $router.currentRoute.path.includes('lpobrada/rezultati')
+              )              
             "
             style="diplay: inline-block; width: 25px"
             class="col-md-3 pull-left"

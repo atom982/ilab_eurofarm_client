@@ -7,10 +7,10 @@ export default {
   meta: {
     default: false,
     expanded: false,
-    title: "Analize",
+    title: "Postavke analiza",
     class: "primary",
     show: false,
-    iconClass: "fa fa-flask",
+    iconClass: "vuestic-icon vuestic-icon-settings",
     requiredAuth: true
   }
 };

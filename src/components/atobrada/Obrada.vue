@@ -10996,11 +10996,11 @@ End of Microbiology Sample Check |
 
     Approve(rezultati) {
 
-      if (!this.$store.state.configuration.verify.rt) {
+      if (!this.$store.state.configuration.verify.at) {
         this.$refs.staticModalVerifyPrivilege.open();
-      } else if (this.rezultati[0].rezultat.trim() === ""){
+      // } else if (this.rezultati[0].rezultat.trim() === ""){
         // console.log(this.rezultati)
-        this.$refs.staticModalVerifyResult.open();
+        // this.$refs.staticModalVerifyResult.open();
       } else{
         // Paste Code Here
         this.rezultati.forEach((element) => {
@@ -11796,7 +11796,7 @@ End of Microbiology Sample Check |
     },
 
     UnVerify(data) {
-      if (!this.$store.state.configuration.verify.rt) {
+      if (!this.$store.state.configuration.verify.at) {
         this.$refs.staticModalVerifyPrivilege.open();
       } else {
         this.verificiran = false;

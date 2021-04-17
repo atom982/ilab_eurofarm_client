@@ -40,5 +40,15 @@ export default {
         requiredAuth: true
       }
     },
+    {
+      name: "at-obrada",
+      path: "/atobrada/pregled",
+      component: lazyLoading("atobrada/table"),
+      meta: {
+        title: "CoV2 Antitijela obrada",
+        show: false,
+        requiredAuth: true
+      }
+    },
   ]
 };

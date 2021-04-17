@@ -40,5 +40,15 @@ export default {
         requiredAuth: true
       }
     },
+    {
+      name: "at-nalazi-pregled",
+      path: "/atnalazi/pregled",
+      component: lazyLoading("atnalazi/pregled/pregled"),
+      meta: {
+        title: "CoV2 Antitijela nalazi",
+        show: false,
+        requiredAuth: true
+      }
+    },
   ]
 };

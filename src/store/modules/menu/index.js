@@ -7,6 +7,7 @@ import naljepnice from "./naljepnice"; // Statusi uzoraka
 import obrada from "./obrada"; // Obrada uzoraka
 import nalazi from "./nalazi"; // Pregled nalaza
 import email from "./email"; // Elektronska pošta
+import analize from "./analize"; // Postavke analiza
 import narucioci from "./narucioci"; // Group email
 import protokol from "./protokol"; // Provjera nalaza
 import changelog from "./changelog"; // Change Log
@@ -21,10 +22,11 @@ const state = {
     obrada, // Obrada uzoraka
     nalazi, // Pregled nalaza
     email, // Elektronska pošta
+    analize, // Postavke analiza
     narucioci, // Group email
     protokol, // Provjera nalaza
     changelog, // Change Log  
-    reports, // Izvještaji    
+    reports, // Izvještaji  
   ]
 };
 

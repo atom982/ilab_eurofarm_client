@@ -215,6 +215,14 @@ const store = new Vuex.Store({
               state.note = true;
               item.meta.class = "info";
             }
+
+            // Postavke analiza
+
+            if (item.meta.title == "Postavke analiza") {
+              item.meta.show = true;
+              state.note = true;
+              item.meta.class = "info";
+            }
           }
         });
       });
