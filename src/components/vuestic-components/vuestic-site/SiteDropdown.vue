@@ -193,8 +193,18 @@ export default {
         this.$refs.close.click();
       } else
 
+      if (current.includes("lpnalazi/pregled")) {
+        router.push("/lpnalazi/pregled/" + "?site=" + this.$store.state.site);
+        this.$refs.close.click();
+      } else
+
       if (current.includes("agnalazi/pregled")) {
         router.push("/agnalazi/pregled/" + "?site=" + this.$store.state.site);
+        this.$refs.close.click();
+      } else
+
+      if (current.includes("atnalazi/pregled")) {
+        router.push("/atnalazi/pregled/" + "?site=" + this.$store.state.site);
         this.$refs.close.click();
       } else
 
@@ -208,8 +218,18 @@ export default {
         this.$refs.close.click();
       } else 
 
+      if (current.includes("nalazi/outbox/lp")) {
+        router.push("/nalazi/outbox/lp/" + "?site=" + this.$store.state.site);
+        this.$refs.close.click();
+      } else 
+
       if (current.includes("nalazi/outbox/ag")) {
         router.push("/nalazi/outbox/ag/" + "?site=" + this.$store.state.site);
+        this.$refs.close.click();
+      } else 
+
+      if (current.includes("nalazi/outbox/at")) {
+        router.push("/nalazi/outbox/at/" + "?site=" + this.$store.state.site);
         this.$refs.close.click();
       } else 
       
@@ -217,9 +237,19 @@ export default {
         router.push("/rtobrada/pregled/" + "?site=" + this.$store.state.site);
         this.$refs.close.click();
       } else 
+
+      if (current.includes("lpobrada/") && !current.includes("kontrole/")) {
+        router.push("/lpobrada/pregled/" + "?site=" + this.$store.state.site);
+        this.$refs.close.click();
+      } else 
       
       if (current.includes("agobrada/") && !current.includes("kontrole/")) {
         router.push("/agobrada/pregled/" + "?site=" + this.$store.state.site);
+        this.$refs.close.click();
+      } else 
+
+      if (current.includes("atobrada/") && !current.includes("kontrole/")) {
+        router.push("/atobrada/pregled/" + "?site=" + this.$store.state.site);
         this.$refs.close.click();
       } else 
       

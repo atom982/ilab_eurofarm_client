@@ -43,7 +43,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJC
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -77,7 +77,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJC
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="PJC.lp > 0" style="color: #e34a4a">{{
+                PJC.lp
+              }}</span>
+              <span v-show="PJC.lp === 0" style="color: #4ae387">{{
+                PJC.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '5c69f68c338fe912f99f833b' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.PJC
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -110,7 +144,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJC
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -181,7 +215,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.SJJ
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -216,7 +250,42 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.SJJ
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="SJJ.lp > 0" style="color: #e34a4a">{{
+                SJJ.lp
+              }}</span>
+              <span v-show="SJJ.lp === 0" style="color: #4ae387">{{
+                SJJ.lp
+              }}</span>
+
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '5f9f705e444e51a464db2543' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.SJJ
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -249,7 +318,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.SJJ
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -320,7 +389,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.TZL
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -354,7 +423,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.TZL
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="TZL.lp > 0" style="color: #e34a4a">{{
+                TZL.lp
+              }}</span>
+              <span v-show="TZL.lp === 0" style="color: #4ae387">{{
+                TZL.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '5f9f70a1444e51a464db259a' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.TZL
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -387,7 +490,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.TZL
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -458,7 +561,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PSZ
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -492,7 +595,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PSZ
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="PSZ.lp > 0" style="color: #e34a4a">{{
+                PSZ.lp
+              }}</span>
+              <span v-show="PSZ.lp === 0" style="color: #4ae387">{{
+                PSZ.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '5fb81465900f08738c6985e7' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.PSZ
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -525,7 +662,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PSZ
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -600,7 +737,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.HLI
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -634,7 +771,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.HLI
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="HLI.lp > 0" style="color: #e34a4a">{{
+                HLI.lp
+              }}</span>
+              <span v-show="HLI.lp === 0" style="color: #4ae387">{{
+                HLI.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '60508f5ff0a3cf9c7860f5ad' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.HLI
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -667,7 +838,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.HLI
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -742,7 +913,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.HLN
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -776,7 +947,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.HLN
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="HLN.lp > 0" style="color: #e34a4a">{{
+                HLN.lp
+              }}</span>
+              <span v-show="HLN.lp === 0" style="color: #4ae387">{{
+                HLN.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '60508f95f0a3cf9c7860f5bd' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.HLN
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -809,7 +1014,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.HLN
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -884,7 +1089,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.HLD
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -918,7 +1123,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.HLD
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="HLD.lp > 0" style="color: #e34a4a">{{
+                HLD.lp
+              }}</span>
+              <span v-show="HLD.lp === 0" style="color: #4ae387">{{
+                HLD.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '60509039f0a3cf9c7860f5e1' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.HLD
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -951,7 +1190,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.HLD
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1026,7 +1265,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJU
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1061,7 +1300,42 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJU
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="PJU.lp > 0" style="color: #e34a4a">{{
+                PJU.lp
+              }}</span>
+              <span v-show="PJU.lp === 0" style="color: #4ae387">{{
+                PJU.lp
+              }}</span>
+
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '6068b249f68be9eab36b4fdb' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.PJU
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1094,7 +1368,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJU
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1165,7 +1439,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJI
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1200,7 +1474,42 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJI
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="PJI.lp > 0" style="color: #e34a4a">{{
+                PJI.lp
+              }}</span>
+              <span v-show="PJI.lp === 0" style="color: #4ae387">{{
+                PJI.lp
+              }}</span>
+
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '6068b2d5f68be9eab36b5003' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.PJI
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1233,7 +1542,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJI
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1304,7 +1613,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJV
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1338,7 +1647,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJV
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="PJV.lp > 0" style="color: #e34a4a">{{
+                PJV.lp
+              }}</span>
+              <span v-show="PJV.lp === 0" style="color: #4ae387">{{
+                PJV.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '6068b346f68be9eab36b502f' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.PJV
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1371,7 +1714,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJV
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1442,7 +1785,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJT
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1476,7 +1819,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJT
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="PJT.lp > 0" style="color: #e34a4a">{{
+                PJT.lp
+              }}</span>
+              <span v-show="PJT.lp === 0" style="color: #4ae387">{{
+                PJT.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '6068b3b3f68be9eab36b5088' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.PJT
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1509,7 +1886,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJT
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1580,7 +1957,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJG
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1614,7 +1991,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJG
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="PJG.lp > 0" style="color: #e34a4a">{{
+                PJG.lp
+              }}</span>
+              <span v-show="PJG.lp === 0" style="color: #4ae387">{{
+                PJG.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '6068b471f68be9eab36b50f5' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.PJG
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1647,7 +2058,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJG
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1718,7 +2129,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJB
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1752,7 +2163,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJB
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="PJB.lp > 0" style="color: #e34a4a">{{
+                PJB.lp
+              }}</span>
+              <span v-show="PJB.lp === 0" style="color: #4ae387">{{
+                PJB.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '6068b4fcf68be9eab36b511d' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.PJB
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1785,7 +2230,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJB
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1856,7 +2301,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJR
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1890,7 +2335,41 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJR
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="PJR.lp > 0" style="color: #e34a4a">{{
+                PJR.lp
+              }}</span>
+              <span v-show="PJR.lp === 0" style="color: #4ae387">{{
+                PJR.lp
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '6068b55df68be9eab36b5175' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.PJR
+      "
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -1923,7 +2402,7 @@
         $store.state.dashboard != undefined &&
         $store.state.dashboard.PJR
       "
-      class="col-md-6 col-xl-4"
+      class="col-md-6 col-xl-3"
     >
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
@@ -2037,15 +2516,18 @@
           <table class="table table-striped table-sm color-icon-label-table">
             <thead>
               <tr>
-                <td style="text-transform: none; color: #4ab2e3;" width="7%">{{ "KOD" }}</td>
-                <td style="text-transform: none; color: #4ab2e3;" width="33%">{{ "Naziv" }}</td>
-                <td style="text-transform: none; color: #4ab2e3;" width="20%" align="middle">
+                <td style="text-transform: none; color: #4ab2e3;" width="8%">{{ "KOD" }}</td>
+                <td style="text-transform: none; color: #4ab2e3;" width="32%">{{ "Naziv" }}</td>
+                <td style="text-transform: none; color: #4ab2e3;" width="15%" align="middle">
                   {{ "CoV2 RT PCR" }}
                 </td>
-                <td style="text-transform: none; color: #4ab2e3;" width="20%" align="middle">
+                <td style="text-transform: none; color: #4ab2e3;" width="15%" align="middle">
+                  {{ "CoV2 RT LAMP" }}
+                </td>
+                <td style="text-transform: none; color: #4ab2e3;" width="15%" align="middle">
                   {{ "CoV2 Antigen" }}
                 </td>
-                <td style="text-transform: none; color: #4ab2e3;" width="20%" align="middle">
+                <td style="text-transform: none; color: #4ab2e3;" width="15%" align="middle">
                   {{ "CoV2 Antitijela" }}
                 </td>
               </tr>
@@ -2067,6 +2549,14 @@
                   >
                   <span v-show="PJC.rt === 0" style="color: #4ae387"
                     ><strong>{{ PJC.rt }}</strong></span
+                  >
+                </td>
+                <td align="middle">
+                  <span v-show="PJC.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ PJC.lp }}</strong></span
+                  >
+                  <span v-show="PJC.lp === 0" style="color: #4ae387"
+                    ><strong>{{ PJC.lp }}</strong></span
                   >
                 </td>
                 <td align="middle">
@@ -2103,6 +2593,14 @@
                   >
                 </td>
                 <td align="middle">
+                  <span v-show="SJJ.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ SJJ.lp }}</strong></span
+                  >
+                  <span v-show="SJJ.lp === 0" style="color: #4ae387"
+                    ><strong>{{ SJJ.lp }}</strong></span
+                  >
+                </td>
+                <td align="middle">
                   <span v-show="SJJ.ag > 0" style="color: #e34a4a"
                     ><strong>{{ SJJ.ag }}</strong></span
                   >
@@ -2136,6 +2634,14 @@
                   >
                 </td>
                 <td align="middle">
+                  <span v-show="TZL.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ TZL.lp }}</strong></span
+                  >
+                  <span v-show="TZL.lp === 0" style="color: #4ae387"
+                    ><strong>{{ TZL.lp }}</strong></span
+                  >
+                </td>
+                <td align="middle">
                   <span v-show="TZL.ag > 0" style="color: #e34a4a"
                     ><strong>{{ TZL.ag }}</strong></span
                   >
@@ -2166,6 +2672,14 @@
                   >
                   <span v-show="PSZ.rt === 0" style="color: #4ae387"
                     ><strong>{{ PSZ.rt }}</strong></span
+                  >
+                </td>
+                <td align="middle">
+                  <span v-show="PSZ.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ PSZ.lp }}</strong></span
+                  >
+                  <span v-show="PSZ.lp === 0" style="color: #4ae387"
+                    ><strong>{{ PSZ.lp }}</strong></span
                   >
                 </td>
                 <td align="middle">
@@ -2204,6 +2718,14 @@
                   >
                 </td>
                 <td align="middle">
+                  <span v-show="HLI.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ HLI.lp }}</strong></span
+                  >
+                  <span v-show="HLI.lp === 0" style="color: #4ae387"
+                    ><strong>{{ HLI.lp }}</strong></span
+                  >
+                </td>
+                <td align="middle">
                   <span v-show="HLI.ag > 0" style="color: #e34a4a"
                     ><strong>{{ HLI.ag }}</strong></span
                   >
@@ -2234,6 +2756,14 @@
                   >
                   <span v-show="HLN.rt === 0" style="color: #4ae387"
                     ><strong>{{ HLN.rt }}</strong></span
+                  >
+                </td>
+                <td align="middle">
+                  <span v-show="HLN.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ HLN.lp }}</strong></span
+                  >
+                  <span v-show="HLN.lp === 0" style="color: #4ae387"
+                    ><strong>{{ HLN.lp }}</strong></span
                   >
                 </td>
                 <td align="middle">
@@ -2270,6 +2800,14 @@
                   >
                 </td>
                 <td align="middle">
+                  <span v-show="HLD.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ HLD.lp }}</strong></span
+                  >
+                  <span v-show="HLD.lp === 0" style="color: #4ae387"
+                    ><strong>{{ HLD.lp }}</strong></span
+                  >
+                </td>
+                <td align="middle">
                   <span v-show="HLD.ag > 0" style="color: #e34a4a"
                     ><strong>{{ HLD.ag }}</strong></span
                   >
@@ -2300,6 +2838,14 @@
                   >
                   <span v-show="PJU.rt === 0" style="color: #4ae387"
                     ><strong>{{ PJU.rt }}</strong></span
+                  >
+                </td>
+                <td align="middle">
+                  <span v-show="PJU.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ PJU.lp }}</strong></span
+                  >
+                  <span v-show="PJU.lp === 0" style="color: #4ae387"
+                    ><strong>{{ PJU.lp }}</strong></span
                   >
                 </td>
                 <td align="middle">
@@ -2336,6 +2882,14 @@
                   >
                 </td>
                 <td align="middle">
+                  <span v-show="PJI.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ PJI.lp }}</strong></span
+                  >
+                  <span v-show="PJI.lp === 0" style="color: #4ae387"
+                    ><strong>{{ PJI.lp }}</strong></span
+                  >
+                </td>
+                <td align="middle">
                   <span v-show="PJI.ag > 0" style="color: #e34a4a"
                     ><strong>{{ PJI.ag }}</strong></span
                   >
@@ -2366,6 +2920,14 @@
                   >
                   <span v-show="PJV.rt === 0" style="color: #4ae387"
                     ><strong>{{ PJV.rt }}</strong></span
+                  >
+                </td>
+                <td align="middle">
+                  <span v-show="PJV.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ PJV.lp }}</strong></span
+                  >
+                  <span v-show="PJV.lp === 0" style="color: #4ae387"
+                    ><strong>{{ PJV.lp }}</strong></span
                   >
                 </td>
                 <td align="middle">
@@ -2402,6 +2964,14 @@
                   >
                 </td>
                 <td align="middle">
+                  <span v-show="PJT.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ PJT.lp }}</strong></span
+                  >
+                  <span v-show="PJT.lp === 0" style="color: #4ae387"
+                    ><strong>{{ PJT.lp }}</strong></span
+                  >
+                </td>
+                <td align="middle">
                   <span v-show="PJT.ag > 0" style="color: #e34a4a"
                     ><strong>{{ PJT.ag }}</strong></span
                   >
@@ -2432,6 +3002,14 @@
                   >
                   <span v-show="PJG.rt === 0" style="color: #4ae387"
                     ><strong>{{ PJG.rt }}</strong></span
+                  >
+                </td>
+                <td align="middle">
+                  <span v-show="PJG.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ PJG.lp }}</strong></span
+                  >
+                  <span v-show="PJG.lp === 0" style="color: #4ae387"
+                    ><strong>{{ PJG.lp }}</strong></span
                   >
                 </td>
                 <td align="middle">
@@ -2468,6 +3046,14 @@
                   >
                 </td>
                 <td align="middle">
+                  <span v-show="PJB.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ PJB.lp }}</strong></span
+                  >
+                  <span v-show="PJB.lp === 0" style="color: #4ae387"
+                    ><strong>{{ PJB.lp }}</strong></span
+                  >
+                </td>
+                <td align="middle">
                   <span v-show="PJB.ag > 0" style="color: #e34a4a"
                     ><strong>{{ PJB.ag }}</strong></span
                   >
@@ -2498,6 +3084,14 @@
                   >
                   <span v-show="PJR.rt === 0" style="color: #4ae387"
                     ><strong>{{ PJR.rt }}</strong></span
+                  >
+                </td>
+                <td align="middle">
+                  <span v-show="PJR.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ PJR.lp }}</strong></span
+                  >
+                  <span v-show="PJR.lp === 0" style="color: #4ae387"
+                    ><strong>{{ PJR.lp }}</strong></span
                   >
                 </td>
                 <td align="middle">
@@ -2566,20 +3160,20 @@ export default {
     return {
       show: true,
       loaded: false,
-      PJC: 0,
-      SJJ: 0,
-      TZL: 0,
-      PSZ: 0,
-      HLI: 0,
-      HLN: 0,
-      HLD: 0,
-      PJU: 0,
-      PJI: 0,
-      PJV: 0,
-      PJT: 0,
-      PJG: 0,
-      PJB: 0,
-      PJR: 0,
+      PJC: { rt: 0, lp: 0, ag: 0, at: 0 },
+      SJJ: { rt: 0, lp: 0, ag: 0, at: 0 },
+      TZL: { rt: 0, lp: 0, ag: 0, at: 0 },
+      PSZ: { rt: 0, lp: 0, ag: 0, at: 0 },
+      HLI: { rt: 0, lp: 0, ag: 0, at: 0 },
+      HLN: { rt: 0, lp: 0, ag: 0, at: 0 },
+      HLD: { rt: 0, lp: 0, ag: 0, at: 0 },
+      PJU: { rt: 0, lp: 0, ag: 0, at: 0 },
+      PJI: { rt: 0, lp: 0, ag: 0, at: 0 },
+      PJV: { rt: 0, lp: 0, ag: 0, at: 0 },
+      PJT: { rt: 0, lp: 0, ag: 0, at: 0 },
+      PJG: { rt: 0, lp: 0, ag: 0, at: 0 },
+      PJB: { rt: 0, lp: 0, ag: 0, at: 0 },
+      PJR: { rt: 0, lp: 0, ag: 0, at: 0 },
     };
   },
 

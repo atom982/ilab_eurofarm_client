@@ -8669,7 +8669,7 @@ End of Microbiology Get Bakterije, Antibiograme i Antibiotike |
     },
 
     Povratak() {
-      router.push("/agobrada/pregled/" + "?sekcija=" + "COVID 19 Antigen Test");
+      router.push("/agobrada/pregled/" + "?sekcija=" + "Obrada uzoraka: COVID 19 Antigen Test");
     },
 
     Nazad() {

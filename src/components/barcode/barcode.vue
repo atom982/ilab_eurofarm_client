@@ -619,8 +619,12 @@ export default {
 
                 if (this.analiza === "COVID 19 RT PCR Test") {
                   this.tip = "Bris nazofarinksa i orofarinksa";
+                } else if (this.analiza === "COVID 19 RT LAMP Test") {
+                  this.tip = "Bris nazofarinksa";
                 } else if (this.analiza === "COVID 19 Antigen Test") {
                   this.tip = "Bris nazofarinksa";
+                } else if (this.analiza === "COVID 19 Antitijela Test") {
+                  this.tip = "Serum";
                 } else {
                   this.tip = "Nema podataka";
                 }

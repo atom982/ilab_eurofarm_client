@@ -21,6 +21,16 @@ export default {
       }
     },
     {
+      name: "lp-nalazi-pregled",
+      path: "/lpnalazi/pregled",
+      component: lazyLoading("lpnalazi/pregled/pregled"),
+      meta: {
+        title: "CoV2 RT LAMP nalazi",
+        show: false,
+        requiredAuth: true
+      }
+    },
+    {
       name: "ag-nalazi-pregled",
       path: "/agnalazi/pregled",
       component: lazyLoading("agnalazi/pregled/pregled"),

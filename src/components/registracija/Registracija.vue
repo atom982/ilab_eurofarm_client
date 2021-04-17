@@ -528,6 +528,7 @@ export default {
       purposes_de: ["Reisen", "Gesundheitsbewertung", "Kontakt mit einer angesteckten Person"],
       analysis: "",
       analyses: ["", "COVID 19 RT PCR Test", "COVID 19 Antigen Test"],
+      // "COVID 19 RT PCR Test", "COVID 19 RT LAMP Test", "COVID 19 Antigen Test", "COVID 19 Antitijela Test"
 
       izdavanje: "DANAS",
       izdavanja: ["DANAS", "SUTRA"],
@@ -1007,6 +1008,7 @@ export default {
     // Međunarodni aerodrom Tuzla
     if (this.$store.state.site === "5f9f70a1444e51a464db259a") {
       this.analyses = ["", "COVID 19 Antigen Test"];
+      // "COVID 19 RT PCR Test", "COVID 19 RT LAMP Test", "COVID 19 Antigen Test", "COVID 19 Antitijela Test"
     } else {
       // Do nothing.
     }

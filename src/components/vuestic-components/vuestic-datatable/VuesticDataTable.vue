@@ -1196,6 +1196,20 @@ export default {
           router.push("/rtnalazi/pregled/" + niz[2].target.id + "_German");
         }
 
+        if (niz[1].name === "lpnalazipregled") {
+          router.push("/lpnalazi/pregled/" + niz[2].target.id);
+        }
+
+        if (niz[1].name === "lpen") {
+          // console.log(niz[2].target.id)
+          router.push("/lpnalazi/pregled/" + niz[2].target.id);
+        }
+
+        if (niz[1].name === "lpde") {
+          // console.log(niz[2].target.id)
+          router.push("/lpnalazi/pregled/" + niz[2].target.id + "_German");
+        }
+
         if (niz[1].name === "agnalazipregled") {
           router.push("/agnalazi/pregled/" + niz[2].target.id);
         }
@@ -1208,6 +1222,20 @@ export default {
         if (niz[1].name === "agde") {
           // console.log(niz[2].target.id)
           router.push("/agnalazi/pregled/" + niz[2].target.id + "_German");
+        }
+
+        if (niz[1].name === "atnalazipregled") {
+          router.push("/atnalazi/pregled/" + niz[2].target.id);
+        }
+
+        if (niz[1].name === "aten") {
+          // console.log(niz[2].target.id)
+          router.push("/atnalazi/pregled/" + niz[2].target.id);
+        }
+
+        if (niz[1].name === "atde") {
+          // console.log(niz[2].target.id)
+          router.push("/atnalazi/pregled/" + niz[2].target.id + "_German");
         }
 
         if (niz[1].name === "viber") {
@@ -1307,8 +1335,16 @@ export default {
           router.push("/nalazi/outbox/rt/" + niz[2].target.id);
         }
 
+        if (niz[1].name === "lpoutbox") {
+          router.push("/nalazi/outbox/lp/" + niz[2].target.id);
+        }
+
         if (niz[1].name === "agoutbox") {
           router.push("/nalazi/outbox/ag/" + niz[2].target.id);
+        }
+
+        if (niz[1].name === "atoutbox") {
+          router.push("/nalazi/outbox/at/" + niz[2].target.id);
         }
 
         if (niz[1].name === "outbox") {
@@ -1349,10 +1385,34 @@ export default {
           );
         }
 
+        if (niz[1].name === "lpobrada") {
+          // console.log(niz[1].name)
+          router.push(
+            "/lpobrada/rezultati/" +
+              niz[0]._id +
+              "/" +
+              niz[0].id +
+              "?date=" +
+              niz[0].date
+          );
+        }
+
         if (niz[1].name === "agobrada") {
           // console.log(niz[1].name)
           router.push(
             "/agobrada/rezultati/" +
+              niz[0]._id +
+              "/" +
+              niz[0].id +
+              "?date=" +
+              niz[0].date
+          );
+        }
+
+        if (niz[1].name === "atobrada") {
+          // console.log(niz[1].name)
+          router.push(
+            "/atobrada/rezultati/" +
               niz[0]._id +
               "/" +
               niz[0].id +

@@ -21,6 +21,16 @@ export default {
       }
     },
     {
+      name: "lp-obrada",
+      path: "/lpobrada/pregled",
+      component: lazyLoading("lpobrada/table"),
+      meta: {
+        title: "CoV2 RT LAMP obrada",
+        show: false,
+        requiredAuth: true
+      }
+    },
+    {
       name: "ag-obrada",
       path: "/agobrada/pregled",
       component: lazyLoading("agobrada/table"),

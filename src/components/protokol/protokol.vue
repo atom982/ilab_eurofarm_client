@@ -444,8 +444,18 @@ export default {
                   
                   break;
 
+                case "COVID 19 RT LAMP Test":
+                  this.nalaz.uzorak = "Tip uzorka: Bris nazofarinksa";
+                  
+                  break;
+
                 case "COVID 19 Antigen Test":
                   this.nalaz.uzorak = "Tip uzorka: Bris nazofarinksa";
+                  
+                  break;
+
+                case "COVID 19 Antitijela Test":
+                  this.nalaz.uzorak = "Tip uzorka: Serum";
                   
                   break;
               

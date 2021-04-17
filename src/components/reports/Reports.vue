@@ -2,7 +2,7 @@
   <div class="form-elements">
     <div class="row">
       <div class="col-md-12">
-        <vuestic-widget :headerText="izbor + ' za: ' + site">
+        <vuestic-widget :headerText="izbor + ': ' + site">
           <div class="row" style="min-height: 350px">
             <div class="col-md-12">
               <div class="col-md-8">
@@ -13,7 +13,6 @@
                         <vuestic-tree-node>
                           <!-- Obrađeni uzorci -->
                           <a
-                            v-if="true"
                             href="#"
                             :class="{
                               clicked: izbor === 'Obrađeni uzorci',
@@ -25,14 +24,7 @@
                             </div>
                           </a>
 
-                          <!-- COVID 19 RT PCR Test -->
-                          <!-- Međunarodni aerodrom Tuzla ne radi COVID 19 RT PCR Test -->
-                          <!-- 5f9f70a1444e51a464db259a -->
                           <a
-                            v-if="
-                              true &&
-                              $store.state.site != '5f9f70a1444e51a464db259a'
-                            "
                             href="#"
                             :class="{
                               clicked: izbor === 'COVID 19 RT PCR Test',
@@ -48,34 +40,11 @@
                             </div>
                           </a>
 
-                          <a
-                            v-if="
-                              true &&
-                              $store.state.site === '5f9f70a1444e51a464db259a'
-                            "
-                            href="#"
-                            style="color: #acb5be"
-                          >
-                            <div>{{ "COVID 19 RT PCR Test" }}</div>
+                          <a href="#" style="color: #acb5be">
+                            <div>{{ "COVID 19 RT LAMP Test" }}</div>
                           </a>
 
-                          <!-- COVID 19 Antigen Test -->
-                          <!-- Poliklinika Sunce - Zenica ne radi COVID 19 Antigen Test -->
-                          <!-- 5fb81465900f08738c6985e7 -->
-                          <!-- PZU HBL Laboratorija - Istočno Sarajevo ne radi COVID 19 Antigen Test -->
-                          <!-- 60508f5ff0a3cf9c7860f5ad -->
-                          <!-- HBL Laboratorija - Novo Sarajevo ne radi COVID 19 Antigen Test -->
-                          <!-- 60508f95f0a3cf9c7860f5bd -->
-                          <!-- HBL Laboratorija - Dobrinja ne radi COVID 19 Antigen Test -->
-                          <!-- 60509039f0a3cf9c7860f5e1 -->
                           <a
-                            v-if="
-                              true &&
-                              $store.state.site != '5fb81465900f08738c6985e7' &&
-                              $store.state.site != '60508f5ff0a3cf9c7860f5ad' &&
-                              $store.state.site != '60508f95f0a3cf9c7860f5bd' &&
-                              $store.state.site != '60509039f0a3cf9c7860f5e1'
-                            "
                             href="#"
                             :class="{
                               clicked: izbor === 'COVID 19 Antigen Test',
@@ -91,21 +60,8 @@
                             </div>
                           </a>
 
-                          <a
-                            v-if="
-                              (true &&
-                                $store.state.site ===
-                                  '5fb81465900f08738c6985e7') ||
-                              $store.state.site ===
-                                '60508f5ff0a3cf9c7860f5ad' ||
-                              $store.state.site ===
-                                '60508f95f0a3cf9c7860f5bd' ||
-                              $store.state.site === '60509039f0a3cf9c7860f5e1'
-                            "
-                            href="#"
-                            style="color: #acb5be"
-                          >
-                            <div>{{ "COVID 19 Antigen Test" }}</div>
+                          <a href="#" style="color: #acb5be">
+                            <div>{{ "COVID 19 Antitijela Test" }}</div>
                           </a>
                         </vuestic-tree-node>
                       </vuestic-tree-category>
@@ -454,6 +410,44 @@ export default {
 
           break;
 
+        case "COVID 19 RT LAMP Test":
+          // console.warn("U izradi...");
+          // this.isLoading = true;
+
+          // setTimeout(() => {
+          //   this.isLoading = false;
+          // }, 2000);
+          // http
+          //   .get(
+          //     "rt/xlsx/download?token=" +
+          //       this.$store.state.token +
+          //       "&timestamp=" +
+          //       this.timestamp,
+          //     { responseType: "blob" }
+          //   )
+          //   .then((res) => {
+          //     if (res.status == 200) {
+          //       const url = window.URL.createObjectURL(new Blob([res.data]));
+          //       const link = document.createElement("a");
+          //       link.href = url;
+          //       link.setAttribute("download", this.timestamp + ".xlsx");
+          //       document.body.appendChild(link);
+          //       link.click();
+
+          //       setTimeout(() => {
+          //         this.timestamp = (
+          //           new Date().getTime() -
+          //           new Date().getTimezoneOffset() * 60000
+          //         ).toString();
+          //         this.datepicker.range = null;
+          //         this.date_picked = false;
+          //         this.isLoading = false;
+          //       }, 750);
+          //     }
+          //   });
+
+          break;
+
         case "COVID 19 Antigen Test":
           // console.warn("U izradi...");
           this.isLoading = true;
@@ -489,6 +483,44 @@ export default {
                 }, 750);
               }
             });
+
+          break;
+
+        case "COVID 19 Antitijela Test":
+          // console.warn("U izradi...");
+          // this.isLoading = true;
+
+          // setTimeout(() => {
+          //   this.isLoading = false;
+          // }, 2000);
+          // http
+          //   .get(
+          //     "rt/xlsx/download?token=" +
+          //       this.$store.state.token +
+          //       "&timestamp=" +
+          //       this.timestamp,
+          //     { responseType: "blob" }
+          //   )
+          //   .then((res) => {
+          //     if (res.status == 200) {
+          //       const url = window.URL.createObjectURL(new Blob([res.data]));
+          //       const link = document.createElement("a");
+          //       link.href = url;
+          //       link.setAttribute("download", this.timestamp + ".xlsx");
+          //       document.body.appendChild(link);
+          //       link.click();
+
+          //       setTimeout(() => {
+          //         this.timestamp = (
+          //           new Date().getTime() -
+          //           new Date().getTimezoneOffset() * 60000
+          //         ).toString();
+          //         this.datepicker.range = null;
+          //         this.date_picked = false;
+          //         this.isLoading = false;
+          //       }, 750);
+          //     }
+          //   });
 
           break;
 
@@ -602,6 +634,33 @@ export default {
 
           break;
 
+        case "COVID 19 RT LAMP Test":
+          // this.isLoading = true;
+          // this.izborText = "COVID 19 RT LAMP Test";
+
+          // setTimeout(() => {
+          //   this.isLoading = false;
+          // }, 2000);
+
+          // http
+          //   .post("reports/xlsx/rt", {
+          //     timestamp: this.timestamp,
+          //     range: daterange,
+          //     token: this.$store.state.token,
+          //     site: this.$store.state.site,
+          //   })
+          //   .then((res) => {
+          //     console.log(res.data);
+          //     if (res.data.success) {
+          //       this.isLoading = false;
+          //       this.date_picked = true;
+          //     } else {
+          //       this.isLoading = false;
+          //     }
+          //   });
+
+          break;
+
         case "COVID 19 Antigen Test":
           this.isLoading = true;
           this.izborText = "COVID 19 Antigen Test";
@@ -626,6 +685,33 @@ export default {
                 this.isLoading = false;
               }
             });
+
+          break;
+
+        case "COVID 19 Antitijela Test":
+          // this.isLoading = true;
+          // this.izborText = "COVID 19 Antitijela Test";
+
+          // setTimeout(() => {
+          //   this.isLoading = false;
+          // }, 2000);
+
+          // http
+          //   .post("reports/xlsx/rt", {
+          //     timestamp: this.timestamp,
+          //     range: daterange,
+          //     token: this.$store.state.token,
+          //     site: this.$store.state.site,
+          //   })
+          //   .then((res) => {
+          //     console.log(res.data);
+          //     if (res.data.success) {
+          //       this.isLoading = false;
+          //       this.date_picked = true;
+          //     } else {
+          //       this.isLoading = false;
+          //     }
+          //   });
 
           break;
 

@@ -58,12 +58,32 @@ function generateRoutesFromMenu(menu = [], routes = []) {
     }
   };
 
+  var lpobrada = {
+    path: "/lpobrada/rezultati/:patient/:id",
+    component: lazyLoading("lpobrada/Obrada"),
+    props: true,
+    meta: {
+      title: "lpobrada",
+      requiredAuth: true
+    }
+  };
+
   var agobrada = {
     path: "/agobrada/rezultati/:patient/:id",
     component: lazyLoading("agobrada/Obrada"),
     props: true,
     meta: {
       title: "agobrada",
+      requiredAuth: true
+    }
+  };
+
+  var atobrada = {
+    path: "/atobrada/rezultati/:patient/:id",
+    component: lazyLoading("atobrada/Obrada"),
+    props: true,
+    meta: {
+      title: "atobrada",
       requiredAuth: true
     }
   };
@@ -120,12 +140,32 @@ function generateRoutesFromMenu(menu = [], routes = []) {
     }
   };
 
+  var lpnalazi = {
+    path: "/lpnalazi/pregled/:id",
+    component: lazyLoading("lpnalazi/pregled/nalaz"),
+    props: true,
+    meta: {
+      title: "lpnalaz",
+      requiredAuth: true
+    }
+  };
+
   var agnalazi = {
     path: "/agnalazi/pregled/:id",
     component: lazyLoading("agnalazi/pregled/nalaz"),
     props: true,
     meta: {
       title: "agnalaz",
+      requiredAuth: true
+    }
+  };
+
+  var atnalazi = {
+    path: "/atnalazi/pregled/:id",
+    component: lazyLoading("atnalazi/pregled/nalaz"),
+    props: true,
+    meta: {
+      title: "atnalaz",
       requiredAuth: true
     }
   };
@@ -140,12 +180,32 @@ function generateRoutesFromMenu(menu = [], routes = []) {
     }
   };
 
+  var lpoutbox = {
+    path: "/nalazi/outbox/lp/:id",
+    component: lazyLoading("lpoutbox/nalaz"),
+    props: true,
+    meta: {
+      title: "lpoutbox",
+      requiredAuth: true
+    }
+  };
+
   var agoutbox = {
     path: "/nalazi/outbox/ag/:id",
     component: lazyLoading("agoutbox/nalaz"),
     props: true,
     meta: {
       title: "agoutbox",
+      requiredAuth: true
+    }
+  };
+
+  var atoutbox = {
+    path: "/nalazi/outbox/at/:id",
+    component: lazyLoading("atoutbox/nalaz"),
+    props: true,
+    meta: {
+      title: "atoutbox",
       requiredAuth: true
     }
   };
@@ -204,18 +264,24 @@ function generateRoutesFromMenu(menu = [], routes = []) {
   routes.push(dashboard);
   routes.push(samples);
 
-  routes.push(agobrada);
   routes.push(rtobrada);
+  routes.push(lpobrada);
+  routes.push(agobrada);
+  routes.push(atobrada);
 
   routes.push(rtnalazi);
+  routes.push(lpnalazi);
   routes.push(agnalazi);
+  routes.push(atnalazi);
 
   routes.push(kontrole);
   routes.push(predracun);
   routes.push(nalazi);
 
   routes.push(rtoutbox);
+  routes.push(lpoutbox);
   routes.push(agoutbox);
+  routes.push(atoutbox);
 
   routes.push(evaluation);
   routes.push(loger);

@@ -222,6 +222,10 @@ export default {
           this.komentari = this.komentariGet[0]
           break;
 
+        case "CoV2 RT LAMP":
+          this.komentari = this.komentariGet[0]
+          break;
+
         case "CoV2 Antigen":
           this.komentari = this.komentariGet[1]
           break;

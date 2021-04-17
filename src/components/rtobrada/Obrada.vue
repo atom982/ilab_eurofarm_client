@@ -8799,7 +8799,7 @@ End of Microbiology Get Bakterije, Antibiograme i Antibiotike |
     },
 
     Povratak() {
-      router.push("/rtobrada/pregled/" + "?sekcija=" + "COVID 19 RT PCR Test");
+      router.push("/rtobrada/pregled/" + "?sekcija=" + "Obrada uzoraka: COVID 19 RT PCR Test");
     },
 
     Nazad() {

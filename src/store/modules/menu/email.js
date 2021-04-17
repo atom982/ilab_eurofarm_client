@@ -21,6 +21,16 @@ export default {
       }
     },
     {
+      name: "lp-email",
+      path: "/nalazi/outbox/lp",
+      component: lazyLoading("lpoutbox/outbox"),
+      meta: {
+        title: "CoV2 RT LAMP pošta",
+        show: false,
+        requiredAuth: true
+      }
+    },
+    {
       name: "ag-email",
       path: "/nalazi/outbox/ag",
       component: lazyLoading("agoutbox/outbox"),
