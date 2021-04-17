@@ -10998,9 +10998,12 @@ End of Microbiology Sample Check |
 
       if (!this.$store.state.configuration.verify.at) {
         this.$refs.staticModalVerifyPrivilege.open();
-      // } else if (this.rezultati[0].rezultat.trim() === ""){
+      } else if (this.rezultati.length === 1 && this.rezultati[0].rezultat.trim() === ""){
         // console.log(this.rezultati)
-        // this.$refs.staticModalVerifyResult.open();
+        this.$refs.staticModalVerifyResult.open();
+      } else if (this.rezultati.length === 2 && (this.rezultati[0].rezultat.trim() === "" && this.rezultati[1].rezultat.trim() === "")){
+        // console.log(this.rezultati)
+        this.$refs.staticModalVerifyResult.open();
       } else{
         // Paste Code Here
         this.rezultati.forEach((element) => {
