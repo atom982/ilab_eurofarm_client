@@ -2,7 +2,7 @@
   <div class="form-elements">
     <div class="row">
       <div class="col-md-12">
-        <vuestic-widget :headerText="izbor + ': ' + site">
+        <vuestic-widget :headerText="izborText">
           <div class="row" style="min-height: 350px">
             <div class="col-md-12">
               <div class="col-md-8">
@@ -11,7 +11,26 @@
                     <vuestic-tree-root ref="treeView">
                       <vuestic-tree-category isOpen label="Izbornik">
                         <vuestic-tree-node>
-                          <!-- Obrađeni uzorci -->
+
+                          <!-- this.$store.state.configuration.report -->
+
+                          <!-- Obrađeni uzorci - Sve lokacije -->
+
+                          <a
+                            href="#"
+                            v-if="$store.state.configuration.report != undefined && $store.state.configuration.report === true"
+                            :class="{
+                              clicked: izbor === 'Obrađeni uzorci - Sve lokacije',
+                              lnk: izbor != 'Obrađeni uzorci - Sve lokacije',
+                            }"
+                          >
+                            <div @click="doSomethingOnClick('Obrađeni uzorci - Sve lokacije')">
+                              {{ "Obrađeni uzorci: " + "Sve lokacije" }}
+                            </div>
+                          </a>
+                          
+                          <!-- Obrađeni uzorci - Po lokaciji -->
+
                           <a
                             href="#"
                             :class="{
@@ -40,8 +59,20 @@
                             </div>
                           </a>
 
-                          <a href="#" style="color: #acb5be">
-                            <div>{{ "COVID 19 RT LAMP Test" }}</div>
+                          <a
+                            href="#"
+                            :class="{
+                              clicked: izbor === 'COVID 19 RT LAMP Test',
+                              lnk: izbor != 'COVID 19 RT LAMP Test',
+                            }"
+                          >
+                            <div
+                              @click="
+                                doSomethingOnClick('COVID 19 RT LAMP Test')
+                              "
+                            >
+                              {{ "COVID 19 RT LAMP Test" }}
+                            </div>
                           </a>
 
                           <a
@@ -60,8 +91,20 @@
                             </div>
                           </a>
 
-                          <a href="#" style="color: #acb5be">
-                            <div>{{ "COVID 19 Antitijela Test" }}</div>
+                          <a
+                            href="#"
+                            :class="{
+                              clicked: izbor === 'COVID 19 Antitijela Test',
+                              lnk: izbor != 'COVID 19 Antitijela Test',
+                            }"
+                          >
+                            <div
+                              @click="
+                                doSomethingOnClick('COVID 19 Antitijela Test')
+                              "
+                            >
+                              {{ "COVID 19 Antitijela Test" }}
+                            </div>
                           </a>
                         </vuestic-tree-node>
                       </vuestic-tree-category>
@@ -260,63 +303,78 @@ export default {
     switch (this.$store.state.site) {
       case "5c69f68c338fe912f99f833b":
         this.site = "Podružnica Centralna Laboratorija, Sarajevo";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "PJC";
         break;
       case "5f9f705e444e51a464db2543":
         this.site = "Međunarodni aerodrom Sarajevo";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "SJJ";
         break;
       case "5f9f70a1444e51a464db259a":
         this.site = "Međunarodni aerodrom Tuzla";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "TZL";
         break;
       case "5fb81465900f08738c6985e7":
         this.site = "Poliklinika Sunce - Zenica";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "PSZ";
         break;
       case "60508f5ff0a3cf9c7860f5ad":
         this.site = "PZU HBL Laboratorija - Istočno Sarajevo";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "HLI";
         break;
       case "60508f95f0a3cf9c7860f5bd":
         this.site = "HBL Laboratorija - Novo Sarajevo";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "HLN";
         break;
       case "60509039f0a3cf9c7860f5e1":
         this.site = "HBL Laboratorija - Dobrinja";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "HLD";
         break;
       case "6068b249f68be9eab36b4fdb":
         this.site = "Podružnica 1. Unitic, Sarajevo";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "PJU";
         break;
       case "6068b2d5f68be9eab36b5003":
         this.site = "Podružnica 2. IUS, Sarajevo";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "PJI";
         break;
       case "6068b346f68be9eab36b502f":
         this.site = "Podružnica Visoko";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "PJV";
         break;
       case "6068b3b3f68be9eab36b5088":
         this.site = "Podružnica Tuzla";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "PJT";
         break;
       case "6068b471f68be9eab36b50f5":
         this.site = "Podružnica Goražde";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "PJG";
         break;
       case "6068b4fcf68be9eab36b511d":
         this.site = "Podružnica Bugojno";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "PJB";
         break;
       case "6068b55df68be9eab36b5175":
         this.site = "Podružnica Trebinje";
+        this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "PJR";
         break;
 
       default:
         this.site = "";
+        this.izborText = "Obrađeni uzorci";
         this.opis = "";
         break;
     }
@@ -333,6 +391,46 @@ export default {
   methods: {
     Download() {
       switch (this.izbor) {
+
+        case "Obrađeni uzorci - Sve lokacije":
+          // console.warn("U izradi...");
+          this.isLoading = true;
+
+          // setTimeout(() => {
+          //   this.isLoading = false;
+          // }, 2000);
+          http
+            .get(
+              "all/xlsx/download?token=" +
+                this.$store.state.token +
+                "&timestamp=" +
+                this.timestamp,
+              { responseType: "blob" }
+            )
+            .then((res) => {
+              console.log(res);
+              if (res.status == 200) {
+                const url = window.URL.createObjectURL(new Blob([res.data]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", this.timestamp + ".xlsx");
+                document.body.appendChild(link);
+                link.click();
+
+                setTimeout(() => {
+                  this.timestamp = (
+                    new Date().getTime() -
+                    new Date().getTimezoneOffset() * 60000
+                  ).toString();
+                  this.datepicker.range = null;
+                  this.date_picked = false;
+                  this.isLoading = false;
+                }, 750);
+              }
+            });
+
+          break;
+
         case "Obrađeni uzorci":
           // console.warn("U izradi...");
           this.isLoading = true;
@@ -412,39 +510,39 @@ export default {
 
         case "COVID 19 RT LAMP Test":
           // console.warn("U izradi...");
-          // this.isLoading = true;
+          this.isLoading = true;
 
-          // setTimeout(() => {
-          //   this.isLoading = false;
-          // }, 2000);
-          // http
-          //   .get(
-          //     "rt/xlsx/download?token=" +
-          //       this.$store.state.token +
-          //       "&timestamp=" +
-          //       this.timestamp,
-          //     { responseType: "blob" }
-          //   )
-          //   .then((res) => {
-          //     if (res.status == 200) {
-          //       const url = window.URL.createObjectURL(new Blob([res.data]));
-          //       const link = document.createElement("a");
-          //       link.href = url;
-          //       link.setAttribute("download", this.timestamp + ".xlsx");
-          //       document.body.appendChild(link);
-          //       link.click();
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 2000);
+          http
+            .get(
+              "lp/xlsx/download?token=" +
+                this.$store.state.token +
+                "&timestamp=" +
+                this.timestamp,
+              { responseType: "blob" }
+            )
+            .then((res) => {
+              if (res.status == 200) {
+                const url = window.URL.createObjectURL(new Blob([res.data]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", this.timestamp + ".xlsx");
+                document.body.appendChild(link);
+                link.click();
 
-          //       setTimeout(() => {
-          //         this.timestamp = (
-          //           new Date().getTime() -
-          //           new Date().getTimezoneOffset() * 60000
-          //         ).toString();
-          //         this.datepicker.range = null;
-          //         this.date_picked = false;
-          //         this.isLoading = false;
-          //       }, 750);
-          //     }
-          //   });
+                setTimeout(() => {
+                  this.timestamp = (
+                    new Date().getTime() -
+                    new Date().getTimezoneOffset() * 60000
+                  ).toString();
+                  this.datepicker.range = null;
+                  this.date_picked = false;
+                  this.isLoading = false;
+                }, 750);
+              }
+            });
 
           break;
 
@@ -488,39 +586,39 @@ export default {
 
         case "COVID 19 Antitijela Test":
           // console.warn("U izradi...");
-          // this.isLoading = true;
+          this.isLoading = true;
 
-          // setTimeout(() => {
-          //   this.isLoading = false;
-          // }, 2000);
-          // http
-          //   .get(
-          //     "rt/xlsx/download?token=" +
-          //       this.$store.state.token +
-          //       "&timestamp=" +
-          //       this.timestamp,
-          //     { responseType: "blob" }
-          //   )
-          //   .then((res) => {
-          //     if (res.status == 200) {
-          //       const url = window.URL.createObjectURL(new Blob([res.data]));
-          //       const link = document.createElement("a");
-          //       link.href = url;
-          //       link.setAttribute("download", this.timestamp + ".xlsx");
-          //       document.body.appendChild(link);
-          //       link.click();
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 2000);
+          http
+            .get(
+              "at/xlsx/download?token=" +
+                this.$store.state.token +
+                "&timestamp=" +
+                this.timestamp,
+              { responseType: "blob" }
+            )
+            .then((res) => {
+              if (res.status == 200) {
+                const url = window.URL.createObjectURL(new Blob([res.data]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", this.timestamp + ".xlsx");
+                document.body.appendChild(link);
+                link.click();
 
-          //       setTimeout(() => {
-          //         this.timestamp = (
-          //           new Date().getTime() -
-          //           new Date().getTimezoneOffset() * 60000
-          //         ).toString();
-          //         this.datepicker.range = null;
-          //         this.date_picked = false;
-          //         this.isLoading = false;
-          //       }, 750);
-          //     }
-          //   });
+                setTimeout(() => {
+                  this.timestamp = (
+                    new Date().getTime() -
+                    new Date().getTimezoneOffset() * 60000
+                  ).toString();
+                  this.datepicker.range = null;
+                  this.date_picked = false;
+                  this.isLoading = false;
+                }, 750);
+              }
+            });
 
           break;
 
@@ -547,7 +645,13 @@ export default {
       this.datepicker.range = null;
       this.date_picked = false;
       this.izbor = input;
-      this.izborText = input;
+
+      if(input.includes("Sve lokacije")){
+        this.izborText = "Obrađeni uzorci: Sve lokacije";
+      }else{
+        this.izborText = input + ": " + this.site;
+      }
+      
     },
 
     doSomethingOnChangeDateRange(input) {
@@ -579,10 +683,40 @@ export default {
         daterange = from;
       }
 
+      // console.log(this.izbor)
+
       switch (this.izbor) {
+
+        case "Obrađeni uzorci - Sve lokacije":
+          this.isLoading = true;
+          this.izborText = "Obrađeni uzorci: Sve lokacije";
+
+          // setTimeout(() => {
+          //   this.isLoading = false;
+          // }, 2000);
+
+          http
+            .post("reports/xlsx/all", {
+              timestamp: this.timestamp,
+              range: daterange,
+              token: this.$store.state.token,
+              site: this.$store.state.site,
+            })
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.success) {
+                this.isLoading = false;
+                this.date_picked = true;
+              } else {
+                this.isLoading = false;
+              }
+            });
+
+          break;
+
         case "Obrađeni uzorci":
           this.isLoading = true;
-          this.izborText = "Obrađeni uzorci";
+          this.izborText = "Obrađeni uzorci: " + this.site;
 
           // setTimeout(() => {
           //   this.isLoading = false;
@@ -635,29 +769,29 @@ export default {
           break;
 
         case "COVID 19 RT LAMP Test":
-          // this.isLoading = true;
-          // this.izborText = "COVID 19 RT LAMP Test";
+          this.isLoading = true;
+          this.izborText = "COVID 19 RT LAMP Test";
 
           // setTimeout(() => {
           //   this.isLoading = false;
           // }, 2000);
 
-          // http
-          //   .post("reports/xlsx/rt", {
-          //     timestamp: this.timestamp,
-          //     range: daterange,
-          //     token: this.$store.state.token,
-          //     site: this.$store.state.site,
-          //   })
-          //   .then((res) => {
-          //     console.log(res.data);
-          //     if (res.data.success) {
-          //       this.isLoading = false;
-          //       this.date_picked = true;
-          //     } else {
-          //       this.isLoading = false;
-          //     }
-          //   });
+          http
+            .post("reports/xlsx/lp", {
+              timestamp: this.timestamp,
+              range: daterange,
+              token: this.$store.state.token,
+              site: this.$store.state.site,
+            })
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.success) {
+                this.isLoading = false;
+                this.date_picked = true;
+              } else {
+                this.isLoading = false;
+              }
+            });
 
           break;
 
@@ -689,29 +823,29 @@ export default {
           break;
 
         case "COVID 19 Antitijela Test":
-          // this.isLoading = true;
-          // this.izborText = "COVID 19 Antitijela Test";
+          this.isLoading = true;
+          this.izborText = "COVID 19 Antitijela Test";
 
           // setTimeout(() => {
           //   this.isLoading = false;
           // }, 2000);
 
-          // http
-          //   .post("reports/xlsx/rt", {
-          //     timestamp: this.timestamp,
-          //     range: daterange,
-          //     token: this.$store.state.token,
-          //     site: this.$store.state.site,
-          //   })
-          //   .then((res) => {
-          //     console.log(res.data);
-          //     if (res.data.success) {
-          //       this.isLoading = false;
-          //       this.date_picked = true;
-          //     } else {
-          //       this.isLoading = false;
-          //     }
-          //   });
+          http
+            .post("reports/xlsx/at", {
+              timestamp: this.timestamp,
+              range: daterange,
+              token: this.$store.state.token,
+              site: this.$store.state.site,
+            })
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.success) {
+                this.isLoading = false;
+                this.date_picked = true;
+              } else {
+                this.isLoading = false;
+              }
+            });
 
           break;
 

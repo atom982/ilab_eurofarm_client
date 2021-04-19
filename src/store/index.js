@@ -64,6 +64,7 @@ const store = new Vuex.Store({
 
     configuration: {
       delete: false,
+      report: false,
       unos: {
         rt: false,
         lp: false,
