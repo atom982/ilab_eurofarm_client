@@ -250,6 +250,36 @@ function generateRoutesFromMenu(menu = [], routes = []) {
     }
   };
 
+  var certificates_ba = {
+    path: "/certificates/pdf/ba/:id",
+    component: lazyLoading("certificates/CertificatesPDF"),
+    props: true,
+    meta: {
+      title: "certificates_ba",
+      requiredAuth: true
+    }
+  };
+
+  var certificates_en = {
+    path: "/certificates/pdf/en/:id",
+    component: lazyLoading("certificates/CertificatesPDF"),
+    props: true,
+    meta: {
+      title: "certificates_en",
+      requiredAuth: true
+    }
+  };
+
+  var certificates_de = {
+    path: "/certificates/pdf/de/:id",
+    component: lazyLoading("certificates/CertificatesPDF"),
+    props: true,
+    meta: {
+      title: "certificates_de",
+      requiredAuth: true
+    }
+  };
+
   for (let i = 0, l = menu.length; i < l; i++) {
     let item = menu[i];
     if (item.path) {
@@ -288,6 +318,10 @@ function generateRoutesFromMenu(menu = [], routes = []) {
   routes.push(registracija);
 
   routes.push(changelog);
+  routes.push(certificates_ba);
+  routes.push(certificates_en);
+  routes.push(certificates_de);
+
   return routes;
 }
 

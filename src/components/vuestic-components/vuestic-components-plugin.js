@@ -140,8 +140,17 @@ import VuesticModalPartneriInfo from "src/components/partneri/VuesticModalPartne
 
 // End of Partneri - Pošiljaoc, Naručioc i Izvršioc
 
+// Certificates
+import CertificatesPatientEntry from "src/components/certificates/CertificatesPatientEntry.vue";
+import CertificatesTable from "src/components/certificates/CertificatesTable.vue";
+import CertificatesPatientEdit from "src/components/certificates/CertificatesPatientEdit.vue";
+
 const VuesticComponentsPlugin = {
   install(Vue, options) {
+
+    Vue.component(CertificatesPatientEntry.name, CertificatesPatientEntry);
+    Vue.component(CertificatesTable.name, CertificatesTable);
+    Vue.component(CertificatesPatientEdit.name, CertificatesPatientEdit);
 
     Vue.component(VuesticModalPartneriDelete.name, VuesticModalPartneriDelete);
     Vue.component(VuesticModalPartneriEdit.name, VuesticModalPartneriEdit);

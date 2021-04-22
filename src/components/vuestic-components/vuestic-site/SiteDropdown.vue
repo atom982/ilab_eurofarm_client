@@ -258,6 +258,11 @@ export default {
         this.$refs.close.click();
       } else 
       
+      if (current.includes("certificates/pdf")) {
+        router.push("/certificates/pregled/" + "?site=" + this.$store.state.site);
+        this.$refs.close.click();
+      } else 
+      
       {
         router.push(current + "?site=" + this.$store.state.site);
         this.$refs.close.click();

@@ -4,7 +4,7 @@
       class="d-flex flex-md-row flex-column justify-content-md-between align-items-center"
     >
       <filter-bar @filter="onFilterSet"></filter-bar>
-      <new-patient @new-patient="unosPacijenta"></new-patient>
+      <new-certificate @new-certificate="unosPacijenta"></new-certificate>
     </div>
     <vuetable
       ref="vuetable"
@@ -36,22 +36,22 @@
     </div>
 
     <!-- Modal -->
-    <vuestic-modal-patient
+    <certificates-patient-entry
       :show.sync="show"
       v-bind:medium="true"
       ref="largeModalPatient"
       :okText="potvrdi"
       :cancelText="odustani"
     >
-      <div slot="title">{{ "NOVI PRIJEM" }}</div>
+      <div slot="title">{{ "NOVA POTVRDA" }}</div>
       <div class="form-elements">
         <div class="row">
           <div class="col-md-12"></div>
         </div>
       </div>
-    </vuestic-modal-patient>
+    </certificates-patient-entry>
 
-    <patient-edit
+    <certificates-patient-edit
       :show.sync="show"
       v-bind:medium="true"
       ref="modalPatientEdit"
@@ -71,7 +71,7 @@
           <div class="col-md-12"></div>
         </div>
       </div>
-    </patient-edit>
+    </certificates-patient-edit>
 
     <vuestic-modal-error
       :show.sync="show"
@@ -129,7 +129,7 @@ import VuetablePagination from "vuetable-2/src/components/VuetablePagination";
 import LocalData from "./data/local-data";
 import DataTableStyles from "./data/data-table-styles";
 import FilterBar from "./datatable-components/FilterBar.vue";
-import NewPatient from "./datatable-components/NewPatient.vue";
+import NewCertificate from "./datatable-components/NewCertificate.vue";
 import router from "../../router";
 import { http } from "../../../config/config.js";
 import { bus } from "../../../src/main.js";
@@ -140,11 +140,11 @@ import "vue-loading-overlay/dist/vue-loading.css";
 const originalData = LocalData.data;
 
 export default {
-  name: "pacijents-table",
+  name: "certificates-table",
 
   components: {
     FilterBar,
-    NewPatient,
+    NewCertificate,
     Vuetable,
     VuetablePagination,
     Loading,
@@ -257,18 +257,18 @@ export default {
       toastDuration: 2500,
       isToastFullWidth: false,
       className: "",
-      timestamp:"",
+      timestamp: "",
     };
   },
   mounted() {
     this.onFilterSet(this.$store.state.filter);
-    bus.$on("Set", (data) => {
-      console.log("Set")
+    bus.$on("SetCert", (data) => {
+      // console.log("SetCert")
       this.onFilterSet(data.ime + " " + data.prezime);
     });
   },
   beforeDestroy() {
-    bus.$off("Set");
+    bus.$off("SetCert");
   },
   watch: {},
   methods: {
@@ -316,30 +316,20 @@ export default {
                 new Date().getTimezoneOffset() * 60000
               ).toString();
               this.$refs.modalPatientEdit.open();
-              
             }, 500);
-            
           }
         }
-        if (niz[1].name === "prijem") {
-          // console.log(JSON.stringify(args[0][0].prijem))
-          if (JSON.stringify(args[0][0].prijem).includes("disabled")) {
-          } else {
-            if (
-              this.$store.state.main === true &&
-              this.$store.state.site != "5c69f68c338fe912f99f833b"
-            ) {
-              this.$refs.staticModalNotAuthorizedEdit.open();
-            } else {
-              router.push("/samples/" + args[0][0].id);
-            }
-          }
+
+        if (niz[1].name === "ba") {
+          router.push("/certificates/pdf/ba/" + args[0][0].id);
         }
-        if (niz[1].name === "icon") {
-          // console.log(niz[0].patient)
-          // if(this.$store.state.access.level < 1){
-          //   router.push("/evaluation/" + args[0][0].id);
-          // }
+
+        if (niz[1].name === "en") {
+          router.push("/certificates/pdf/en/" + args[0][0].id);
+        }
+
+        if (niz[1].name === "de") {
+          router.push("/certificates/pdf/de/" + args[0][0].id);
         }
       }
     },
