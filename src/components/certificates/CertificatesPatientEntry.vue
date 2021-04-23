@@ -29,32 +29,12 @@
 
                     <div class="col-md-5">
                       <fieldset>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
                         <!-- Izbor: Datum rođenja -->
                         <div v-if="izbor === 'datr'">
                           <div class="form-group with-icon-left">
                             <div class="input-group">
                               <input
-                               style="color: #e34a4a"
+                                style="color: #e34a4a"
                                 onpaste="return false;"
                                 autocomplete="off"
                                 id="edrp-input-icon-left"
@@ -67,7 +47,7 @@
                                 class="glyphicon glyphicon-pencil icon-left input-icon"
                               ></i>
                               <label
-                               style="color: #e34a4a"
+                                style="color: #e34a4a"
                                 class="control-label"
                                 for="edrp-input-icon-left"
                                 >{{ "DD.MM.GGGG" }}</label
@@ -77,31 +57,12 @@
                           </div>
                         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
                         <!-- Izbor: Godište -->
                         <div v-if="izbor === 'god'">
                           <div class="form-group with-icon-left">
                             <div class="input-group">
                               <input
-                               style="color: #e34a4a"
+                                style="color: #e34a4a"
                                 onpaste="return false;"
                                 autocomplete="off"
                                 id="godp-input-icon-left"
@@ -124,33 +85,12 @@
                           </div>
                         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
-                        <div
-                          class="form-group with-icon-left"
-                        >
+                        <div class="form-group with-icon-left">
                           <div class="input-group">
                             <input
-                            onpaste="return false;"
+                              onpaste="return false;"
                               autocomplete="off"
-                               style="color: #e34a4a"
+                              style="color: #e34a4a"
                               id="imep-input-icon-left"
                               title=" "
                               v-model="ime"
@@ -169,29 +109,8 @@
                             <i class="bar"></i>
                           </div>
                         </div>
-                        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
-                        <div
-                          class="form-group with-icon-left"
-                        >
+                        <div class="form-group with-icon-left">
                           <div class="input-group">
                             <input
                               onpaste="return false;"
@@ -216,25 +135,6 @@
                           </div>
                         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
                         <vuestic-simple-select
                           :color="'red'"
                           :label="'SPOL'"
@@ -246,28 +146,9 @@
                           v-bind:options="spolovi"
                         ></vuestic-simple-select>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
-                         <vuestic-simple-select
+                        <vuestic-simple-select
                           :color="'red'"
-                          :label="'SVRHA TESTIRANJA'"
+                          :label="'SVRHA IZDAVANJA POTVRDE'"
                           v-model="purpose"
                           name="purpose"
                           :required="true"
@@ -276,57 +157,18 @@
                           v-bind:options="purposes"
                         ></vuestic-simple-select>
 
-
-                        <vuestic-simple-select
-                        :color="'red'"
-                        :label="'NALAZ IZDATI'"
-                        v-model="izdavanje"
-                        name="izdavanje"
-                        :required="false"
-                        title=" "
-                        ref="izdavanjeSelect"
-                        v-bind:options="izdavanja"
-                      ></vuestic-simple-select>
-
-
-
-
-
-
-
-
-
-
-
-                        
-
-
-
-
-
-
-                                           
+                        <!--  <vuestic-simple-select
+                          :color="'red'"
+                          :label="'NALAZ IZDATI'"
+                          v-model="izdavanje"
+                          name="izdavanje"
+                          :required="false"
+                          title=" "
+                          ref="izdavanjeSelect"
+                          v-bind:options="izdavanja"
+                        ></vuestic-simple-select> -->
                       </fieldset>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                     <div class="col-md-5">
                       <div v-if="false" class="row">
@@ -335,26 +177,6 @@
                           <div class="col-md-11">
                             <div style="min-height: 14px"></div>
                             <fieldset>
-                              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                               <!-- Izbor: Datum rođenja -->
                               <postavke-radio-button
                                 :label="'DATUM ROĐENJA'"
@@ -374,97 +196,88 @@
                                 :disabled="true"
                                 v-model="izbor"
                               />
-                              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             </fieldset>
                           </div>
                         </div>
                       </div>
-                      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
+                      <!-- 
                       <hr />
                       <div style="min-height: 8px"></div> -->
 
+                      <div class="form-group with-icon-left">
+                        <div class="input-group">
+                          <input
+                            onpaste="return false;"
+                            autocomplete="off"
+                            style="color: #e34a4a"
+                            id="poz-input-icon-left"
+                            title=" "
+                            v-model="datum"
+                            name="poz-input-icon-left"
+                            :required="true"
+                          />
+                          <i
+                            class="glyphicon glyphicon-pencil icon-left input-icon"
+                          ></i>
+                          <label
+                            style="color: #e34a4a"
+                            class="control-label"
+                            for="poz-input-icon-left"
+                            >{{ "DATUM POZITIVNOG REZULTATA" }}</label
+                          >
+                          <i class="bar"></i>
+                        </div>
+                      </div>
 
+                      <div class="form-group with-icon-left">
+                        <div class="input-group">
+                          <input
+                            onpaste="return false;"
+                            autocomplete="off"
+                            style="color: #e34a4a"
+                            id="nalaz-input-icon-left"
+                            title=" "
+                            v-model="nalaz"
+                            name="nalaz-input-icon-left"
+                            :required="true"
+                          />
+                          <i
+                            class="glyphicon glyphicon-pencil icon-left input-icon"
+                          ></i>
+                          <label
+                            style="color: #e34a4a"
+                            class="control-label"
+                            for="nalaz-input-icon-left"
+                            >{{ "BROJ PROTOKLA NALAZA" }}</label
+                          >
+                          <i class="bar"></i>
+                        </div>
+                      </div>
 
+                      <div class="form-group with-icon-left">
+                        <div class="input-group">
+                          <input
+                            onpaste="return false;"
+                            autocomplete="off"
+                            id="passport-input-icon-left"
+                            title=" "
+                            v-model="passport"
+                            name="passport-input-icon-left"
+                            required
+                          />
+                          <i
+                            class="glyphicon glyphicon-pencil icon-left input-icon"
+                          ></i>
 
-
-
-
-
-                     <div
-                          class="form-group with-icon-left"
-                        >
-                          <div class="input-group">
-                            <input
-                              onpaste="return false;"
-                              autocomplete="off"                             
-                              id="passport-input-icon-left"
-                              title=" "
-                              v-model="passport"
-                              name="passport-input-icon-left"
-                              required
-                            />
-                            <i
-                              class="glyphicon glyphicon-pencil icon-left input-icon"
-                            ></i>
-
-                            <label
-                              class="control-label"
-                              for="passport-input-icon-left"
-                              >{{
-                                "IDENTIFIKACIJSKI DOKUMENT"
-                              }}</label
-                            >
-                            <i class="bar"></i>
-                          </div>
-                        </div>  
-
-
-
-
-
-
-
-
-
-
+                          <label
+                            class="control-label"
+                            for="passport-input-icon-left"
+                            >{{ "IDENTIFIKACIJSKI DOKUMENT" }}</label
+                          >
+                          <i class="bar"></i>
+                        </div>
+                      </div>
 
                       <vuestic-simple-select
                         v-show="$store.state.default_route === '/registracija'"
@@ -476,227 +289,88 @@
                         ref="analysisSelect"
                         v-bind:options="analyses"
                       ></vuestic-simple-select>
-                      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <div
-                          class="form-group with-icon-left"
-                        >
-                          <div class="input-group">
-                            <input
-                              onpaste="return false;"
-                              autocomplete="off"
-                              id="prezp-input-icon-left"
-                              title=" "
-                              v-model="chosenAdress"
-                              name="prezp-input-icon-left"
-                              required
-                            />
-                            <i
-                              class="glyphicon glyphicon-pencil icon-left input-icon"
-                            ></i>
-                            <label
-                              class="control-label"
-                              for="prezp-input-icon-left"
-                              >{{ "ADRESA STANOVANJA" }}</label
-                            >
-                            <i class="bar"></i>
-                          </div>
-                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <div
-                          class="form-group with-icon-left"
-                        >
-                          <div class="input-group">
-                            <input
-                              onpaste="return false;"
-                              autocomplete="off"
-                              id="telep-input-icon-left"
-                              title=" "
-                              v-model="telefon"
-                              name="telep-input-icon-left"
-                              required
-                            />
-                            <i
-                              class="glyphicon glyphicon-pencil icon-left input-icon"
-                            ></i>
-                            <label
-                              class="control-label"
-                              for="telep-input-icon-left"
-                              >{{ "KONTAKT TELEFON (3876xxxxxxx)" }}</label
-                            >
-                            <i class="bar"></i>
-                          </div>
-                        </div>
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <div                     
-                          class="form-group with-icon-left"
-                        >
-                          <div class="input-group">
-                            <input
+                      <!--  <div class="form-group with-icon-left">
+                        <div class="input-group">
+                          <input
                             onpaste="return false;"
-                                autocomplete="off"
-                              id="emep-input-icon-left"
-                              title=" "
-                              v-model="email"
-                              name="emep-input-icon-left"
-                              required
-                            />
-                            <i
-                              class="glyphicon glyphicon-pencil icon-left input-icon"
-                            ></i>
-                            <label
-                              class="control-label"
-                              for="emep-input-icon-left"
-                              >{{ "KONTAKT E-MAIL" }}</label
-                            >
-                            <i class="bar"></i>
-                          </div>
+                            autocomplete="off"
+                            id="prezp-input-icon-left"
+                            title=" "
+                            v-model="chosenAdress"
+                            name="prezp-input-icon-left"
+                            required
+                          />
+                          <i
+                            class="glyphicon glyphicon-pencil icon-left input-icon"
+                          ></i>
+                          <label
+                            class="control-label"
+                            for="prezp-input-icon-left"
+                            >{{ "ADRESA STANOVANJA" }}</label
+                          >
+                          <i class="bar"></i>
                         </div>
+                      </div> -->
 
+                      <div class="form-group with-icon-left">
+                        <div class="input-group">
+                          <input
+                            onpaste="return false;"
+                            autocomplete="off"
+                            id="telep-input-icon-left"
+                            title=" "
+                            v-model="telefon"
+                            name="telep-input-icon-left"
+                            required
+                          />
+                          <i
+                            class="glyphicon glyphicon-pencil icon-left input-icon"
+                          ></i>
+                          <label
+                            class="control-label"
+                            for="telep-input-icon-left"
+                            >{{ "KONTAKT TELEFON (3876xxxxxxx)" }}</label
+                          >
+                          <i class="bar"></i>
+                        </div>
+                      </div>
 
+                      <div class="form-group with-icon-left">
+                        <div class="input-group">
+                          <input
+                            onpaste="return false;"
+                            autocomplete="off"
+                            id="emep-input-icon-left"
+                            title=" "
+                            v-model="email"
+                            name="emep-input-icon-left"
+                            required
+                          />
+                          <i
+                            class="glyphicon glyphicon-pencil icon-left input-icon"
+                          ></i>
+                          <label
+                            class="control-label"
+                            for="emep-input-icon-left"
+                            >{{ "KONTAKT E-MAIL" }}</label
+                          >
+                          <i class="bar"></i>
+                        </div>
+                      </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <vuestic-multi-select
-                          :label="'JEZIK NALAZA'"
-                          v-model="language"
-                          name="language"
-                          :required="true"
-                          title=" "
-                          ref="languageSelect"
-                          v-bind:options="languages"
-                        ></vuestic-multi-select>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                      <!-- <vuestic-multi-select
+                        :label="'JEZIK NALAZA'"
+                        v-model="language"
+                        name="language"
+                        :required="true"
+                        title=" "
+                        ref="languageSelect"
+                        v-bind:options="languages"
+                      ></vuestic-multi-select> -->
                     </div>
                   </div>
                 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 <div class="row">
                   <div class="col-md-12">
@@ -731,25 +405,15 @@
                     {{ cancelText }}
                   </button>
 
-
-
-
-
-
-
-
                   <button
                     type="button"
                     v-if="!noButtons && invalid"
                     :class="okClass"
                     @click="ok"
                     :disabled="true"
-                  >                   
+                  >
                     {{ okText }}
                   </button>
-
-
-                 
 
                   <button
                     type="button"
@@ -757,26 +421,6 @@
                     :class="okClass"
                     @click="ok"
                     :disabled="
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                       (pacijentbezsimptoma == false &&
                         povišenatjelesnatemperatura == false &&
                         suhikašalj == false &&
@@ -791,26 +435,6 @@
                         otežanodisanjeiligubitakdaha == false &&
                         bolilipritisakuprsima == false &&
                         gubitaksposobnostigovorailikretanja == false) ||
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                       (!Number.isInteger(dateofb) &&
                         dateofb.length != 8 &&
                         izbor === 'datr') ||
@@ -819,12 +443,13 @@
                         izbor === 'god') ||
                       ime.trim() == '' ||
                       prezime.trim() == '' ||
+                      nalaz.trim() == '' ||
+                      datum.trim() == '' ||
                       spol.trim() == '' ||
                       purpose.trim() == '' ||
                       izdavanje.trim() == ''
                     "
                   >
-                   
                     {{ okText }}
                   </button>
                 </slot>
@@ -839,26 +464,6 @@
 </template>
 
 <script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { bus } from "../../main";
 import router from "../../router";
 import { http } from "../../../config/config.js";
@@ -918,39 +523,20 @@ export default {
       default: false,
     },
   },
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   data() {
     return {
       // Eurofarm Centar
 
-      purpose: "",
-      purposes: ["Putovanje", "Procjena zdravstvenog stanja", "Kontakt sa zaraženom osobom"],
+      purpose: "Potvrda o prebolovanoj infekciji",
+      purposes: ["Potvrda o prebolovanoj infekciji"],
       analysis: "",
-      analyses: ["", "COVID-19 RT-PCR Test", "COVID-19 Antigen Test"],
+      analyses: [""],
 
-      izdavanje: "",
+      izdavanje: "DANAS",
       izdavanja: ["DANAS", "SUTRA"],
 
-      pacijentbezsimptoma: false,
+      pacijentbezsimptoma: true,
       povišenatjelesnatemperatura: false,
       suhikašalj: false,
       umor: false,
@@ -1004,6 +590,10 @@ export default {
       email: "",
 
       invalid: true,
+
+      protokol: "",
+      nalaz: "",
+      datum: "",
 
       // Vue Loading
       isLoading: false,
@@ -1063,35 +653,12 @@ export default {
     );
   },
   watch: {
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     purpose: function () {
-
       if (
-        this.purpose === "Putovanje" ||
-        this.purpose === "Procjena zdravstvenog stanja" ||
-        this.purpose === "Kontakt sa zaraženom osobom" ||
+        this.purpose === "Potvrda o prebolovanoj infekciji" ||
+        this.purpose === "Potvrda o izvršenoj vakcinaciji" ||
         this.purpose != ""
       ) {
-        
         this.pacijentbezsimptoma = true;
 
         if (this.pacijentbezsimptoma === true) {
@@ -1109,21 +676,21 @@ export default {
           this.bolilipritisakuprsima = false;
           this.gubitaksposobnostigovorailikretanja = false;
         }
-      }else{
-          this.pacijentbezsimptoma = false;
-          this.povišenatjelesnatemperatura = false;
-          this.suhikašalj = false;
-          this.umor = false;
-          this.bolovi = false;
-          this.grlobolja = false;
-          this.proljev = false;
-          this.konjunktivitis = false;
-          this.glavobolja = false;
-          this.gubitakosjetaokusailimirisa = false;
-          this.osipilipromjenabojeprstijunarukamailinogama = false;
-          this.otežanodisanjeiligubitakdaha = false;
-          this.bolilipritisakuprsima = false;
-          this.gubitaksposobnostigovorailikretanja = false;
+      } else {
+        this.pacijentbezsimptoma = false;
+        this.povišenatjelesnatemperatura = false;
+        this.suhikašalj = false;
+        this.umor = false;
+        this.bolovi = false;
+        this.grlobolja = false;
+        this.proljev = false;
+        this.konjunktivitis = false;
+        this.glavobolja = false;
+        this.gubitakosjetaokusailimirisa = false;
+        this.osipilipromjenabojeprstijunarukamailinogama = false;
+        this.otežanodisanjeiligubitakdaha = false;
+        this.bolilipritisakuprsima = false;
+        this.gubitaksposobnostigovorailikretanja = false;
       }
     },
 
@@ -1144,44 +711,6 @@ export default {
         this.gubitaksposobnostigovorailikretanja = false;
       }
     },
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     show: function (value) {
       if (value) {
@@ -1195,25 +724,6 @@ export default {
         }, this.duration);
       }
     },
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     izbor: function () {
       switch (this.izbor) {
@@ -1222,7 +732,7 @@ export default {
           this.dateofb = "";
           this.datumrodjenja = "";
           this.godiste = "";
-          
+
           break;
 
         case "datr":
@@ -1230,7 +740,7 @@ export default {
           this.dateofb = "";
           this.datumrodjenja = "";
           this.godiste = "";
-         
+
           break;
 
         case "god":
@@ -1250,47 +760,9 @@ export default {
           break;
       }
     },
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     jmbg: function () {
-      if (this.jmbg.length < 13) { 
+      if (this.jmbg.length < 13) {
         //
       } else if (this.jmbg.length === 13) {
         if (this.izbor === "jmbg" && !this.validateDate(this.jmbg)) {
@@ -1303,38 +775,32 @@ export default {
           // Godište nije validno.
         } else {
           if (true) {
-            http
-              .post("/uzorci/patient", {
-                jmbg: this.jmbg,
-                token: this.$store.state.token,
-                site: this.$store.state.site,
-              })
-              .then((res) => {
-                // Do nothing.
-              });
-          } 
+            // Do nothing.
+          }
         }
       } else if (this.jmbg.length > 13) {
         this.jmbg = this.jmbg.slice(0, 13);
       }
     },
 
-
-
-
     datumrodjenja: function () {
       this.datumrodjenja = this.datumrodjenja.replace(" ", "");
       this.datumrodjenja = this.datumrodjenja.replace("..", ".");
 
-      if(!isNaN(this.datumrodjenja.substring(0,2)) 
-      && this.datumrodjenja.length === 2
-      ){
-        this.datumrodjenja = this.datumrodjenja.substring(0,2).replace(".","") + "."
+      if (
+        !isNaN(this.datumrodjenja.substring(0, 2)) &&
+        this.datumrodjenja.length === 2
+      ) {
+        this.datumrodjenja =
+          this.datumrodjenja.substring(0, 2).replace(".", "") + ".";
       }
 
-      if(this.datumrodjenja.length === 4 && 
-        !isNaN(this.datumrodjenja.slice(2,4) 
-        && this.datumrodjenja.includes("."))){
+      if (
+        this.datumrodjenja.length === 4 &&
+        !isNaN(
+          this.datumrodjenja.slice(2, 4) && this.datumrodjenja.includes(".")
+        )
+      ) {
         var dot1 = this.datumrodjenja.split(".");
         var ldot1 = dot1.length;
 
@@ -1342,15 +808,17 @@ export default {
           var qdate1 = this.datumrodjenja.split(".");
 
           if (qdate1[1].length === 2) {
-            this.datumrodjenja = qdate1[0] + "." + qdate1[1] + "."
+            this.datumrodjenja = qdate1[0] + "." + qdate1[1] + ".";
           }
         }
-
       }
 
-      if(this.datumrodjenja.length === 5 && 
-        !isNaN(this.datumrodjenja.slice(3,5) 
-        && this.datumrodjenja.includes("."))){
+      if (
+        this.datumrodjenja.length === 5 &&
+        !isNaN(
+          this.datumrodjenja.slice(3, 5) && this.datumrodjenja.includes(".")
+        )
+      ) {
         var dot2 = this.datumrodjenja.split(".");
         var ldot2 = dot2.length;
 
@@ -1358,10 +826,9 @@ export default {
           var qdate2 = this.datumrodjenja.split(".");
 
           if (qdate2[1].length === 2) {
-            this.datumrodjenja = qdate2[0] + "." + qdate2[1] + "."
+            this.datumrodjenja = qdate2[0] + "." + qdate2[1] + ".";
           }
         }
-
       }
 
       // console.log(this.datumrodjenja);
@@ -1439,7 +906,6 @@ export default {
       // console.log("Watching: DATE OF BIRTH");
       // console.log(this.dateofb);
       if (this.dateofb.length < 8) {
-
       } else if (this.dateofb.length == 8) {
         //
         if (!this.validateDateOfBirth(this.dateofb)) {
@@ -1458,7 +924,7 @@ export default {
         this.dateofb = this.dateofb.slice(0, 8);
       }
     },
-   godiste: function () {
+    godiste: function () {
       if (this.godiste.length < 4) {
         //
       } else if (this.godiste.length == 4) {
@@ -1479,66 +945,8 @@ export default {
       // console.log(this.invalid)
     },
   },
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   methods: {
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     Test() {
       this.isLoading = true;
 
@@ -1546,28 +954,7 @@ export default {
         this.isLoading = false;
       }, 2000);
     },
-    onCancel() {
-      
-    },
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    onCancel() {},
 
     listenKeyUp(event) {
       if (event.key === "Escape") {
@@ -1578,46 +965,6 @@ export default {
       this.$emit("ok");
       this.Save();
     },
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     cancel() {
       this.$emit("cancel");
@@ -1643,44 +990,6 @@ export default {
       //The maximum is exclusive and the minimum is inclusive
       return Math.floor(Math.random() * (max - min)) + min;
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     validateJMBG(jmbg) {
       return (
@@ -1833,47 +1142,11 @@ export default {
       return true;
     },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     Save() {
       if (
         this.ime.trim() === "" ||
+        this.nalaz.trim() === "" ||
+        this.datum.trim() === "" ||
         this.prezime.trim() === "" ||
         this.spol.trim() === "" ||
         this.purpose.trim() === ""
@@ -1891,26 +1164,6 @@ export default {
           className: this.className,
         });
       } else {
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         if (this.chosenAdress.trim() === "") {
           this.chosenAdress = "";
         }
@@ -1921,219 +1174,120 @@ export default {
           this.email = "";
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         if (this.validateJMBG(this.jmbg)) {
           var jmbgPost = this.jmbg;
           var item = true;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           this.isLoading = true;
 
-                // console.log("Saving Patient data...");
+          // console.log("Saving Patient data...");
 
-                this.symptoms = {
-                  pacijentbezsimptoma: this.pacijentbezsimptoma,
-                  povišenatjelesnatemperatura: this.povišenatjelesnatemperatura,
-                  suhikašalj: this.suhikašalj,
-                  umor: this.umor,
-                  bolovi: this.bolovi,
-                  grlobolja: this.grlobolja,
-                  proljev: this.proljev,
-                  konjunktivitis: this.konjunktivitis,
-                  glavobolja: this.glavobolja,
-                  gubitakosjetaokusailimirisa: this.gubitakosjetaokusailimirisa,
-                  osipilipromjenabojeprstijunarukamailinogama: this
-                    .osipilipromjenabojeprstijunarukamailinogama,
-                  otežanodisanjeiligubitakdaha: this
-                    .otežanodisanjeiligubitakdaha,
-                  bolilipritisakuprsima: this.bolilipritisakuprsima,
-                  gubitaksposobnostigovorailikretanja: this
-                    .gubitaksposobnostigovorailikretanja,
+          this.symptoms = {
+            pacijentbezsimptoma: this.pacijentbezsimptoma,
+            povišenatjelesnatemperatura: this.povišenatjelesnatemperatura,
+            suhikašalj: this.suhikašalj,
+            umor: this.umor,
+            bolovi: this.bolovi,
+            grlobolja: this.grlobolja,
+            proljev: this.proljev,
+            konjunktivitis: this.konjunktivitis,
+            glavobolja: this.glavobolja,
+            gubitakosjetaokusailimirisa: this.gubitakosjetaokusailimirisa,
+            osipilipromjenabojeprstijunarukamailinogama: this
+              .osipilipromjenabojeprstijunarukamailinogama,
+            otežanodisanjeiligubitakdaha: this.otežanodisanjeiligubitakdaha,
+            bolilipritisakuprsima: this.bolilipritisakuprsima,
+            gubitaksposobnostigovorailikretanja: this
+              .gubitaksposobnostigovorailikretanja,
+          };
+
+          // console.log("Unosim novog pacijenta...")
+          // console.log('.post("certificates/unos/save/');
+          this.protokol = "ECL";
+
+          http
+            .post("certificates/unos/save", {
+              jmbg: jmbgPost,
+              ime: this.ime.toUpperCase().trim(),
+              prezime: this.prezime.toUpperCase().trim(),
+              // entry_disabled
+              spol: this.spol.trim(),
+              duhan: "",
+              dijabetes: "",
+
+              // Eurofarm Centar
+              purpose: this.purpose,
+              analysis: this.analysis,
+              izdavanje: this.izdavanje,
+              referenca: (
+                new Date().getTime() -
+                new Date().getTimezoneOffset() * 60000
+              ).toString(),
+
+              protokol: this.protokol, // Sistemski broj protokola
+              nalaz: this.nalaz, // BROJ PROTOKLA NALAZA
+              datum: this.datum, // DATUM POZITIVNOG REZULTATA
+
+              symptoms: this.symptoms,
+              note: "",
+              passport: this.passport.trim(),
+              language: this.language,
+              telefon: this.telefon.trim(),
+              email: this.email.trim(),
+              adresa: this.chosenAdress.trim(),
+              site: this.$store.state.site,
+              token: this.$store.state.token,
+            })
+            .then((res) => {
+              if (res.data.success === false) {
+                this.isLoading = false;
+
+                this.toastText = "Greška prilikom upisa!";
+                this.toastIcon = "fa-remove";
+                this.toastPosition = "top-right";
+                this.className = "vuestic-toast-danger";
+
+                this.showToast(this.toastText, {
+                  icon: this.toastIcon,
+                  position: this.toastPosition,
+                  duration: this.toastDuration,
+                  fullWidth: this.isToastFullWidth,
+                  className: this.className,
+                });
+              } else {
+                this.isLoading = false;
+
+                this.jmbg = "";
+                this.dateofb = "";
+                this.datumrodjenja = "";
+                this.godiste = "";
+                this.ime = "";
+                this.purpose = "Potvrda o prebolovanoj infekciji";
+                this.analysis = "";
+                this.izdavanje = "DANAS";
+                this.prezime = "";
+                this.datum = "";
+                this.nalaz = "";
+                this.spol = "";
+                this.chosenAdress = "";
+                this.telefon = "";
+                this.email = "";
+                this.invalid = true;
+
+                this.show = false;
+
+                var data = {
+                  ime: "",
+                  prezime: "",
                 };
 
-                // console.log("Unosim novog pacijenta...")
-                console.log('.post("certificates/unos/save/')
+                bus.$emit("SetCert", data);
 
-                http
-                  .post("certificates/unos/save", {
-
-                    jmbg: jmbgPost,
-                    ime: this.ime.toUpperCase().trim(),
-                    prezime: this.prezime.toUpperCase().trim(),
-                    // entry_disabled
-                    spol: this.spol.trim(),
-                    duhan: "",
-                    dijabetes: "",
-
-                    // Eurofarm Centar
-                    purpose: this.purpose,
-                    analysis: this.analysis,
-                    izdavanje: this.izdavanje,
-                    referenca: (
-                      new Date().getTime() -
-                      new Date().getTimezoneOffset() * 60000
-                    ).toString(),
-
-                    symptoms: this.symptoms,
-                    note: "",
-                    passport: this.passport.trim(),
-                    language: this.language,
-                    telefon: this.telefon.trim(),
-                    email: this.email.trim(),
-                    adresa: this.chosenAdress.trim(),
-                    site: this.$store.state.site,
-                    token: this.$store.state.token,
-                  })
-                  .then((res) => {
-
-                    if (res.data.success === false) {
-
-                      this.isLoading = false;
-
-                      this.toastText = "Greška prilikom upisa!";
-                      this.toastIcon = "fa-remove";
-                      this.toastPosition = "top-right";
-                      this.className = "vuestic-toast-danger";
-
-                      this.showToast(this.toastText, {
-                        icon: this.toastIcon,
-                        position: this.toastPosition,
-                        duration: this.toastDuration,
-                        fullWidth: this.isToastFullWidth,
-                        className: this.className,
-                      });
-
-                    } else {
-
-                      this.isLoading = false;
-
-                      this.jmbg = "";
-                      this.dateofb = "";
-                      this.datumrodjenja = "";
-                      this.godiste = "";
-                      this.ime = "";
-                      this.purpose = "";
-                      this.analysis = "";
-                      this.izdavanje = "";
-                      this.prezime = "";
-                      this.spol = "";
-                      this.chosenAdress = "";
-                      this.telefon = "";
-                      this.email = "";
-                      this.invalid = true;
-
-                      this.show = false;
-
-                      var data = {
-                        ime: "",
-                        prezime: ""
-                      }
-
-                      bus.$emit("SetCert", data);
-
-                      window.removeEventListener("keyup", this.listenKeyUp);
-
-                      
-                    }
-                  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         
+                window.removeEventListener("keyup", this.listenKeyUp);
+              }
+            });
         } else {
-          
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
       }
     },
   },

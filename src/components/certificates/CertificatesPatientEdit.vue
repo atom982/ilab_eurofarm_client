@@ -157,7 +157,7 @@
                           v-bind:options="purposes"
                         ></vuestic-simple-select>
 
-                        <vuestic-simple-select
+                        <!--  <vuestic-simple-select
                           :color="'red'"
                           :label="'NALAZ IZDATI'"
                           v-model="patient.izdavanje"
@@ -166,7 +166,7 @@
                           title=" "
                           ref="izdavanjeSelect"
                           v-bind:options="izdavanja"
-                        ></vuestic-simple-select>
+                        ></vuestic-simple-select> -->
                       </fieldset>
                     </div>
 
@@ -229,7 +229,59 @@
                               <i class="bar"></i>
                             </div>
                           </div>
+
+                          
  -->
+
+                          <div class="form-group with-icon-left">
+                            <div class="input-group">
+                              <input
+                                onpaste="return false;"
+                                autocomplete="off"
+                                style="color: #e34a4a"
+                                id="poz-input-icon-left"
+                                title=" "
+                                v-model="patient.datum"
+                                name="poz-input-icon-left"
+                                :required="true"
+                              />
+                              <i
+                                class="glyphicon glyphicon-pencil icon-left input-icon"
+                              ></i>
+                              <label
+                                style="color: #e34a4a"
+                                class="control-label"
+                                for="poz-input-icon-left"
+                                >{{ "DATUM POZITIVNOG REZULTATA" }}</label
+                              >
+                              <i class="bar"></i>
+                            </div>
+                          </div>
+
+                          <div class="form-group with-icon-left">
+                            <div class="input-group">
+                              <input
+                                onpaste="return false;"
+                                autocomplete="off"
+                                style="color: #e34a4a"
+                                id="nalaz-input-icon-left"
+                                title=" "
+                                v-model="patient.nalaz"
+                                name="nalaz-input-icon-left"
+                                :required="true"
+                              />
+                              <i
+                                class="glyphicon glyphicon-pencil icon-left input-icon"
+                              ></i>
+                              <label
+                                style="color: #e34a4a"
+                                class="control-label"
+                                for="nalaz-input-icon-left"
+                                >{{ "BROJ PROTOKLA NALAZA" }}</label
+                              >
+                              <i class="bar"></i>
+                            </div>
+                          </div>
 
                           <div class="form-group with-icon-left">
                             <div class="input-group">
@@ -254,7 +306,7 @@
                             </div>
                           </div>
 
-                          <div class="form-group with-icon-left">
+                          <!--  <div class="form-group with-icon-left">
                             <div class="input-group">
                               <input
                                 onpaste="return false;"
@@ -275,7 +327,7 @@
                               >
                               <i class="bar"></i>
                             </div>
-                          </div>
+                          </div> -->
 
                           <!-- <vuestic-simple-select
                           label="Mjesto stanovanja"
@@ -331,7 +383,7 @@
                             </div>
                           </div>
 
-                          <vuestic-multi-select
+                          <!--   <vuestic-multi-select
                             :label="'JEZIK NALAZA'"
                             v-model="patient.language"
                             name="spol"
@@ -339,7 +391,7 @@
                             title=" "
                             ref="languageSelect"
                             v-bind:options="languages"
-                          ></vuestic-multi-select>
+                          ></vuestic-multi-select> -->
                         </div>
                       </div>
 
@@ -574,6 +626,10 @@
                         godiste.length != 4 &&
                         izbor === 'god') ||
                       (patient.ime != undefined && patient.ime.trim() == '') ||
+                      (patient.nalaz != undefined &&
+                        patient.nalaz.trim() == '') ||
+                      (patient.datum != undefined &&
+                        patient.datum.trim() == '') ||
                       (patient.prezime != undefined &&
                         patient.prezime.trim() == '') ||
                       (patient.spol != undefined &&
@@ -685,6 +741,11 @@ export default {
           gubitaksposobnostigovorailikretanja: false,
         },
         purpose: "",
+
+        protokol: "",
+        nalaz: "",
+        datum: "",
+
         analysis: "",
         referenca: "",
         note: "",
@@ -720,11 +781,8 @@ export default {
       // Eurofarm Centar
 
       purpose: "",
-      purposes: [
-        "Putovanje",
-        "Procjena zdravstvenog stanja",
-        "Kontakt sa zaraženom osobom",
-      ],
+
+      purposes: ["Potvrda o prebolovanoj infekciji"],
       analysis: "",
       analyses: ["", "COVID-19 RT-PCR Test", "COVID-19 Antigen Test"],
 
@@ -1263,6 +1321,11 @@ export default {
       this.ime = this.patient.ime;
       this.prezime = this.patient.prezime;
       this.spol = this.patient.spol;
+
+      this.protokol = "ECL";
+      this.nalaz = this.patient.nalaz;
+      this.datum = this.patient.datum;
+
       this.adresa = this.patient.adresa;
       this.telefon = this.patient.telefon;
       this.email = this.patient.email;
@@ -1272,6 +1335,8 @@ export default {
 
       if (
         this.ime.trim() === "" ||
+        this.nalaz.trim() === "" ||
+        this.datum.trim() === "" ||
         this.prezime.trim() === "" ||
         this.spol.trim() === "" ||
         this.purpose.trim() === ""
@@ -1342,6 +1407,9 @@ export default {
                 purpose: this.purpose,
                 analysis: this.analysis,
                 izdavanje: this.izdavanje,
+
+                nalaz: this.nalaz,
+                datum: this.datum,
 
                 note: this.patient.note,
                 passport: this.patient.passport.trim(),
