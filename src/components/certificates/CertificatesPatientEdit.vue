@@ -148,7 +148,7 @@
 
                         <vuestic-simple-select
                           :color="'red'"
-                          :label="'SVRHA TESTIRANJA'"
+                          :label="'VRSTA POTVRDE'"
                           v-model="patient.purpose"
                           name="purpose"
                           :required="true"

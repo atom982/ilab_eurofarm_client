@@ -148,7 +148,7 @@
 
                         <vuestic-simple-select
                           :color="'red'"
-                          :label="'SVRHA IZDAVANJA POTVRDE'"
+                          :label="'VRSTA POTVRDE'"
                           v-model="purpose"
                           name="purpose"
                           :required="true"
