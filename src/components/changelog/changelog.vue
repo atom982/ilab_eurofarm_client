@@ -39,9 +39,13 @@
                     <table class="table table-striped first-td-padding">
                       <thead>
                         <tr>
-                          <td width="50%">{{ "Lokacija" }}</td>
-                          <td width="25%">{{ "Protokol" }}</td>
-                          <td width="25%">{{ "Uzorak" }}</td>
+                          <td width="10%">{{ "CDC" }}</td>
+                          <td width="25%">{{ "Lokacija" }}</td>
+                          <td width="15%">{{ "Protokol" }}</td>
+                          <td width="15%">{{ "Uzorak" }}</td>
+                          <td width="15%">{{ "Datum" }}</td>
+                          <td width="10%">{{ "Vrijeme" }}</td>
+                          <td width="10%">{{ "korisnik" }}</td>
                         </tr>
                       </thead>
                       <tbody>
@@ -54,9 +58,21 @@
                             'table-warning': false,
                           }"
                         >
-                          <td>{{ element.lokacija }}</td>
+                          <td>
+                            <i
+                              style="font-size: 18px; color: #4ab2e3"
+                              class="glyphicon glyphicon-erase"
+                              @click.prevent="ShowData(element)"
+                            ></i>
+                          </td>
+                          <td>
+                            {{ element.lokacija }}
+                          </td>
                           <td>{{ element.protokol }}</td>
                           <td>{{ element.sample }}</td>
+                          <td>{{ element.datum }}</td>
+                          <td>{{ element.vrijeme }}</td>
+                          <td>{{ element.user }}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -70,6 +86,223 @@
         </vuestic-widget>
       </div>
     </div>
+
+    <vuestic-modal-error
+      :show.sync="show"
+      ref="staticModalChanges"
+      cancelText="ZATVORI"
+      okText="POTVRDI"
+    >
+      <div slot="title">
+        {{ "" }}
+       
+        <span style="color: #4ab2e3">{{ protokol}}</span>
+         <span style="color: #e34a4a">{{ " - Change Data Capture" }}</span>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-md-6">
+            <span style="color: #e34a4a">{{ "Old Data Capture" }}</span>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  onpaste="return false;"
+                  autocomplete="off"
+                  id="np-input-icon-left"
+                  title=" "
+                  name="np-input-icon-left"
+                  disabled
+                />
+                <label
+                  style="color: #e34a4a"
+                  class="control-label"
+                  for="np-input-icon-left"
+                  >{{ oldData.ime }}</label
+                >
+                <i class="bar"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  onpaste="return false;"
+                  autocomplete="off"
+                  id="np-input-icon-left"
+                  title=" "
+                  name="np-input-icon-left"
+                  disabled
+                />
+                <label
+                  style="color: #e34a4a"
+                  class="control-label"
+                  for="np-input-icon-left"
+                  >{{ oldData.prezime }}</label
+                >
+                <i class="bar"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  onpaste="return false;"
+                  autocomplete="off"
+                  id="np-input-icon-left"
+                  title=" "
+                  name="np-input-icon-left"
+                  disabled
+                />
+                <label
+                  style="color: #e34a4a"
+                  class="control-label"
+                  for="np-input-icon-left"
+                  >{{ oldData.spol }}</label
+                >
+                <i class="bar"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  onpaste="return false;"
+                  autocomplete="off"
+                  id="np-input-icon-left"
+                  title=" "
+                  name="np-input-icon-left"
+                  disabled
+                />
+                <label
+                  style="color: #e34a4a"
+                  class="control-label"
+                  for="np-input-icon-left"
+                  >{{ oldData.datRodjenja }}</label
+                >
+                <i class="bar"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  onpaste="return false;"
+                  autocomplete="off"
+                  id="np-input-icon-left"
+                  title=" "
+                  name="np-input-icon-left"
+                  disabled
+                />
+                <label
+                  style="color: #e34a4a"
+                  class="control-label"
+                  for="np-input-icon-left"
+                  >{{ "ID: " + oldData.passport }}</label
+                >
+                <i class="bar"></i>
+              </div>
+            </div>
+            <!-- {{ oldData }} -->
+          </div>
+
+          <div class="col-md-6">
+            <span style="color: #4ab2e3">{{ "New Data Capture" }}</span>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  onpaste="return false;"
+                  autocomplete="off"
+                  id="np-input-icon-left"
+                  title=" "
+                  name="np-input-icon-left"
+                  disabled
+                />
+                <label
+                  style="color: #4ab2e3"
+                  class="control-label"
+                  for="np-input-icon-left"
+                  >{{ newData.ime }}</label
+                >
+                <i class="bar"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  onpaste="return false;"
+                  autocomplete="off"
+                  id="np-input-icon-left"
+                  title=" "
+                  name="np-input-icon-left"
+                  disabled
+                />
+                <label
+                  style="color: #4ab2e3"
+                  class="control-label"
+                  for="np-input-icon-left"
+                  >{{ newData.prezime }}</label
+                >
+                <i class="bar"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  onpaste="return false;"
+                  autocomplete="off"
+                  id="np-input-icon-left"
+                  title=" "
+                  name="np-input-icon-left"
+                  disabled
+                />
+                <label
+                  style="color: #4ab2e3"
+                  class="control-label"
+                  for="np-input-icon-left"
+                  >{{ newData.spol }}</label
+                >
+                <i class="bar"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  onpaste="return false;"
+                  autocomplete="off"
+                  id="np-input-icon-left"
+                  title=" "
+                  name="np-input-icon-left"
+                  disabled
+                />
+                <label
+                  style="color: #4ab2e3"
+                  class="control-label"
+                  for="np-input-icon-left"
+                  >{{ newData.datRodjenja }}</label
+                >
+                <i class="bar"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  onpaste="return false;"
+                  autocomplete="off"
+                  id="np-input-icon-left"
+                  title=" "
+                  name="np-input-icon-left"
+                  disabled
+                />
+                <label
+                  style="color: #4ab2e3"
+                  class="control-label"
+                  for="np-input-icon-left"
+                  >{{ "ID: " + newData.passport }}</label
+                >
+                <i class="bar"></i>
+              </div>
+            </div>
+            <!-- {{ newData }} -->
+          </div>
+        </div>
+      </div>
+    </vuestic-modal-error>
 
     <div class="row">
       <div class="col-md-12">
@@ -118,6 +351,26 @@ export default {
 
       changes: [],
 
+      protokol: "",
+
+      oldData: {
+        jmbg: "",
+        ime: "",
+        prezime: "",
+        spol: "",
+        passport: "",
+        datRodjenja: "",
+      },
+
+      newData: {
+        jmbg: "",
+        ime: "",
+        prezime: "",
+        spol: "",
+        passport: "",
+        datRodjenja: "",
+      },
+
       filtered: [],
       uzorak: {},
       text: "",
@@ -136,8 +389,6 @@ export default {
       )
       .then((res) => {
         if (res.data.success) {
-          // console.log(res.data.changes);
-
           this.changes = [];
 
           res.data.changes.forEach((element) => {
@@ -148,13 +399,69 @@ export default {
               var lokacija = element.site.opis;
             }
 
+            var godisteOld = element.oldData.jmbg.substring(4, 7);
+            switch (godisteOld[0]) {
+              case "9":
+                godisteOld = "1" + godisteOld + "";
+                break;
+              case "0":
+                godisteOld = "2" + godisteOld + "";
+                break;
+              default:
+                godisteOld = "";
+                break;
+            }
+
+            var godisteNew = element.newData.jmbg.substring(4, 7);
+            switch (godisteNew[0]) {
+              case "9":
+                godisteNew = "1" + godisteNew + "";
+                break;
+              case "0":
+                godisteNew = "2" + godisteNew + "";
+                break;
+              default:
+                godisteNew = "";
+                break;
+            }
+
             this.changes.push({
+              datum:
+                JSON.stringify(
+                  JSON.stringify(element.time).substring(1, 11)
+                ).slice(9, 11) +
+                "." +
+                JSON.stringify(
+                  JSON.stringify(element.time).substring(1, 11)
+                ).slice(6, 8) +
+                "." +
+                JSON.stringify(
+                  JSON.stringify(element.time).substring(1, 11)
+                ).slice(1, 5),
+              vrijeme: JSON.stringify(element.time).substring(12, 17),
+              datRodjenjaOld:
+                element.oldData.jmbg.substring(0, 2) +
+                "." +
+                element.oldData.jmbg.substring(2, 4) +
+                "." +
+                godisteOld,
+              datRodjenjaNew:
+                element.newData.jmbg.substring(0, 2) +
+                "." +
+                element.newData.jmbg.substring(2, 4) +
+                "." +
+                godisteNew,
+              new: element.newData,
+              old: element.oldData,
+              user: element.user,
               sample: element.sample,
               protokol: element.protokol,
               lokacija: lokacija,
               element: element,
             });
           });
+
+          // console.log(this.changes);
 
           this.filtered = [];
           this.changes.forEach((element) => {
@@ -204,6 +511,14 @@ export default {
       }, 2000);
     },
     onCancel() {},
+    ShowData(element) {
+      this.protokol = element.protokol;
+      this.oldData = element.old;
+      this.oldData.datRodjenja = element.datRodjenjaOld;
+      this.newData = element.new;
+      this.newData.datRodjenja = element.datRodjenjaNew;
+      this.$refs.staticModalChanges.open();
+    },
   },
 };
 </script>

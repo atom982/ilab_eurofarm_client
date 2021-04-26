@@ -353,7 +353,7 @@ export default {
       // "60508f95f0a3cf9c7860f5bd":  HLN (F), HBL Laboratorija - Novo Sarajevo
       // "60509039f0a3cf9c7860f5e1":  HLD (G), HBL Laboratorija - Dobrinja
       // "6068b249f68be9eab36b4fdb":  PJU (U), Podružnica 1. Unitic, Sarajevo
-      // "6068b2d5f68be9eab36b5003":  PJI (Z), Podružnica 2. IUS, Sarajevo
+      // "6068b2d5f68be9eab36b5003":  PJI (Z), Podružnica Ilidža
       // "6068b346f68be9eab36b502f":  PJV (V), Podružnica Visoko
       // "6068b3b3f68be9eab36b5088":  PJT (T), Podružnica Tuzla
       // "6068b471f68be9eab36b50f5":  PJG (O), Podružnica Goražde
@@ -514,7 +514,7 @@ export default {
           case "U": // Podružnica 1. Unitic, Sarajevo
             this.site = "6068b249f68be9eab36b4fdb";
             break;
-          case "Z": // Podružnica 2. IUS, Sarajevo
+          case "Z": // Podružnica Ilidža
             this.site = "6068b2d5f68be9eab36b5003";
             break;
           case "V": // Podružnica Visoko

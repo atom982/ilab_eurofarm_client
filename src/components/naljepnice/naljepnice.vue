@@ -327,7 +327,7 @@ export default {
       case "6068b249f68be9eab36b4fdb": // PJU (U), Podružnica 1. Unitic, Sarajevo        
         this.analiza = "CoV2 RT PCR";
         break;
-      case "6068b2d5f68be9eab36b5003": // PJI (Z), Podružnica 2. IUS, Sarajevo       
+      case "6068b2d5f68be9eab36b5003": // PJI (Z), Podružnica Ilidža     
         this.analiza = "CoV2 RT PCR";
         break;
       case "6068b346f68be9eab36b502f": // PJV (V), Podružnica Visoko        

@@ -1396,7 +1396,7 @@
       </vuestic-widget>
     </div>
 
-    <!-- Podružnica 2. IUS, Sarajevo -->
+    <!-- Podružnica Ilidža -->
 
     <div
       v-show="
@@ -1416,7 +1416,7 @@
           <div class="stats">
             <div v-if="true" class="stats-number">
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
-              {{ "Podružnica 2. IUS, Sarajevo" }}
+              {{ "Podružnica Ilidža" }}
             </div>
 
             <div v-if="!loaded" class="stats-number">
@@ -2871,7 +2871,7 @@
                   <strong>{{ "PJI" }}</strong>
                 </td>
                 <td>
-                  <strong>{{ "Podružnica 2. IUS, Sarajevo" }}</strong>
+                  <strong>{{ "Podružnica Ilidža" }}</strong>
                 </td>
                 <td align="middle">
                   <span v-show="PJI.rt > 0" style="color: #e34a4a"

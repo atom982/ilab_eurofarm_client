@@ -342,7 +342,7 @@ export default {
         this.opis = "PJU";
         break;
       case "6068b2d5f68be9eab36b5003":
-        this.site = "Podružnica 2. IUS, Sarajevo";
+        this.site = "Podružnica Ilidža";
         this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "PJI";
         break;
