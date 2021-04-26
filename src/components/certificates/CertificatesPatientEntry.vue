@@ -249,7 +249,7 @@
                             style="color: #e34a4a"
                             class="control-label"
                             for="nalaz-input-icon-left"
-                            >{{ "BROJ PROTOKLA NALAZA" }}</label
+                            >{{ "BROJ PROTOKOLA NALAZA" }}</label
                           >
                           <i class="bar"></i>
                         </div>
@@ -259,6 +259,7 @@
                         <div class="input-group">
                           <input
                             onpaste="return false;"
+                            style="color: #e34a4a"
                             autocomplete="off"
                             id="passport-input-icon-left"
                             title=" "
@@ -271,6 +272,7 @@
                           ></i>
 
                           <label
+                            style="color: #e34a4a"
                             class="control-label"
                             for="passport-input-icon-left"
                             >{{ "IDENTIFIKACIJSKI DOKUMENT" }}</label
@@ -447,7 +449,8 @@
                       datum.trim() == '' ||
                       spol.trim() == '' ||
                       purpose.trim() == '' ||
-                      izdavanje.trim() == ''
+                      izdavanje.trim() == '' ||
+                      passport.trim() == ''
                     "
                   >
                     {{ okText }}
@@ -1149,7 +1152,8 @@ export default {
         this.datum.trim() === "" ||
         this.prezime.trim() === "" ||
         this.spol.trim() === "" ||
-        this.purpose.trim() === ""
+        this.purpose.trim() === "" ||
+        this.passport.trim() === ""
       ) {
         this.toastText = "Unesite obavezna polja.";
         this.toastIcon = "fa-warning";
@@ -1225,7 +1229,7 @@ export default {
               ).toString(),
 
               protokol: this.protokol, // Sistemski broj protokola
-              nalaz: this.nalaz, // BROJ PROTOKLA NALAZA
+              nalaz: this.nalaz, // BROJ PROTOKOLA NALAZA
               datum: this.datum, // DATUM POZITIVNOG REZULTATA
 
               symptoms: this.symptoms,

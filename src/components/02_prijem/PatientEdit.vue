@@ -234,6 +234,7 @@
                           <div class="form-group with-icon-left">
                             <div class="input-group">
                               <input
+                                style="color: #e34a4a"
                                 onpaste="return false;"
                                 autocomplete="off"
                                 id="id-input-icon-left"
@@ -246,6 +247,7 @@
                                 class="glyphicon glyphicon-pencil icon-left input-icon"
                               ></i>
                               <label
+                                style="color: #e34a4a"
                                 class="control-label"
                                 for="id-input-icon-left"
                                 >{{ "IDENTIFIKACIJSKI DOKUMENT" }}</label
@@ -581,7 +583,9 @@
                       (patient.purpose != undefined &&
                         patient.purpose.trim() == '') ||
                       (patient.izdavanje != undefined &&
-                        patient.izdavanje.trim() == '')
+                        patient.izdavanje.trim() == '') ||
+                      (patient.passport != undefined &&
+                        patient.passport.trim() == '')
                     "
                   >
                     {{ okText }}
@@ -1282,7 +1286,8 @@ export default {
         this.ime.trim() === "" ||
         this.prezime.trim() === "" ||
         this.spol.trim() === "" ||
-        this.purpose.trim() === ""
+        this.purpose.trim() === "" ||
+        this.passport.trim() === ""
       ) {
         this.toastText = "Unesite obavezna polja.";
         this.toastIcon = "fa-warning";
@@ -1336,7 +1341,7 @@ export default {
               // this.patient.symptoms.pacijentbezsimptoma = this.pacijentbezsimptoma
 
               console.log("Spašavam izmjene...");
-              console.log("Timestamp: " + this.timestamp)
+              console.log("Timestamp: " + this.timestamp);
               if (item) {
                 http
                   .post("pacijenti/detalji/update/" + this.patient._id, {

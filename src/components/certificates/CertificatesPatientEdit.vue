@@ -277,7 +277,7 @@
                                 style="color: #e34a4a"
                                 class="control-label"
                                 for="nalaz-input-icon-left"
-                                >{{ "BROJ PROTOKLA NALAZA" }}</label
+                                >{{ "BROJ PROTOKOLA NALAZA" }}</label
                               >
                               <i class="bar"></i>
                             </div>
@@ -288,6 +288,7 @@
                               <input
                                 onpaste="return false;"
                                 autocomplete="off"
+                                style="color: #e34a4a"
                                 id="id-input-icon-left"
                                 title=" "
                                 v-model="patient.passport"
@@ -298,6 +299,7 @@
                                 class="glyphicon glyphicon-pencil icon-left input-icon"
                               ></i>
                               <label
+                               style="color: #e34a4a"
                                 class="control-label"
                                 for="id-input-icon-left"
                                 >{{ "IDENTIFIKACIJSKI DOKUMENT" }}</label
@@ -637,7 +639,9 @@
                       (patient.purpose != undefined &&
                         patient.purpose.trim() == '') ||
                       (patient.izdavanje != undefined &&
-                        patient.izdavanje.trim() == '')
+                        patient.izdavanje.trim() == '') ||
+                      (patient.passport != undefined &&
+                        patient.passport.trim() == '')
                     "
                   >
                     {{ okText }}
@@ -1325,7 +1329,7 @@ export default {
       this.protokol = "ECL";
       this.nalaz = this.patient.nalaz;
       this.datum = this.patient.datum;
-
+      this.passport = this.patient.passport;
       this.adresa = this.patient.adresa;
       this.telefon = this.patient.telefon;
       this.email = this.patient.email;
@@ -1339,7 +1343,8 @@ export default {
         this.datum.trim() === "" ||
         this.prezime.trim() === "" ||
         this.spol.trim() === "" ||
-        this.purpose.trim() === ""
+        this.purpose.trim() === "" ||
+        this.passport.trim() === ""
       ) {
         this.toastText = "Unesite obavezna polja.";
         this.toastIcon = "fa-warning";
