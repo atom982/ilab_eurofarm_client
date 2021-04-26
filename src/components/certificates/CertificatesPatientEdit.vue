@@ -85,6 +85,9 @@
                           </div>
                         </div>
 
+                         <div class="row">
+                          <div class="col-md-12">
+
                         <div class="form-group with-icon-left">
                           <div class="input-group">
                             <input
@@ -108,7 +111,7 @@
                             >
                             <i class="bar"></i>
                           </div>
-                        </div>
+                        </div> </div> </div>
 
                         <div class="form-group with-icon-left">
                           <div class="input-group">
@@ -258,30 +261,54 @@
                             </div>
                           </div>
 
-                          <div class="form-group with-icon-left">
-                            <div class="input-group">
-                              <input
-                                onpaste="return false;"
-                                autocomplete="off"
-                                style="color: #e34a4a"
-                                id="nalaz-input-icon-left"
-                                title=" "
-                                v-model="patient.nalaz"
-                                name="nalaz-input-icon-left"
-                                :required="true"
-                              />
-                              <i
-                                class="glyphicon glyphicon-pencil icon-left input-icon"
-                              ></i>
-                              <label
-                                style="color: #e34a4a"
-                                class="control-label"
-                                for="nalaz-input-icon-left"
-                                >{{ "BROJ PROTOKOLA NALAZA" }}</label
-                              >
-                              <i class="bar"></i>
-                            </div>
+
+
+
+
+                          <div class="row">
+                          <div class="col-md-6">
+                            <vuestic-simple-select  
+                            :color="'red'"                     
+                            :label="'ANALIZA'"
+                            v-model="patient.analysis"
+                            style="color: #e34a4a"
+                            name="analysis"
+                            :required="false"
+                            title=" "
+                            ref="analysisSelect"
+                            v-bind:options="analyses"
+                          ></vuestic-simple-select>
                           </div>
+                          <div class="col-md-6">
+                             <div class="form-group with-icon-left">
+                        <div class="input-group">
+                          <input
+                            onpaste="return false;"
+                            autocomplete="off"
+                            style="color: #e34a4a"
+                            id="nalaz-input-icon-left"
+                            title=" "
+                            v-model="patient.nalaz"
+                            name="nalaz-input-icon-left"
+                            :required="true"
+                          />
+                          <i
+                            class="glyphicon glyphicon-pencil icon-left input-icon"
+                          ></i>
+                          <label
+                            style="color: #e34a4a"
+                            class="control-label"
+                            for="nalaz-input-icon-left"
+                            >{{ "BROJ PROTOKOLA" }}</label
+                          >
+                          <i class="bar"></i>
+                        </div>
+                      </div>
+                          </div>
+                          </div>
+
+
+
 
                           <div class="form-group with-icon-left">
                             <div class="input-group">
@@ -641,7 +668,9 @@
                       (patient.izdavanje != undefined &&
                         patient.izdavanje.trim() == '') ||
                       (patient.passport != undefined &&
-                        patient.passport.trim() == '')
+                        patient.passport.trim() == '') ||
+                      (patient.analysis != undefined &&
+                        patient.analysis.trim() == '')
                     "
                   >
                     {{ okText }}
@@ -788,7 +817,7 @@ export default {
 
       purposes: ["Potvrda o prebolovanoj infekciji"],
       analysis: "",
-      analyses: ["", "COVID-19 RT-PCR Test", "COVID-19 Antigen Test"],
+      analyses: ["CoV2 RT PCR", "CoV2 Antigen"],
 
       izdavanje: "",
       izdavanja: ["DANAS", "SUTRA"],
@@ -1330,11 +1359,11 @@ export default {
       this.nalaz = this.patient.nalaz;
       this.datum = this.patient.datum;
       this.passport = this.patient.passport;
+      this.analysis = this.patient.analysis;
       this.adresa = this.patient.adresa;
       this.telefon = this.patient.telefon;
       this.email = this.patient.email;
       this.purpose = this.patient.purpose;
-      this.analysis = this.patient.analysis;
       this.izdavanje = this.patient.izdavanje;
 
       if (
@@ -1344,7 +1373,8 @@ export default {
         this.prezime.trim() === "" ||
         this.spol.trim() === "" ||
         this.purpose.trim() === "" ||
-        this.passport.trim() === ""
+        this.passport.trim() === "" ||
+        this.analysis.trim() === ""
       ) {
         this.toastText = "Unesite obavezna polja.";
         this.toastIcon = "fa-warning";

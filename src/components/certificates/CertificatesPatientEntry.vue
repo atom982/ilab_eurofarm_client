@@ -85,6 +85,9 @@
                           </div>
                         </div>
 
+                         <div class="row">
+                          <div class="col-md-12">
+
                         <div class="form-group with-icon-left">
                           <div class="input-group">
                             <input
@@ -108,7 +111,7 @@
                             >
                             <i class="bar"></i>
                           </div>
-                        </div>
+                        </div></div></div>
 
                         <div class="form-group with-icon-left">
                           <div class="input-group">
@@ -230,7 +233,22 @@
                         </div>
                       </div>
 
-                      <div class="form-group with-icon-left">
+                       <div class="row">
+                          <div class="col-md-6">
+                            <vuestic-simple-select  
+                            :color="'red'"                     
+                            :label="'ANALIZA'"
+                            v-model="analysis"
+                            style="color: #e34a4a"
+                            name="analysis"
+                            :required="false"
+                            title=" "
+                            ref="analysisSelect"
+                            v-bind:options="analyses"
+                          ></vuestic-simple-select>
+                          </div>
+                          <div class="col-md-6">
+                             <div class="form-group with-icon-left">
                         <div class="input-group">
                           <input
                             onpaste="return false;"
@@ -249,11 +267,15 @@
                             style="color: #e34a4a"
                             class="control-label"
                             for="nalaz-input-icon-left"
-                            >{{ "BROJ PROTOKOLA NALAZA" }}</label
+                            >{{ "BROJ PROTOKOLA" }}</label
                           >
                           <i class="bar"></i>
                         </div>
                       </div>
+                          </div>
+                          </div>
+
+                     
 
                       <div class="form-group with-icon-left">
                         <div class="input-group">
@@ -450,7 +472,8 @@
                       spol.trim() == '' ||
                       purpose.trim() == '' ||
                       izdavanje.trim() == '' ||
-                      passport.trim() == ''
+                      passport.trim() == '' ||
+                      analysis.trim() == ''
                     "
                   >
                     {{ okText }}
@@ -534,7 +557,7 @@ export default {
       purpose: "Potvrda o prebolovanoj infekciji",
       purposes: ["Potvrda o prebolovanoj infekciji"],
       analysis: "",
-      analyses: [""],
+      analyses: ["CoV2 RT PCR", "CoV2 Antigen"],
 
       izdavanje: "DANAS",
       izdavanja: ["DANAS", "SUTRA"],
@@ -1153,7 +1176,8 @@ export default {
         this.prezime.trim() === "" ||
         this.spol.trim() === "" ||
         this.purpose.trim() === "" ||
-        this.passport.trim() === ""
+        this.passport.trim() === "" || 
+        this.analysis.trim() === ""
       ) {
         this.toastText = "Unesite obavezna polja.";
         this.toastIcon = "fa-warning";
