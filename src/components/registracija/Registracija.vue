@@ -264,7 +264,7 @@
                   <div class="input-group">
                     <input
                       onpaste="return false;"
-                      style="color: #e34a4a"
+                     
                       autocomplete="off"
                       id="passport-input-icon-left"
                       title=" "
@@ -278,7 +278,7 @@
 
                     <label
                       class="control-label"
-                      style="color: #e34a4a"
+                     
                       for="passport-input-icon-left"
                       >{{ lpassport }}</label
                     >
@@ -453,8 +453,7 @@
                       ime.trim() == '' ||
                       prezime.trim() == '' ||
                       spol.trim() == '' ||
-                      purpose.trim() == '' ||
-                      passport.trim() == ''
+                      purpose.trim() == '' 
                     "
                   >
                     {{ save }}
@@ -1235,8 +1234,7 @@ export default {
         this.ime.trim() === "" ||
         this.prezime.trim() === "" ||
         this.spol.trim() === "" ||
-        this.purpose.trim() === "" ||
-        this.passport.trim() === ""
+        this.purpose.trim() === "" 
       ) {
         this.toastText = "Unesite obavezna polja.";
         this.toastIcon = "fa-warning";
