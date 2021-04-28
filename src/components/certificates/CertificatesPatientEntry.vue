@@ -85,33 +85,34 @@
                           </div>
                         </div>
 
-                         <div class="row">
+                        <div class="row">
                           <div class="col-md-12">
-
-                        <div class="form-group with-icon-left">
-                          <div class="input-group">
-                            <input
-                              onpaste="return false;"
-                              autocomplete="off"
-                              style="color: #e34a4a"
-                              id="imep-input-icon-left"
-                              title=" "
-                              v-model="ime"
-                              name="imep-input-icon-left"
-                              :required="true"
-                            />
-                            <i
-                              class="glyphicon glyphicon-pencil icon-left input-icon"
-                            ></i>
-                            <label
-                              style="color: #e34a4a"
-                              class="control-label"
-                              for="imep-input-icon-left"
-                              >{{ "IME" }}</label
-                            >
-                            <i class="bar"></i>
+                            <div class="form-group with-icon-left">
+                              <div class="input-group">
+                                <input
+                                  onpaste="return false;"
+                                  autocomplete="off"
+                                  style="color: #e34a4a"
+                                  id="imep-input-icon-left"
+                                  title=" "
+                                  v-model="ime"
+                                  name="imep-input-icon-left"
+                                  :required="true"
+                                />
+                                <i
+                                  class="glyphicon glyphicon-pencil icon-left input-icon"
+                                ></i>
+                                <label
+                                  style="color: #e34a4a"
+                                  class="control-label"
+                                  for="imep-input-icon-left"
+                                  >{{ "IME" }}</label
+                                >
+                                <i class="bar"></i>
+                              </div>
+                            </div>
                           </div>
-                        </div></div></div>
+                        </div>
 
                         <div class="form-group with-icon-left">
                           <div class="input-group">
@@ -233,10 +234,10 @@
                         </div>
                       </div>
 
-                       <div class="row">
-                          <div class="col-md-6">
-                            <vuestic-simple-select  
-                            :color="'red'"                     
+                      <div class="row">
+                        <div class="col-md-6">
+                          <vuestic-simple-select
+                            :color="'red'"
                             :label="'ANALIZA'"
                             v-model="analysis"
                             style="color: #e34a4a"
@@ -246,36 +247,34 @@
                             ref="analysisSelect"
                             v-bind:options="analyses"
                           ></vuestic-simple-select>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group with-icon-left">
+                            <div class="input-group">
+                              <input
+                                onpaste="return false;"
+                                autocomplete="off"
+                                style="color: #e34a4a"
+                                id="nalaz-input-icon-left"
+                                title=" "
+                                v-model="nalaz"
+                                name="nalaz-input-icon-left"
+                                :required="true"
+                              />
+                              <i
+                                class="glyphicon glyphicon-pencil icon-left input-icon"
+                              ></i>
+                              <label
+                                style="color: #e34a4a"
+                                class="control-label"
+                                for="nalaz-input-icon-left"
+                                >{{ "BROJ PROTOKOLA" }}</label
+                              >
+                              <i class="bar"></i>
+                            </div>
                           </div>
-                          <div class="col-md-6">
-                             <div class="form-group with-icon-left">
-                        <div class="input-group">
-                          <input
-                            onpaste="return false;"
-                            autocomplete="off"
-                            style="color: #e34a4a"
-                            id="nalaz-input-icon-left"
-                            title=" "
-                            v-model="nalaz"
-                            name="nalaz-input-icon-left"
-                            :required="true"
-                          />
-                          <i
-                            class="glyphicon glyphicon-pencil icon-left input-icon"
-                          ></i>
-                          <label
-                            style="color: #e34a4a"
-                            class="control-label"
-                            for="nalaz-input-icon-left"
-                            >{{ "BROJ PROTOKOLA" }}</label
-                          >
-                          <i class="bar"></i>
                         </div>
                       </div>
-                          </div>
-                          </div>
-
-                     
 
                       <div class="form-group with-icon-left">
                         <div class="input-group">
@@ -1176,7 +1175,7 @@ export default {
         this.prezime.trim() === "" ||
         this.spol.trim() === "" ||
         this.purpose.trim() === "" ||
-        this.passport.trim() === "" || 
+        this.passport.trim() === "" ||
         this.analysis.trim() === ""
       ) {
         this.toastText = "Unesite obavezna polja.";
@@ -1266,8 +1265,8 @@ export default {
               site: this.$store.state.site,
               token: this.$store.state.token,
             })
-            .then((res) => {
-              if (res.data.success === false) {
+            .then((res1) => {
+              if (res1.data.success === false) {
                 this.isLoading = false;
 
                 this.toastText = "Greška prilikom upisa!";
@@ -1283,35 +1282,117 @@ export default {
                   className: this.className,
                 });
               } else {
-                this.isLoading = false;
+                http
+                  .post("certificates/ba/generate", {
+                    certificate: res1.data.certificate,
+                    site: this.$store.state.site,
+                    token: this.$store.state.token,
+                  })
+                  .then((res2) => {
+                    if (res2.data.success === false) {
+                      this.isLoading = false;
 
-                this.jmbg = "";
-                this.dateofb = "";
-                this.datumrodjenja = "";
-                this.godiste = "";
-                this.ime = "";
-                this.purpose = "Potvrda o prebolovanoj infekciji";
-                this.analysis = "";
-                this.izdavanje = "DANAS";
-                this.prezime = "";
-                this.datum = "";
-                this.nalaz = "";
-                this.spol = "";
-                this.chosenAdress = "";
-                this.telefon = "";
-                this.email = "";
-                this.invalid = true;
+                      this.toastText = "Greška prilikom upisa!";
+                      this.toastIcon = "fa-remove";
+                      this.toastPosition = "top-right";
+                      this.className = "vuestic-toast-danger";
 
-                this.show = false;
+                      this.showToast(this.toastText, {
+                        icon: this.toastIcon,
+                        position: this.toastPosition,
+                        duration: this.toastDuration,
+                        fullWidth: this.isToastFullWidth,
+                        className: this.className,
+                      });
+                    } else {
+                      // console.log("BA Cert Done.");
+                      http
+                        .post("certificates/en/generate", {
+                          certificate: res1.data.certificate,
+                          site: this.$store.state.site,
+                          token: this.$store.state.token,
+                        })
+                        .then((res3) => {
+                          if (res3.data.success === false) {
+                            this.isLoading = false;
 
-                var data = {
-                  ime: "",
-                  prezime: "",
-                };
+                            this.toastText = "Greška prilikom upisa!";
+                            this.toastIcon = "fa-remove";
+                            this.toastPosition = "top-right";
+                            this.className = "vuestic-toast-danger";
 
-                bus.$emit("SetCert", data);
+                            this.showToast(this.toastText, {
+                              icon: this.toastIcon,
+                              position: this.toastPosition,
+                              duration: this.toastDuration,
+                              fullWidth: this.isToastFullWidth,
+                              className: this.className,
+                            });
+                          } else {
+                            // console.log("EN Cert Done.");
+                            http
+                              .post("certificates/de/generate", {
+                                certificate: res1.data.certificate,
+                                site: this.$store.state.site,
+                                token: this.$store.state.token,
+                              })
+                              .then((res4) => {
+                                if (res4.data.success === false) {
+                                  this.isLoading = false;
 
-                window.removeEventListener("keyup", this.listenKeyUp);
+                                  this.toastText = "Greška prilikom upisa!";
+                                  this.toastIcon = "fa-remove";
+                                  this.toastPosition = "top-right";
+                                  this.className = "vuestic-toast-danger";
+
+                                  this.showToast(this.toastText, {
+                                    icon: this.toastIcon,
+                                    position: this.toastPosition,
+                                    duration: this.toastDuration,
+                                    fullWidth: this.isToastFullWidth,
+                                    className: this.className,
+                                  });
+                                } else {
+                                  // console.log("DE Cert Done.");
+                                  this.isLoading = false;
+
+                                  this.jmbg = "";
+                                  this.dateofb = "";
+                                  this.datumrodjenja = "";
+                                  this.godiste = "";
+                                  this.ime = "";
+                                  this.purpose =
+                                    "Potvrda o prebolovanoj infekciji";
+                                  this.analysis = "";
+                                  this.izdavanje = "DANAS";
+                                  this.prezime = "";
+                                  this.datum = "";
+                                  this.nalaz = "";
+                                  this.spol = "";
+                                  this.chosenAdress = "";
+                                  this.telefon = "";
+                                  this.email = "";
+                                  this.invalid = true;
+
+                                  this.show = false;
+
+                                  var data = {
+                                    ime: "",
+                                    prezime: "",
+                                  };
+
+                                  bus.$emit("SetCert", data);
+
+                                  window.removeEventListener(
+                                    "keyup",
+                                    this.listenKeyUp
+                                  );
+                                }
+                              });
+                          }
+                        });
+                    }
+                  });
               }
             });
         } else {
