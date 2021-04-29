@@ -23,6 +23,25 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <loading
+            :active.sync="isLoading"
+            :can-cancel="false"
+            :on-cancel="onCancel"
+            color="#4ae387"
+            :is-full-page="fullPage"
+          ></loading>
+        </div>
+        <div class="col-md-6">
+          <button v-if="false" @click.prevent="Test">
+            {{ "Loading..." }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -31,6 +50,10 @@ import Vue from "vue";
 import BadgeColumn from "./BadgeColumn.vue";
 import router from "../../router";
 import { server } from "../../../config/config.js";
+import { http } from "../../../config/config.js";
+
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 Vue.component("badge-column", BadgeColumn);
 
@@ -38,29 +61,108 @@ export default {
   name: "certificate-pdf",
   props: ["id"],
 
+  components: {
+    Loading,
+  },
+
   data() {
-    return {};
+    return {
+      // Vue Loading
+      isLoading: false,
+      fullPage: true,
+      // Toasts
+      toastText: "",
+      toastIcon: "",
+      toastPosition: "",
+      toastDuration: 2500,
+      isToastFullWidth: false,
+      className: "",
+    };
   },
 
   mounted() {
     if (this.$router.currentRoute.path.includes("certificates/pdf/ba/")) {
-      document.getElementById("pdf").style.visibility = "visible";
-      document.getElementById("pdf").src =
-        server + "/nalazi/certificates/ba/" + this.$route.params.id + ".pdf";
+      this.isLoading = true;
+      http
+        .post("certificates/ba/generate", {
+          certificate: this.$route.params.id,
+          site: this.$store.state.site,
+          token: this.$store.state.token,
+        })
+        .then((res) => {
+          if (res.data.success === false) {
+            this.isLoading = false;
+          } else {
+            this.isLoading = false;
+            document.getElementById("pdf").style.visibility = "visible";
+            document.getElementById("pdf").src =
+              server +
+              "/nalazi/certificates/ba/" +
+              this.$route.params.id +
+              ".pdf";
+
+            console.log("Potvrda o prebolovanoj infekciji");
+          }
+        });
     } else if (
       this.$router.currentRoute.path.includes("certificates/pdf/en/")
     ) {
-      document.getElementById("pdf").style.visibility = "visible";
-      document.getElementById("pdf").src =
-        server + "/nalazi/certificates/en/" + this.$route.params.id + ".pdf";
+      this.isLoading = true;
+      http
+        .post("certificates/en/generate", {
+          certificate: this.$route.params.id,
+          site: this.$store.state.site,
+          token: this.$store.state.token,
+        })
+        .then((res) => {
+          if (res.data.success === false) {
+            this.isLoading = false;
+          } else {
+            this.isLoading = false;
+            document.getElementById("pdf").style.visibility = "visible";
+            document.getElementById("pdf").src =
+              server +
+              "/nalazi/certificates/en/" +
+              this.$route.params.id +
+              ".pdf";
+
+            console.log("Certifcate of recovery");
+          }
+        });
     } else {
-      document.getElementById("pdf").style.visibility = "visible";
-      document.getElementById("pdf").src =
-        server + "/nalazi/certificates/de/" + this.$route.params.id + ".pdf";
+      this.isLoading = true;
+      http
+        .post("certificates/de/generate", {
+          certificate: this.$route.params.id,
+          site: this.$store.state.site,
+          token: this.$store.state.token,
+        })
+        .then((res) => {
+          if (res.data.success === false) {
+            this.isLoading = false;
+          } else {
+            this.isLoading = false;
+            document.getElementById("pdf").style.visibility = "visible";
+            document.getElementById("pdf").src =
+              server +
+              "/nalazi/certificates/de/" +
+              this.$route.params.id +
+              ".pdf";
+
+            console.log("Bestätigung einer früheren Infektion");
+          }
+        });
     }
   },
 
   methods: {
+    Test() {
+      this.isLoading = true;
+
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
+    },
     onCancel() {},
 
     vratiPregled: function () {

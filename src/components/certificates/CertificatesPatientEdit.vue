@@ -1450,8 +1450,8 @@ export default {
                 site: this.$store.state.site,
                 token: this.$store.state.token,
               })
-              .then((res1) => {
-                if (res1.data.success === false) {
+              .then((res) => {
+                if (res.data.success === false) {
                   this.isLoading = false;
 
                   this.toastText = "Greška prilikom upisa!";
@@ -1467,94 +1467,13 @@ export default {
                     className: this.className,
                   });
                 } else {
-                  http
-                    .post("certificates/ba/generate", {
-                      certificate: res1.data.certificate,
-                      site: this.$store.state.site,
-                      token: this.$store.state.token,
-                    })
-                    .then((res2) => {
-                      if (res2.data.success === false) {
-                        this.isLoading = false;
 
-                        this.toastText = "Greška prilikom upisa!";
-                        this.toastIcon = "fa-remove";
-                        this.toastPosition = "top-right";
-                        this.className = "vuestic-toast-danger";
+                  this.isLoading = false;
+                  this.show = false;
 
-                        this.showToast(this.toastText, {
-                          icon: this.toastIcon,
-                          position: this.toastPosition,
-                          duration: this.toastDuration,
-                          fullWidth: this.isToastFullWidth,
-                          className: this.className,
-                        });
-                      } else {
-                        // console.log("BA Cert Done.");
-                        http
-                          .post("certificates/en/generate", {
-                            certificate: res1.data.certificate,
-                            site: this.$store.state.site,
-                            token: this.$store.state.token,
-                          })
-                          .then((res3) => {
-                            if (res3.data.success === false) {
-                              this.isLoading = false;
-
-                              this.toastText = "Greška prilikom upisa!";
-                              this.toastIcon = "fa-remove";
-                              this.toastPosition = "top-right";
-                              this.className = "vuestic-toast-danger";
-
-                              this.showToast(this.toastText, {
-                                icon: this.toastIcon,
-                                position: this.toastPosition,
-                                duration: this.toastDuration,
-                                fullWidth: this.isToastFullWidth,
-                                className: this.className,
-                              });
-                            } else {
-                              // console.log("EN Cert Done.");
-                              http
-                                .post("certificates/de/generate", {
-                                  certificate: res1.data.certificate,
-                                  site: this.$store.state.site,
-                                  token: this.$store.state.token,
-                                })
-                                .then((res4) => {
-                                  if (res4.data.success === false) {
-                                    this.isLoading = false;
-
-                                    this.toastText = "Greška prilikom upisa!";
-                                    this.toastIcon = "fa-remove";
-                                    this.toastPosition = "top-right";
-                                    this.className = "vuestic-toast-danger";
-
-                                    this.showToast(this.toastText, {
-                                      icon: this.toastIcon,
-                                      position: this.toastPosition,
-                                      duration: this.toastDuration,
-                                      fullWidth: this.isToastFullWidth,
-                                      className: this.className,
-                                    });
-                                  } else {
-                                    // console.log("DE Cert Done.");
-                                    this.isLoading = false;
-
-                                    this.show = false;
-
-                                    bus.$emit("SetCert", this.patient);
-
-                                    window.removeEventListener(
-                                      "keyup",
-                                      this.listenKeyUp
-                                    );
-                                  }
-                                });
-                            }
-                          });
-                      }
-                    });
+                  bus.$emit("SetCert", this.patient);
+                  window.removeEventListener("keyup", this.listenKeyUp);
+                  
                 }
               });
           }
