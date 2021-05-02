@@ -3128,14 +3128,14 @@
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <strong
                 >&nbsp;<span style="font-size: 20px; color: #e34a4a">{{
-                  "atom.podrska@gmail.com"
+                  "Korisnička podrška"
                 }}</span></strong
               >
             </div>
             <div v-if="loaded" class="stats-number">
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               &nbsp;<span style="font-size: 18px">{{
-                "Podrška korisnicima"
+                "Telefon: +387 61/339-991, E-mail: atom.podrska@gmail.com"
               }}</span>
             </div>
             <div v-if="!loaded" style="color: #c0c0c0" class="stats-number">
