@@ -2516,24 +2516,43 @@
           <table class="table table-striped table-sm color-icon-label-table">
             <thead>
               <tr>
-                <td style="text-transform: none; color: #4ab2e3;" width="8%">{{ "KOD" }}</td>
-                <td style="text-transform: none; color: #4ab2e3;" width="32%">{{ "Naziv" }}</td>
-                <td style="text-transform: none; color: #4ab2e3;" width="15%" align="middle">
+                <td style="text-transform: none; color: #4ab2e3" width="8%">
+                  {{ "KOD" }}
+                </td>
+                <td style="text-transform: none; color: #4ab2e3" width="32%">
+                  {{ "Naziv" }}
+                </td>
+                <td
+                  style="text-transform: none; color: #4ab2e3"
+                  width="15%"
+                  align="middle"
+                >
                   {{ "CoV2 RT PCR" }}
                 </td>
-                <td style="text-transform: none; color: #4ab2e3;" width="15%" align="middle">
+                <td
+                  style="text-transform: none; color: #4ab2e3"
+                  width="15%"
+                  align="middle"
+                >
                   {{ "CoV2 RT LAMP" }}
                 </td>
-                <td style="text-transform: none; color: #4ab2e3;" width="15%" align="middle">
+                <td
+                  style="text-transform: none; color: #4ab2e3"
+                  width="15%"
+                  align="middle"
+                >
                   {{ "CoV2 Antigen" }}
                 </td>
-                <td style="text-transform: none; color: #4ab2e3;" width="15%" align="middle">
+                <td
+                  style="text-transform: none; color: #4ab2e3"
+                  width="15%"
+                  align="middle"
+                >
                   {{ "CoV2 Antitijela" }}
                 </td>
               </tr>
             </thead>
             <tbody>
-              
               <tr>
                 <td>
                   <strong>{{ "PJC" }}</strong>
@@ -2948,7 +2967,7 @@
                 </td>
               </tr>
 
-               <tr>
+              <tr>
                 <td>
                   <strong>{{ "PJT" }}</strong>
                 </td>
@@ -3111,14 +3130,13 @@
                   >
                 </td>
               </tr>
-
             </tbody>
           </table>
         </div>
       </vuestic-widget>
     </div>
 
-    <!-- Podrška korisnicima -->
+    <!-- Korisnička podrška -->
 
     <div v-show="true" class="col-md-6 col-xl-12">
       <vuestic-widget class="danger-widget">
@@ -3127,16 +3145,18 @@
             <div v-if="true" class="stats-number">
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
               <strong
-                >&nbsp;<span style="font-size: 20px; color: #e34a4a">{{
+                ><span style="font-size: 20px; color: #e34a4a">{{
                   "Korisnička podrška"
                 }}</span></strong
               >
             </div>
-            <div v-if="loaded" class="stats-number">
+            <div v-if="loaded" class="stats-number" style="text-align: center">
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
-              &nbsp;<span style="font-size: 18px">{{
-                "Telefon: +387 61/339-991, E-mail: atom.podrska@gmail.com"
-              }}</span>
+              <span style="font-size: 18px"
+                >{{ "Telefon: +387 61/339-991" }}<br />{{
+                  "E-mail: atom.podrska@gmail.com"
+                }}</span
+              >
             </div>
             <div v-if="!loaded" style="color: #c0c0c0" class="stats-number">
               <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
