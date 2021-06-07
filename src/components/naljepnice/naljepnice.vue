@@ -50,6 +50,7 @@
                       <thead>
                         <tr>
                           <!-- 30 -->
+                          <td width="7%">{{ "Reject" }}</td>
                           <td width="7%">{{ "Cito" }}</td>
                           <td align="center" width="7%">{{ "" }}</td>
                           <td width="12%">{{ "Uzorak" }}</td>
@@ -73,6 +74,35 @@
                             'table-warning': false,
                           }"
                         >
+                          <td>
+                            <div
+                              class="form-check abc-checkbox abc-checkbox-primary"
+                            >
+                              <input  
+                                :disabled="!$store.state.Sidebar.includes('CoV2 RT PCR obrada')"                             
+                                v-if="element.rejected.status === false"
+                                @click="Reject(element)"
+                                class="form-check-input"
+                                id="checkbox-reject"
+                                type="checkbox"
+                                v-model="element.rejected.status"
+                              />
+                              <input   
+                                :disabled="!$store.state.Sidebar.includes('CoV2 RT PCR obrada')"                             
+                                v-if="element.rejected.status === true"
+                                @click="unReject(element)"
+                                class="form-check-input"
+                                id="checkbox-unreject"
+                                type="checkbox"
+                                v-model="element.rejected.status"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="checkbox"
+                              ></label>
+                            </div>
+                          </td>
+                          
                           <td>
                             <div
                               class="form-check abc-checkbox abc-checkbox-primary"
@@ -273,7 +303,9 @@ export default {
       )
       .then((res) => {
         if (res.data.success) {
+
           // console.log(res.data.uzorci);
+
           this.uzorci = res.data.uzorci;
 
           this.filtered = [];
@@ -412,7 +444,9 @@ export default {
             )
             .then((response) => {
               if (response.data.success) {
+
                 // console.log(response.data.uzorci);
+
                 this.filtered = [];
                 this.uzorci = response.data.uzorci;
 
@@ -463,7 +497,9 @@ export default {
             )
             .then((response) => {
               if (response.data.success) {
+
                 // console.log(response.data.uzorci);
+
                 this.filtered = [];
                 this.uzorci = response.data.uzorci;
 
@@ -494,6 +530,205 @@ export default {
             });
         });
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Reject(element) {
+      this.isLoading = true;
+      http
+        .post("postavke/uzorak/reject", {
+          token: this.$store.state.token,
+          site: this.$store.state.site,
+          id: element.rezultat.id,
+        })
+        .then((res) => {
+          http
+            .get(
+              "postavke/list/uzorci?token=" +
+                this.$store.state.token +
+                "&site=" +
+                this.$store.state.site,
+              {}
+            )
+            .then((response) => {
+              if (response.data.success) {
+
+                // console.log(response.data.uzorci);
+
+                this.filtered = [];
+                this.uzorci = response.data.uzorci;
+
+                this.uzorci.forEach((element) => {
+                  if (
+                    element.analiza.toLowerCase() ===
+                      this.analiza.toLowerCase() &&
+                    (element.ime
+                      .toLowerCase()
+                      .includes(this.text.toLowerCase()) ||
+                      element.prezime
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.barcode
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.analiza
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()))
+                  ) {
+                    this.filtered.push(element);
+                  }
+                });
+                this.isLoading = false;
+              } else {
+                this.isLoading = false;
+              }
+            });
+        });
+    },
+
+    unReject(element) {
+      this.isLoading = true;
+      http
+        .post("postavke/uzorak/unreject", {
+          token: this.$store.state.token,
+          site: this.$store.state.site,
+          id: element.rezultat.id,
+        })
+        .then((res) => {
+          http
+            .get(
+              "postavke/list/uzorci?token=" +
+                this.$store.state.token +
+                "&site=" +
+                this.$store.state.site,
+              {}
+            )
+            .then((response) => {
+              if (response.data.success) {
+
+                // console.log(response.data.uzorci);
+
+                this.filtered = [];
+                this.uzorci = response.data.uzorci;
+
+                this.uzorci.forEach((element) => {
+                  if (
+                    element.analiza.toLowerCase() ===
+                      this.analiza.toLowerCase() &&
+                    (element.ime
+                      .toLowerCase()
+                      .includes(this.text.toLowerCase()) ||
+                      element.prezime
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.barcode
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.analiza
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()))
+                  ) {
+                    this.filtered.push(element);
+                  }
+                });
+                this.isLoading = false;
+              } else {
+                this.isLoading = false;
+              }
+            });
+        });
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     Test() {
       this.isLoading = true;
