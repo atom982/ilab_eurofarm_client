@@ -518,6 +518,180 @@
       </vuestic-widget>
     </div>
 
+        <!-- Međunarodni aerodrom Mostar -->
+
+    <div
+      v-show="
+        $store.state.site === '60ba1bf6f68be9eab3f793ff' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.OMO
+      "
+      class="col-md-6 col-xl-12"
+    >
+      <vuestic-widget
+        :class="{
+          'info-widget': $store.state.site === '60ba1bf6f68be9eab3f793ff',
+          'blue-widget': $store.state.site != '60ba1bf6f68be9eab3f793ff',
+        }"
+      >
+        <div class="info-widget-inner">
+          <div class="stats">
+            <div v-if="true" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "Međunarodni aerodrom Mostar" }}
+            </div>
+
+            <div v-if="!loaded" class="stats-number">
+              <!-- <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="true"> &nbsp; </span> -->
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <!--  <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="true"> &nbsp; </span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '60ba1bf6f68be9eab3f793ff' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.OMO
+      "
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT PCR" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="OMO.rt > 0" style="color: #e34a4a">{{
+                OMO.rt
+              }}</span>
+              <span v-show="OMO.rt === 0" style="color: #4ae387">{{
+                OMO.rt
+              }}</span>
+
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '60ba1bf6f68be9eab3f793ff' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.OMO
+      "
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 RT LAMP" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="OMO.lp > 0" style="color: #e34a4a">{{
+                OMO.lp
+              }}</span>
+              <span v-show="OMO.lp === 0" style="color: #4ae387">{{
+                OMO.lp
+              }}</span>
+
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '60ba1bf6f68be9eab3f793ff' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.OMO
+      "
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 Antigen" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="OMO.ag > 0" style="color: #e34a4a">{{
+                OMO.ag
+              }}</span>
+              <span v-show="OMO.ag === 0" style="color: #4ae387">{{
+                OMO.ag
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
+    <div
+      v-show="
+        $store.state.site === '60ba1bf6f68be9eab3f793ff' &&
+        $store.state.dashboard != undefined &&
+        $store.state.dashboard.OMO
+      "
+      class="col-md-6 col-xl-3"
+    >
+      <vuestic-widget class="info-widget">
+        <div class="info-widget-inner">
+          <div class="stats">
+            <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+            <div class="stats-number">{{ "CoV2 Antitijela" }}</div>
+
+            <div v-if="!loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              {{ "..." }}
+            </div>
+
+            <div v-if="loaded" class="stats-number">
+              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <span v-show="OMO.at > 0" style="color: #e34a4a">{{
+                OMO.at
+              }}</span>
+              <span v-show="OMO.at === 0" style="color: #4ae387">{{
+                OMO.at
+              }}</span>
+              <!-- <span v-show="true" style="color: #e34a4a; font-size: 42px;"> {{ "∅" }}</span> -->
+            </div>
+          </div>
+        </div>
+      </vuestic-widget>
+    </div>
+
     <!-- Poliklinika Sunce - Zenica -->
 
     <div
@@ -2680,6 +2854,47 @@
 
               <tr>
                 <td>
+                  <strong>{{ "OMO" }}</strong>
+                </td>
+                <td>
+                  <strong>{{ "Međunarodni aerodrom Mostar" }}</strong>
+                </td>
+                <td align="middle">
+                  <span v-show="OMO.rt > 0" style="color: #e34a4a"
+                    ><strong>{{ OMO.rt }}</strong></span
+                  >
+                  <span v-show="OMO.rt === 0" style="color: #4ae387"
+                    ><strong>{{ OMO.rt }}</strong></span
+                  >
+                </td>
+                <td align="middle">
+                  <span v-show="OMO.lp > 0" style="color: #e34a4a"
+                    ><strong>{{ OMO.lp }}</strong></span
+                  >
+                  <span v-show="OMO.lp === 0" style="color: #4ae387"
+                    ><strong>{{ OMO.lp }}</strong></span
+                  >
+                </td>
+                <td align="middle">
+                  <span v-show="OMO.ag > 0" style="color: #e34a4a"
+                    ><strong>{{ OMO.ag }}</strong></span
+                  >
+                  <span v-show="OMO.ag === 0" style="color: #4ae387"
+                    ><strong>{{ OMO.ag }}</strong></span
+                  >
+                </td>
+                <td align="middle">
+                  <span v-show="OMO.at > 0" style="color: #e34a4a"
+                    ><strong>{{ OMO.at }}</strong></span
+                  >
+                  <span v-show="OMO.at === 0" style="color: #4ae387"
+                    ><strong>{{ OMO.at }}</strong></span
+                  >
+                </td>
+              </tr>
+
+              <tr>
+                <td>
                   <strong>{{ "PSZ" }}</strong>
                 </td>
                 <td>
@@ -3183,6 +3398,7 @@ export default {
       PJC: { rt: 0, lp: 0, ag: 0, at: 0 },
       SJJ: { rt: 0, lp: 0, ag: 0, at: 0 },
       TZL: { rt: 0, lp: 0, ag: 0, at: 0 },
+      OMO: { rt: 0, lp: 0, ag: 0, at: 0 },
       PSZ: { rt: 0, lp: 0, ag: 0, at: 0 },
       HLI: { rt: 0, lp: 0, ag: 0, at: 0 },
       HLN: { rt: 0, lp: 0, ag: 0, at: 0 },
@@ -3211,6 +3427,7 @@ export default {
         this.PJC = res.data.data.PJC;
         this.SJJ = res.data.data.SJJ;
         this.TZL = res.data.data.TZL;
+        this.OMO = res.data.data.OMO;
         this.PSZ = res.data.data.PSZ;
         this.HLI = res.data.data.HLI;
         this.HLN = res.data.data.HLN;

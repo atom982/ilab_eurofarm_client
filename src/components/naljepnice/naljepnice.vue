@@ -312,6 +312,9 @@ export default {
       case "5f9f70a1444e51a464db259a": // TZL (C), Međunarodni aerodrom Tuzla      
         this.analiza = "CoV2 Antigen";
         break;
+      case "60ba1bf6f68be9eab3f793ff": // OMO (M), Međunarodni aerodrom Mostar      
+        this.analiza = "CoV2 RT PCR";
+        break;
       case "5fb81465900f08738c6985e7": // PSZ (D), Poliklinika Sunce - Zenica       
         this.analiza = "CoV2 RT PCR";
         break;

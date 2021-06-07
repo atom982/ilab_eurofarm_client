@@ -316,6 +316,11 @@ export default {
         this.izborText = "Obrađeni uzorci: " + this.site;
         this.opis = "TZL";
         break;
+      case "60ba1bf6f68be9eab3f793ff":
+        this.site = "Međunarodni aerodrom Mostar";
+        this.izborText = "Obrađeni uzorci: " + this.site;
+        this.opis = "OMO";
+        break;
       case "5fb81465900f08738c6985e7":
         this.site = "Poliklinika Sunce - Zenica";
         this.izborText = "Obrađeni uzorci: " + this.site;

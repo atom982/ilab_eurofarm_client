@@ -46,6 +46,7 @@ const store = new Vuex.Store({
       PJC: false,
       SJJ: false,
       TZL: false,
+      OMO: false,
       PSZ: false,
       HLI: false,
       HLN: false,

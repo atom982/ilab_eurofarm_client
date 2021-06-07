@@ -348,6 +348,7 @@ export default {
       // "5c69f68c338fe912f99f833b":  PJC (A), Podružnica Centralna Laboratorija, Sarajevo
       // "5f9f705e444e51a464db2543":  SJJ (B), Međunarodni aerodrom Sarajevo
       // "5f9f70a1444e51a464db259a":  TZL (C), Međunarodni aerodrom Tuzla
+      // "60ba1bf6f68be9eab3f793ff":  OMO (M), Međunarodni aerodrom Mostar
       // "5fb81465900f08738c6985e7":  PSZ (D), Poliklinika Sunce - Zenica
       // "60508f5ff0a3cf9c7860f5ad":  HLI (E), PZU HBL Laboratorija - Istočno Sarajevo
       // "60508f95f0a3cf9c7860f5bd":  HLN (F), HBL Laboratorija - Novo Sarajevo
@@ -498,6 +499,9 @@ export default {
             break;
           case "C": // Međunarodni aerodrom Tuzla
             this.site = "5f9f70a1444e51a464db259a";
+            break;
+          case "M": // Međunarodni aerodrom Mostar
+            this.site = "60ba1bf6f68be9eab3f793ff";
             break;
           case "D": // Poliklinika Sunce - Zenica
             this.site = "5fb81465900f08738c6985e7";

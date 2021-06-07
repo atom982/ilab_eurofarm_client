@@ -1170,6 +1170,9 @@ export default {
                   break;
                 case "5f9f70a1444e51a464db259a": // Međunarodni aerodrom Tuzla
                   niz = [1, 2];
+                  break;                  
+                case "60ba1bf6f68be9eab3f793ff": // Međunarodni aerodrom Mostar
+                  niz = [1, 2];
                   break;
                 case "5fb81465900f08738c6985e7": // Poliklinika Sunce - Zenica
                   niz = [1, 2];
