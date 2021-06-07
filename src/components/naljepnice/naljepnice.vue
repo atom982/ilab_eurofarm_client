@@ -112,7 +112,7 @@
                                   element.status === 'VERIFICIRAN' ||
                                   element.status === 'REALIZOVAN' ||
                                   (element.site != element.sampled_by &&
-                                    element.sampled_by != null)
+                                    element.sampled_by != null) || element.rejected.status === true
                                 "
                                 v-if="!element.prioritet"
                                 @click="Activate(element)"
@@ -126,7 +126,7 @@
                                   element.status === 'VERIFICIRAN' ||
                                   element.status === 'REALIZOVAN' ||
                                   (element.site != element.sampled_by &&
-                                    element.sampled_by != null)
+                                    element.sampled_by != null) || element.rejected.status === true
                                 "
                                 v-if="element.prioritet"
                                 @click="Deactivate(element)"
@@ -144,7 +144,7 @@
 
                           <td align="left">
                             <i
-                              v-if="element.status === 'ZAPRIMLJEN'"
+                              v-if="element.status === 'ZAPRIMLJEN' && element.rejected.status === false"
                               @click.prevent="Naljepnica(element)"
                               style="font-size: 14px; transform: scale(3, 1.5)"
                               class="fa fa-barcode"
@@ -152,9 +152,9 @@
 
                             <i
                               v-if="
-                                element.status === 'U OBRADI' &&
+                                (element.status === 'U OBRADI' &&
                                 element.site === element.sampled_by &&
-                                element.sampled_by != null
+                                element.sampled_by != null) && element.rejected.status === false
                               "
                               @click.prevent="Naljepnica(element)"
                               style="font-size: 14px; transform: scale(3, 1.5)"
@@ -163,9 +163,9 @@
 
                             <i
                               v-if="
-                                element.status === 'U OBRADI' &&
+                                (element.status === 'U OBRADI' &&
                                 element.site != element.sampled_by &&
-                                element.sampled_by != null
+                                element.sampled_by != null) && element.rejected.status === false
                               "
                               style="
                                 color: #adb3b9;
@@ -177,8 +177,20 @@
 
                             <a
                               v-if="
-                                element.status === 'VERIFICIRAN' ||
-                                element.status === 'REALIZOVAN'
+                                (element.status === 'VERIFICIRAN' ||
+                                element.status === 'REALIZOVAN') && element.rejected.status === false
+                              "
+                              style="
+                                color: #adb3b9;
+                                font-size: 14px;
+                                transform: scale(3, 1.5);
+                              "
+                              class="fa fa-barcode"
+                            ></a>
+
+                            <a
+                              v-if="
+                                element.rejected.status === true
                               "
                               style="
                                 color: #adb3b9;
@@ -200,28 +212,36 @@
                           <td>{{ element.datum }}</td>
                           <td>{{ element.time }}</td>
                           <td
-                            v-if="element.status === 'ZAPRIMLJEN'"
+                            v-if="element.status === 'ZAPRIMLJEN' && element.rejected.status === false"
                             align="center"
                           >
                             <span class="circle badge-danger"></span>
                           </td>
                           <td
-                            v-if="element.status === 'U OBRADI'"
+                            v-if="element.status === 'U OBRADI' && element.rejected.status === false"
                             align="center"
                           >
                             <span class="circle badge-warning"></span>
                           </td>
                           <td
-                            v-if="element.status === 'VERIFICIRAN'"
+                            v-if="element.status === 'VERIFICIRAN' && element.rejected.status === false"
                             align="center"
                           >
                             <span class="circle badge-primary"></span>
                           </td>
                           <td
-                            v-if="element.status === 'REALIZOVAN'"
+                            v-if="element.status === 'REALIZOVAN' && element.rejected.status === false"
                             align="center"
                           >
                             <span class="circle badge-info"></span>
+                          </td>
+                          <td
+                            v-if="element.rejected.status === true"
+                            align="center"
+                          >
+                            <span style="
+                                color: #555555;
+                                font-size: 16px;"><i class="fa fa-ban"></i></span>
                           </td>
                         </tr>
                       </tbody>
