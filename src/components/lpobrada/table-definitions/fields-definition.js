@@ -26,13 +26,13 @@ export default {
       name: "ime",
       title: "ime",
       sortField: "ime",
-      width: "12%",
+      width: "11.5%",
     },
     {
       name: "prezime",
       title: "prezime",
       sortField: "ime",
-      width: "17%",
+      width: "15%",
     },
     {
       name: "godište",
@@ -52,6 +52,11 @@ export default {
     },
     {
       name: "biljeskaIcon",
+      title: "",
+      width: "2.5%",
+    },
+    {
+      name: "warning",
       title: "",
       width: "2.5%",
     },
