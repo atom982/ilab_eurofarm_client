@@ -79,7 +79,7 @@
                               class="form-check abc-checkbox abc-checkbox-primary"
                             >
                               <input  
-                                :disabled="!$store.state.Sidebar.includes('CoV2 RT PCR obrada')"                             
+                                :disabled="!$store.state.Sidebar.includes('CoV2 RT PCR obrada') || element.status === 'ODOBREN'"                             
                                 v-if="element.rejected.status === false"
                                 @click="Reject(element)"
                                 class="form-check-input"
@@ -88,7 +88,7 @@
                                 v-model="element.rejected.status"
                               />
                               <input   
-                                :disabled="!$store.state.Sidebar.includes('CoV2 RT PCR obrada')"                             
+                                :disabled="!$store.state.Sidebar.includes('CoV2 RT PCR obrada') || element.status === 'ODOBREN'"                             
                                 v-if="element.rejected.status === true"
                                 @click="unReject(element)"
                                 class="form-check-input"
@@ -109,6 +109,7 @@
                             >
                               <input
                                 :disabled="
+                                element.status === 'ODOBREN'|| 
                                   element.status === 'VERIFICIRAN' ||
                                   element.status === 'REALIZOVAN' ||
                                   (element.site != element.sampled_by &&
@@ -123,6 +124,7 @@
                               />
                               <input
                                 :disabled="
+                                element.status === 'ODOBREN' ||
                                   element.status === 'VERIFICIRAN' ||
                                   element.status === 'REALIZOVAN' ||
                                   (element.site != element.sampled_by &&
@@ -211,6 +213,11 @@
 
                           <td>{{ element.datum }}</td>
                           <td>{{ element.time }}</td>
+
+
+
+
+
                           <td
                             v-if="element.status === 'ZAPRIMLJEN' && element.rejected.status === false"
                             align="center"
@@ -235,6 +242,30 @@
                           >
                             <span class="circle badge-info"></span>
                           </td>
+
+
+
+                          <td v-if="element.status === 'ODOBREN' && element.rejected.status === false"
+                          align="center"
+                         
+                            >
+
+                             <span @click="Handle(element.barcode)" style=" 
+                                color: #e34a4a;
+                                font-size: 16px;"><i class="fa fa-exclamation-circle"></i></span>
+
+                            
+                            
+                          </td>
+
+
+
+
+                         
+
+
+
+
                           <td
                             v-if="element.rejected.status === true"
                             align="center"
@@ -324,7 +355,7 @@ export default {
       .then((res) => {
         if (res.data.success) {
 
-          // console.log(res.data.uzorci);
+          console.log(res.data.uzorci);
 
           this.uzorci = res.data.uzorci;
 
@@ -734,7 +765,66 @@ export default {
 
 
 
+Handle(id) {
 
+  // console.log(id)
+      this.isLoading = true;
+
+      http
+                    .post("rezultati/odobravanje/handle", {
+                      token: this.$store.state.token,
+                      site: this.$store.state.site,
+                      id: id,
+                      
+                    })
+                    .then((res) => {
+                     
+
+                     http
+            .get(
+              "postavke/list/uzorci?token=" +
+                this.$store.state.token +
+                "&site=" +
+                this.$store.state.site,
+              {}
+            )
+            .then((response) => {
+              if (response.data.success) {
+
+                // console.log(response.data.uzorci);
+
+                this.filtered = [];
+                this.uzorci = response.data.uzorci;
+
+                this.uzorci.forEach((element) => {
+                  if (
+                    element.analiza.toLowerCase() ===
+                      this.analiza.toLowerCase() &&
+                    (element.ime
+                      .toLowerCase()
+                      .includes(this.text.toLowerCase()) ||
+                      element.prezime
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.barcode
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.analiza
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()))
+                  ) {
+                    this.filtered.push(element);
+                  }
+                });
+                this.isLoading = false;
+              } else {
+                this.isLoading = false;
+              }
+            });
+                    });
+
+
+    },
 
 
 
