@@ -2,6 +2,8 @@ import * as types from "../../mutation-types";
 
 import statistika from "./statistika"; // Statistika
 import prijem from "./prijem"; // Prijem pacijenta
+import popratnice from "./popratnice"; // Popratni list
+import transport from "./transport"; // Transportni list
 import certificates from "./certificates"; // Izdavanje potvrda
 import barcode from "./barcode"; // Prijem uzorka
 import naljepnice from "./naljepnice"; // Statusi uzoraka
@@ -18,7 +20,9 @@ const state = {
   items: [
     statistika, // Statistika
     prijem, // Prijem pacijenta
-    certificates, // Izdavanje potvrda
+    popratnice, // Popratni list
+    transport, // Transportni list
+    certificates, // Izdavanje potvrda    
     barcode, // Prijem uzorka
     naljepnice, // Statusi uzoraka
     obrada, // Obrada uzoraka
