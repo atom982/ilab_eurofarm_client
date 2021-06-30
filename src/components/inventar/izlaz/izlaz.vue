@@ -59,12 +59,12 @@
                             class="vuestic-page-not-found-search__wrapper"
                             :style="{'grid-template-columns': 'repeat(1, 1fr)'}"
                           >
-                            <ul class="vuestic-page-not-found-search__list" style="color: #f7cc36;">
+                            <ul v-if="inputValue.length" class="vuestic-page-not-found-search__list" style="color: #f7cc36;">
                               <li
                                 class="vuestic-page-not-found-search__list-element"
                                 v-for="(item, index) in filterItems"
                                 :key="index"
-                                v-if="inputValue.length"
+                                
                                 v-show="index < 8"
                               >
                                 <a

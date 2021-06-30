@@ -1,8 +1,3 @@
-
-
-
-
-
 <template>
   <div class="form-elements">
     <div class="row">
@@ -11,9 +6,8 @@
           <div class="row" style="min-height: 350px">
             <div class="col-md-12">
               <div class="row">
-               
                 <div class="col-md-12">
-                 {{"U izradi..."}}
+                  {{ "U izradi..." }}
                 </div>
               </div>
             </div>
@@ -68,22 +62,39 @@ export default {
 
       isLoading: false,
       fullPage: true,
-
-     
     };
   },
 
   created() {
-    
+    http
+      .get(
+        "popratnice/list/get?token=" +
+          this.$store.state.token +
+          "&site=" +
+          this.$store.state.site,
+        {}
+      )
+      .then((res) => {
+        if (res.data.success) {
+        }
+      });
   },
 
   beforeMount() {},
 
-  mounted() {},
-
-  watch: {
-    
+  mounted() {
+    http
+      .post("popratnice/list/print", {
+        token: this.$store.state.token,
+        site: this.$store.state.site,
+      })
+      .then((res) => {
+        if (res.data.success) {
+        }
+      });
   },
+
+  watch: {},
 
   beforeDestroy() {},
 
@@ -96,7 +107,6 @@ export default {
       }, 2000);
     },
     onCancel() {},
-    
   },
 };
 </script>
