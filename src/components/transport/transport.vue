@@ -214,44 +214,45 @@ export default {
     },
     onCancel() {},
     Download() {
-      // http
-      //   .post("transport/list/print", {
-      //     token: this.$store.state.token,
-      //     site: this.$store.state.site,
-      //     uzorci: this.uzorci,
-      //   })
-      //   .then((res) => {
-      //     if (res.data.success) {
-      //     }
-      //   });
-
       this.isLoading = true;
-
       http
-        .get(
-          "transport/list/download?token=" +
-            this.$store.state.token +
-            "&timestamp=" +
-            this.timestamp,
-          { responseType: "blob" }
-        )
+        .post("transport/list/print", {
+          token: this.$store.state.token,
+          site: this.$store.state.site,
+          timestamp: this.timestamp,
+          uzorci: this.uzorci,
+        })
         .then((res) => {
-          if (res.status == 200) {
-            const url = window.URL.createObjectURL(new Blob([res.data]));
-            const link = document.createElement("a");
-            link.href = url;
-            link.setAttribute("download", "PDF File" + ".pdf");
-            document.body.appendChild(link);
-            link.click();
+          if (res.data.success) {
+            http
+              .get(
+                "transport/list/download?token=" +
+                  this.$store.state.token +
+                  "&timestamp=" +
+                  this.timestamp,
+                { responseType: "blob" }
+              )
+              .then((res) => {
+                if (res.status == 200) {
+                  const url = window.URL.createObjectURL(new Blob([res.data]));
+                  const link = document.createElement("a");
+                  link.href = url;
+                  link.setAttribute("download", this.timestamp + ".pdf");
+                  document.body.appendChild(link);
+                  link.click();
 
-            setTimeout(() => {
-              this.timestamp = (
-                new Date().getTime() -
-                new Date().getTimezoneOffset() * 60000
-              ).toString();
+                  setTimeout(() => {
+                    this.timestamp = (
+                      new Date().getTime() -
+                      new Date().getTimezoneOffset() * 60000
+                    ).toString();
 
-              this.isLoading = false;
-            }, 750);
+                    this.isLoading = false;
+                  }, 0);
+                } else {
+                  this.isLoading = false;
+                }
+              });
           } else {
             this.isLoading = false;
           }
