@@ -228,6 +228,30 @@
                       <hr />
                       <div style="min-height: 8px"></div> -->
 
+                       <div class="form-group with-icon-left">
+                            <div class="input-group" >
+                              <input
+                                
+                                onpaste="return false;"
+                                autocomplete="off"
+                                id="jmbp2-input-icon-left"
+                                title=" "
+                                v-model="jmbg2"
+                                name="jmbp2-input-icon-left"
+                                required
+                              >
+                              <i class="glyphicon glyphicon-pencil icon-left input-icon"></i>
+                              <label
+                                
+                                class="control-label"
+                                for="jmbp2-input-icon-left"
+                              >{{'JMBG (DD MM GGG RR BBB K)'}}</label>
+                              <!-- Unesite Matični broj pacijenta -->
+                              <i class="bar"></i>
+                            </div>
+                          </div>
+
+
                       <div class="form-group with-icon-left">
 
                        
@@ -730,6 +754,7 @@ export default {
         "Kontakt sa zaraženom osobom",
       ],
       roditelj: "",
+      jmbg2: "",
       analysis: "",
       analyses: ["", "COVID-19 RT-PCR Test", "COVID-19 Antigen Test"],
 
@@ -1440,6 +1465,7 @@ export default {
                     // Eurofarm Centar
                     purpose: this.purpose,
                     roditelj: this.roditelj,
+                    jmbg2: this.jmbg2,
                     analysis: this.analysis,
                     izdavanje: this.izdavanje,
                     referenca: (
@@ -1483,6 +1509,7 @@ export default {
                       this.ime = "";
                       this.purpose = "";
                       this.roditelj = "",
+                      this.jmbg2 = "",
                       this.analysis = "";
                       this.izdavanje = "";
                       this.prezime = "";

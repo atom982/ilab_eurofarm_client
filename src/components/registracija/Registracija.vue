@@ -1387,6 +1387,7 @@ export default {
                     // Eurofarm Centar
                     purpose: this.purpose,
                     roditelj: "Nema podataka",
+                    jmbg2: "",
                     analysis: this.analysis,
                     izdavanje: this.izdavanje,
                     referenca: (

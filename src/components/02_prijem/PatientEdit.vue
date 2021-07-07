@@ -283,6 +283,33 @@
                           </div>
  -->
 
+  <!-- Izbor: Matični broj -->
+                        
+                          <div class="form-group with-icon-left">
+                            <div class="input-group" >
+                              <input
+                                
+                                onpaste="return false;"
+                                autocomplete="off"
+                                id="jmbp2-input-icon-left"
+                                title=" "
+                                v-model="patient.jmbg2"
+                                name="jmbp2-input-icon-left"
+                                required
+                              >
+                              <i class="glyphicon glyphicon-pencil icon-left input-icon"></i>
+                              <label
+                                
+                                class="control-label"
+                                for="jmbp2-input-icon-left"
+                              >{{'JMBG (DD MM GGG RR BBB K)'}}</label>
+                              <!-- Unesite Matični broj pacijenta -->
+                              <i class="bar"></i>
+                            </div>
+                          </div>
+                        
+
+
                           <div class="form-group with-icon-left">
                             <div class="input-group">
                               <input
@@ -823,6 +850,7 @@ export default {
         ime: "",
         prezime: "",
         roditelj: "",
+        jmbg2: "",
         spol: "",
         site: "",
         __v: 0,
@@ -857,6 +885,7 @@ export default {
       ime: "",
       prezime: "",
       roditelj: "",
+      jmbg2: "",
       spol: "",
       spolovi: ["MUŠKI", "ŽENSKI"],
       adresa: "",
@@ -1395,6 +1424,7 @@ export default {
       this.ime = this.patient.ime;
       this.prezime = this.patient.prezime;
       this.roditelj = this.patient.roditelj;
+      this.jmbg2 = this.patient.jmbg2;
       
       this.spol = this.patient.spol;
       this.adresa = this.patient.adresa;
@@ -1473,6 +1503,7 @@ export default {
                     ime: this.ime.toUpperCase().trim(),
                     prezime: this.prezime.toUpperCase().trim(),
                     roditelj: this.roditelj.toUpperCase().trim(),
+                    jmbg2: this.jmbg2.toUpperCase().trim(),
                     // entry_disabled
                     spol: this.spol.toUpperCase().trim(),
                     duhan: "",
