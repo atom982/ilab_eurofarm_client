@@ -2,7 +2,7 @@
   <div class="form-elements">
     <div class="row">
       <div class="col-md-12">
-        <vuestic-widget :headerText="'Transportni list - COVID 19 RT PCR Test'">
+        <vuestic-widget :headerText="'OBR-15/08 - Transportni list za uzorke SarS-CoV-2'">
           <div class="row" style="min-height: 350px">
             <div class="col-md-12">
               <div class="row">

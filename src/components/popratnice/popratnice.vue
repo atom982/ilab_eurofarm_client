@@ -2,12 +2,243 @@
   <div class="form-elements">
     <div class="row">
       <div class="col-md-12">
-        <vuestic-widget :headerText="'Popratni list'">
-          <div class="row" style="min-height: 350px">
+        <vuestic-widget :headerText="'OBR-15/07 - Zahtjev za laboratorijsku SarS-CoV-2 analizu'">
+         <div class="row" style="min-height: 350px">
             <div class="col-md-12">
               <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group with-icon-left">
+                    <div class="input-group">
+                      <input
+                        onpaste="return false;"
+                        autocomplete="off"
+                        id="input-icon-left"
+                        title=" "
+                        name="input-icon-left"
+                        v-model="text"
+                        required
+                      />
+                      <i
+                        class="glyphicon glyphicon-search icon-left input-icon search-icon"
+                      ></i>
+                      <label class="control-label" for="input-icon-left">{{
+                        "Pretraga"
+                      }}</label>
+                      <i class="bar"></i>
+                    </div>
+                  </div>
+                </div>
+
+               <!--  <vuestic-simple-select
+                  :label="'ANALIZA'"
+                  v-model="analiza"
+                  name="analiza"
+                  :required="true"
+                  title=" "
+                  ref="analizaSelect"
+                  v-bind:options="analize"
+                ></vuestic-simple-select> -->
+
                 <div class="col-md-12">
-                  {{ "U izradi..." }}
+                  <div class="table-responsive" v-if="uzorci.length">
+                    <table class="table table-striped first-td-padding">
+                      <thead>
+                        <tr>
+                          <!-- 30 -->
+                          <!-- <td width="7%">{{ "Reject" }}</td>
+                          <td width="7%">{{ "Cito" }}</td> -->
+                          <td width="15%">{{ "" }}</td>
+                          <td width="10%">{{ "Uzorak" }}</td>
+                          <td width="10%">{{ "Analiza" }}</td>
+                          <td width="11%">{{ "Svrha" }}</td>
+                          <!-- 35 -->
+                          <td width="11%">{{ "Ime" }}</td>
+                          <td width="15%">{{ "Prezime" }}</td>
+                          <td width="9%">{{ "Godište" }}</td>
+                          <td width="9%">{{ "Datum" }}</td>
+                          <td width="7%">{{ "Vrijeme" }}</td>
+                          <td width="3%">{{ "" }}</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          v-for="element in filtered"
+                          :key="element._id"
+                          v-bind:class="{
+                            'table-danger': element.prioritet === true,
+                            'table-success': false,
+                            'table-warning': false,
+                          }"
+                        >
+                      <!--     <td>
+                            <div
+                              class="form-check abc-checkbox abc-checkbox-primary"
+                            >
+                              <input  
+                                :disabled="!$store.state.Sidebar.includes('CoV2 RT PCR obrada') || element.status === 'ODOBREN'"                             
+                                v-if="element.rejected.status === false"
+                                @click="Reject(element)"
+                                class="form-check-input"
+                                id="checkbox-reject"
+                                type="checkbox"
+                                v-model="element.rejected.status"
+                              />
+                              <input   
+                                :disabled="!$store.state.Sidebar.includes('CoV2 RT PCR obrada') || element.status === 'ODOBREN'"                             
+                                v-if="element.rejected.status === true"
+                                @click="unReject(element)"
+                                class="form-check-input"
+                                id="checkbox-unreject"
+                                type="checkbox"
+                                v-model="element.rejected.status"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="checkbox"
+                              ></label>
+                            </div>
+                          </td> -->
+                          
+                        <!--   <td>
+                            <div
+                              class="form-check abc-checkbox abc-checkbox-primary"
+                            >
+                              <input
+                                :disabled="
+                                element.status === 'ODOBREN'|| 
+                                  element.status === 'VERIFICIRAN' ||
+                                  element.status === 'REALIZOVAN' ||
+                                  (element.site != element.sampled_by &&
+                                    element.sampled_by != null) || element.rejected.status === true
+                                "
+                                v-if="!element.prioritet"
+                                @click="Activate(element)"
+                                class="form-check-input"
+                                id="checkbox-normalan"
+                                type="checkbox"
+                                v-model="element.prioritet"
+                              />
+                              <input
+                                :disabled="
+                                element.status === 'ODOBREN' ||
+                                  element.status === 'VERIFICIRAN' ||
+                                  element.status === 'REALIZOVAN' ||
+                                  (element.site != element.sampled_by &&
+                                    element.sampled_by != null) || element.rejected.status === true
+                                "
+                                v-if="element.prioritet"
+                                @click="Deactivate(element)"
+                                class="form-check-input"
+                                id="checkbox-hitan"
+                                type="checkbox"
+                                v-model="element.prioritet"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="checkbox"
+                              ></label>
+                            </div>
+                          </td> -->
+
+                          <td align="left">
+
+                         
+
+                          
+
+                            
+
+                          <button @click.prevent="Download(element)" style='
+                         
+                            border: 0px;
+                            border-radius: 0px;
+                            text-transform: none; font-size: 13px;' 
+                          class='btn btn-warning btn-micro'><span class='fa fa-file-pdf-o'></span> {{" Download"}}</button>
+
+
+
+
+                            
+
+                         
+                          </td>
+                          <td>{{ element.barcode }}</td>
+                           <td>{{ element.analiza }}</td>
+                          <td>{{ element.svrha }}</td>
+                          <!-- 25 -->
+
+                          <td>{{ element.ime }}</td>
+                          <!-- 25 -->
+                          <td>{{ element.prezime }}</td>
+                          <td>{{ element.godiste }}</td>
+
+                          <td>{{ element.datum }}</td>
+                          <td>{{ element.time }}</td>
+
+
+
+
+
+                          <td
+                            v-if="element.status === 'ZAPRIMLJEN' && element.rejected.status === false"
+                            align="center"
+                          >
+                            <span class="circle badge-danger"></span>
+                          </td>
+                          <td
+                            v-if="element.status === 'U OBRADI' && element.rejected.status === false"
+                            align="center"
+                          >
+                            <span class="circle badge-warning"></span>
+                          </td>
+                          <td
+                            v-if="element.status === 'VERIFICIRAN' && element.rejected.status === false"
+                            align="center"
+                          >
+                            <span class="circle badge-primary"></span>
+                          </td>
+                          <td
+                            v-if="element.status === 'REALIZOVAN' && element.rejected.status === false"
+                            align="center"
+                          >
+                            <span class="circle badge-info"></span>
+                          </td>
+
+
+
+                          <td v-if="element.status === 'ODOBREN' && element.rejected.status === false"
+                          align="center"
+                         
+                            >
+
+                             <span @click="Handle(element.barcode)" style=" 
+                                color: #e34a4a;
+                                font-size: 16px;"><i class="fa fa-exclamation-circle"></i></span>
+
+                            
+                            
+                          </td>
+
+
+
+
+                         
+
+
+
+
+                          <td
+                            v-if="element.rejected.status === true"
+                            align="center"
+                          >
+                            <span style="
+                                color: #555555;
+                                font-size: 16px;"><i class="fa fa-ban"></i></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -50,7 +281,7 @@ import "vue-loading-overlay/dist/vue-loading.css";
 Vue.component("badge-column", BadgeColumn);
 
 export default {
-  name: "transport",
+  name: "naljepnice",
 
   components: {
     Loading,
@@ -60,15 +291,25 @@ export default {
     return {
       show: true,
 
+      timestamp: "",
+
       isLoading: false,
       fullPage: true,
+
+      uzorci: [],
+      analiza: "CoV2 RT PCR",
+      analize: ["CoV2 RT PCR", "CoV2 RT LAMP", "CoV2 Antigen", "CoV2 Antitijela"],
+      filtered: [],
+      uzorak: {},
+      text: "",
     };
   },
 
   created() {
+    this.isLoading = true;
     http
       .get(
-        "popratnice/list/get?token=" +
+        "postavke/list/uzorci?token=" +
           this.$store.state.token +
           "&site=" +
           this.$store.state.site,
@@ -76,29 +317,554 @@ export default {
       )
       .then((res) => {
         if (res.data.success) {
+
+          console.log(res.data.uzorci);
+
+          this.uzorci = res.data.uzorci;
+
+          this.filtered = [];
+          this.uzorci.forEach((element) => {
+            // console.log(element.site + "/" + element.sampled_by);
+            if (
+              element.analiza.toLowerCase() === this.analiza.toLowerCase() &&
+              (element.ime.toLowerCase().includes(this.text.toLowerCase()) ||
+                element.prezime
+                  .toLowerCase()
+                  .includes(this.text.toLowerCase()) ||
+                element.barcode
+                  .toLowerCase()
+                  .includes(this.text.toLowerCase()) ||
+                element.analiza.toLowerCase().includes(this.text.toLowerCase()))
+            ) {
+              this.filtered.push(element);
+            }
+          });
+
+          this.isLoading = false;
+        } else {
+          this.isLoading = false;
         }
       });
   },
 
-  beforeMount() {},
+  beforeMount() {
+    switch (this.$store.state.site) {
+      case "5c69f68c338fe912f99f833b": // PJC (A), Podružnica Centralna Laboratorija, Sarajevo       
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "5f9f705e444e51a464db2543": // SJJ (B), Međunarodni aerodrom Sarajevo       
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "5f9f70a1444e51a464db259a": // TZL (C), Međunarodni aerodrom Tuzla      
+        this.analiza = "CoV2 Antigen";
+        break;
+      case "60ba1bf6f68be9eab3f793ff": // OMO (M), Međunarodni aerodrom Mostar      
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "5fb81465900f08738c6985e7": // PSZ (D), Poliklinika Sunce - Zenica       
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "60508f5ff0a3cf9c7860f5ad": // HLI (E), PZU HBL Laboratorija - Istočno Sarajevo        
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "60508f95f0a3cf9c7860f5bd": // HLN (F), HBL Laboratorija - Novo Sarajevo       
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "60509039f0a3cf9c7860f5e1": // HLD (G), HBL Laboratorija - Dobrinja       
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b249f68be9eab36b4fdb": // PJU (U), Podružnica 1. Unitic, Sarajevo        
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b2d5f68be9eab36b5003": // PJI (Z), Podružnica Ilidža     
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b346f68be9eab36b502f": // PJV (V), Podružnica Visoko        
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b3b3f68be9eab36b5088": // PJT (T), Podružnica Tuzla       
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b471f68be9eab36b50f5": // PJG (O), Podružnica Goražde      
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b4fcf68be9eab36b511d": // PJB (P), Podružnica Bugojno       
+        this.analiza = "CoV2 RT PCR";
+        break;
+      case "6068b55df68be9eab36b5175": // PJR (R), Podružnica Trebinje      
+        this.analiza = "CoV2 RT PCR";
+        break;
+
+      default:       
+        this.analiza = "CoV2 RT PCR";
+        break;
+    }
+  },
 
   mounted() {
-    http
-      .post("popratnice/list/print", {
-        token: this.$store.state.token,
-        site: this.$store.state.site,
-      })
-      .then((res) => {
-        if (res.data.success) {
-        }
-      });
+    this.timestamp = (
+      new Date().getTime() -
+      new Date().getTimezoneOffset() * 60000
+    ).toString();
   },
 
-  watch: {},
+  watch: {
+    text: function () {
+      this.filtered = [];
+      this.uzorci.forEach((element) => {
+        if (
+          element.analiza.toLowerCase() === this.analiza.toLowerCase() &&
+          (element.ime.toLowerCase().includes(this.text.toLowerCase()) ||
+            element.prezime.toLowerCase().includes(this.text.toLowerCase()) ||
+            element.svrha.toLowerCase().includes(this.text.toLowerCase()) ||
+            element.barcode.toLowerCase().includes(this.text.toLowerCase()) ||
+            element.analiza.toLowerCase().includes(this.text.toLowerCase()))
+        ) {
+          this.filtered.push(element);
+        }
+      });
+    },
+    analiza: function () {
+      this.filtered = [];
+      this.uzorci.forEach((element) => {
+        if (
+          element.analiza.toLowerCase() === this.analiza.toLowerCase() &&
+          (element.ime.toLowerCase().includes(this.text.toLowerCase()) ||
+            element.prezime.toLowerCase().includes(this.text.toLowerCase()) ||
+            element.svrha.toLowerCase().includes(this.text.toLowerCase()) ||
+            element.barcode.toLowerCase().includes(this.text.toLowerCase()) ||
+            element.analiza.toLowerCase().includes(this.text.toLowerCase()))
+        ) {
+          this.filtered.push(element);
+        }
+      });
+    },
+  },
 
   beforeDestroy() {},
 
   methods: {
+    Activate(element) {
+      this.isLoading = true;
+      http
+        .post("postavke/uzorak/hitan", {
+          token: this.$store.state.token,
+          site: this.$store.state.site,
+          id: element.rezultat.id,
+        })
+        .then((res) => {
+          http
+            .get(
+              "postavke/list/uzorci?token=" +
+                this.$store.state.token +
+                "&site=" +
+                this.$store.state.site,
+              {}
+            )
+            .then((response) => {
+              if (response.data.success) {
+
+                // console.log(response.data.uzorci);
+
+                this.filtered = [];
+                this.uzorci = response.data.uzorci;
+
+                this.uzorci.forEach((element) => {
+                  if (
+                    element.analiza.toLowerCase() ===
+                      this.analiza.toLowerCase() &&
+                    (element.ime
+                      .toLowerCase()
+                      .includes(this.text.toLowerCase()) ||
+                      element.prezime
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.barcode
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.analiza
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()))
+                  ) {
+                    this.filtered.push(element);
+                  }
+                });
+                this.isLoading = false;
+              } else {
+                this.isLoading = false;
+              }
+            });
+        });
+    },
+
+    Deactivate(element) {
+      this.isLoading = true;
+      http
+        .post("postavke/uzorak/normalan", {
+          token: this.$store.state.token,
+          site: this.$store.state.site,
+          id: element.rezultat.id,
+        })
+        .then((res) => {
+          http
+            .get(
+              "postavke/list/uzorci?token=" +
+                this.$store.state.token +
+                "&site=" +
+                this.$store.state.site,
+              {}
+            )
+            .then((response) => {
+              if (response.data.success) {
+
+                // console.log(response.data.uzorci);
+
+                this.filtered = [];
+                this.uzorci = response.data.uzorci;
+
+                this.uzorci.forEach((element) => {
+                  if (
+                    element.analiza.toLowerCase() ===
+                      this.analiza.toLowerCase() &&
+                    (element.ime
+                      .toLowerCase()
+                      .includes(this.text.toLowerCase()) ||
+                      element.prezime
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.barcode
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.analiza
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()))
+                  ) {
+                    this.filtered.push(element);
+                  }
+                });
+                this.isLoading = false;
+              } else {
+                this.isLoading = false;
+              }
+            });
+        });
+    },
+
+
+
+Download(element) {
+
+  // console.log(element)
+
+
+
+
+  this.isLoading = true;
+      http
+        .post("popratnice/list/print", {
+          token: this.$store.state.token,
+          site: this.$store.state.site,
+          timestamp: this.timestamp,
+          element: element,
+        })
+        .then((res) => {
+          if (res.data.success) {
+            http
+              .get(
+                "popratnice/list/download?token=" +
+                  this.$store.state.token +
+                  "&timestamp=" +
+                  this.timestamp,
+                { responseType: "blob" }
+              )
+              .then((res) => {
+                if (res.status == 200) {
+                  const url = window.URL.createObjectURL(new Blob([res.data]));
+                  const link = document.createElement("a");
+                  link.href = url;
+                  link.setAttribute("download", this.timestamp + ".pdf");
+                  document.body.appendChild(link);
+                  link.click();
+
+                  setTimeout(() => {
+                    this.timestamp = (
+                      new Date().getTime() -
+                      new Date().getTimezoneOffset() * 60000
+                    ).toString();
+
+                    this.isLoading = false;
+                  }, 0);
+                } else {
+                  this.isLoading = false;
+                }
+              });
+          } else {
+            this.isLoading = false;
+          }
+        });
+
+
+
+
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Reject(element) {
+      this.isLoading = true;
+      http
+        .post("postavke/uzorak/reject", {
+          token: this.$store.state.token,
+          site: this.$store.state.site,
+          id: element.rezultat.id,
+        })
+        .then((res) => {
+          http
+            .get(
+              "postavke/list/uzorci?token=" +
+                this.$store.state.token +
+                "&site=" +
+                this.$store.state.site,
+              {}
+            )
+            .then((response) => {
+              if (response.data.success) {
+
+                // console.log(response.data.uzorci);
+
+                this.filtered = [];
+                this.uzorci = response.data.uzorci;
+
+                this.uzorci.forEach((element) => {
+                  if (
+                    element.analiza.toLowerCase() ===
+                      this.analiza.toLowerCase() &&
+                    (element.ime
+                      .toLowerCase()
+                      .includes(this.text.toLowerCase()) ||
+                      element.prezime
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.barcode
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.analiza
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()))
+                  ) {
+                    this.filtered.push(element);
+                  }
+                });
+                this.isLoading = false;
+              } else {
+                this.isLoading = false;
+              }
+            });
+        });
+    },
+
+    unReject(element) {
+      this.isLoading = true;
+      http
+        .post("postavke/uzorak/unreject", {
+          token: this.$store.state.token,
+          site: this.$store.state.site,
+          id: element.rezultat.id,
+        })
+        .then((res) => {
+          http
+            .get(
+              "postavke/list/uzorci?token=" +
+                this.$store.state.token +
+                "&site=" +
+                this.$store.state.site,
+              {}
+            )
+            .then((response) => {
+              if (response.data.success) {
+
+                // console.log(response.data.uzorci);
+
+                this.filtered = [];
+                this.uzorci = response.data.uzorci;
+
+                this.uzorci.forEach((element) => {
+                  if (
+                    element.analiza.toLowerCase() ===
+                      this.analiza.toLowerCase() &&
+                    (element.ime
+                      .toLowerCase()
+                      .includes(this.text.toLowerCase()) ||
+                      element.prezime
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.barcode
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.analiza
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()))
+                  ) {
+                    this.filtered.push(element);
+                  }
+                });
+                this.isLoading = false;
+              } else {
+                this.isLoading = false;
+              }
+            });
+        });
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Handle(id) {
+
+  // console.log(id)
+      this.isLoading = true;
+
+      http
+                    .post("rezultati/odobravanje/handle", {
+                      token: this.$store.state.token,
+                      site: this.$store.state.site,
+                      id: id,
+                      
+                    })
+                    .then((res) => {
+                     
+
+                     http
+            .get(
+              "postavke/list/uzorci?token=" +
+                this.$store.state.token +
+                "&site=" +
+                this.$store.state.site,
+              {}
+            )
+            .then((response) => {
+              if (response.data.success) {
+
+                // console.log(response.data.uzorci);
+
+                this.filtered = [];
+                this.uzorci = response.data.uzorci;
+
+                this.uzorci.forEach((element) => {
+                  if (
+                    element.analiza.toLowerCase() ===
+                      this.analiza.toLowerCase() &&
+                    (element.ime
+                      .toLowerCase()
+                      .includes(this.text.toLowerCase()) ||
+                      element.prezime
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.barcode
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()) ||
+                      element.analiza
+                        .toLowerCase()
+                        .includes(this.text.toLowerCase()))
+                  ) {
+                    this.filtered.push(element);
+                  }
+                });
+                this.isLoading = false;
+              } else {
+                this.isLoading = false;
+              }
+            });
+                    });
+
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Test() {
       this.isLoading = true;
 
@@ -107,6 +873,33 @@ export default {
       }, 2000);
     },
     onCancel() {},
+
+    Naljepnica(data) {
+      console.log(data);
+
+      var prioritet = "NORMALAN";
+
+      if (data.prioritet === true) {
+        prioritet = "HITAN";
+      }
+
+      var link = server + "images/barcodes/" + data.barcode + ".png";
+
+      printEPL(
+        data.ime + " " + data.prezime,
+        data.barcode,
+        data.rezultat.sample.pid,
+        data.godiste,
+        data.rezultat.sample.datum,
+        link,
+        data.rezultat.sample.code,
+        this.$store.state.site,
+        prioritet,
+        data.rezultat.sample.protokol,
+        data.svrha,
+        data.izdavanje
+      );
+    },
   },
 };
 </script>

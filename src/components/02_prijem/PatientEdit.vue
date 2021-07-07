@@ -28,6 +28,33 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-5">
                       <fieldset>
+
+                        <!-- Izbor: Matični broj -->
+                        <div v-if="izbor === 'jmbg'">
+                          <div class="form-group with-icon-left">
+                            <div class="input-group" >
+                              <input
+                                style="color: #e34a4a"
+                                onpaste="return false;"
+                                autocomplete="off"
+                                id="jmbp-input-icon-left"
+                                title=" "
+                                v-model="jmbg"
+                                name="jmbp-input-icon-left"
+                                required
+                              >
+                              <i class="glyphicon glyphicon-pencil icon-left input-icon"></i>
+                              <label
+                                style="color: #e34a4a"
+                                class="control-label"
+                                for="jmbp-input-icon-left"
+                              >{{'DD MM GGG RR BBB K'}}</label>
+                              <!-- Unesite Matični broj pacijenta -->
+                              <i class="bar"></i>
+                            </div>
+                          </div>
+                        </div>
+
                         <!-- Izbor: Datum rođenja -->
                         <div v-if="izbor === 'datr'">
                           <div class="form-group with-icon-left">
@@ -130,6 +157,31 @@
                               class="control-label"
                               for="prp-input-icon-left"
                               >{{ "PREZIME" }}</label
+                            >
+                            <i class="bar"></i>
+                          </div>
+                        </div>
+
+                         <div class="form-group with-icon-left">
+                          <div class="input-group">
+                            <input
+                              onpaste="return false;"
+                              autocomplete="off"
+                              style="color: #e34a4a"
+                              id="roditelj-input-icon-left"
+                              title=" "
+                              v-model="patient.roditelj"
+                              name="roditelj-input-icon-left"
+                              :required="true"
+                            />
+                            <i
+                              class="glyphicon glyphicon-pencil icon-left input-icon"
+                            ></i>
+                            <label
+                              style="color: #e34a4a"
+                              class="control-label"
+                              for="roditelj-input-icon-left"
+                              >{{ "IME JEDNOG RODITELJA" }}</label
                             >
                             <i class="bar"></i>
                           </div>
@@ -259,6 +311,7 @@
                           <div class="form-group with-icon-left">
                             <div class="input-group">
                               <input
+                              style="color: #e34a4a"
                                 onpaste="return false;"
                                 autocomplete="off"
                                 id="imp-input-icon-left"
@@ -271,6 +324,7 @@
                                 class="glyphicon glyphicon-pencil icon-left input-icon"
                               ></i>
                               <label
+                              style="color: #e34a4a"
                                 class="control-label"
                                 for="imp-input-icon-left"
                                 >{{ "ADRESA STANOVANJA" }}</label
@@ -342,6 +396,66 @@
                             ref="languageSelect"
                             v-bind:options="languages"
                           ></vuestic-multi-select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          <div v-if="false" class="row">
+                        <div class="col-md-12">
+                          <div class="col-md-1"></div>
+                          <div class="col-md-11">
+                            <div style="min-height: 14px"></div>
+                            <fieldset>
+
+                               <postavke-radio-button
+                                :label="'MATIČNI BROJ'"
+                                :id="'jmgb'"
+                                :value="'jmbg'"
+                                :name="'disabled-radio'"
+                                :disabled="false"
+                                v-model="izbor"
+                              /> 
+                              <!-- Izbor: Datum rođenja -->
+                              <postavke-radio-button
+                                :label="'DATUM ROĐENJA'"
+                                :id="'datr'"
+                                :value="'datr'"
+                                :name="'disabled-radio'"
+                                :disabled="false"
+                                v-model="izbor"
+                              />
+
+                              <!-- Izbor: Godište -->
+                             <!--  <postavke-radio-button
+                                :label="'GODINA ROĐENJA'"
+                                :id="'god'"
+                                :value="'god'"
+                                :name="'disabled-radio'"
+                                :disabled="true"
+                                v-model="izbor"
+                              /> -->
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+
+                      
                         </div>
                       </div>
 
@@ -578,12 +692,18 @@
                       (patient.ime != undefined && patient.ime.trim() == '') ||
                       (patient.prezime != undefined &&
                         patient.prezime.trim() == '') ||
+
+                        (patient.roditelj != undefined &&
+                        patient.roditelj.trim() == '') ||
+
                       (patient.spol != undefined &&
                         patient.spol.trim() == '') ||
                       (patient.purpose != undefined &&
                         patient.purpose.trim() == '') ||
                       (patient.izdavanje != undefined &&
-                        patient.izdavanje.trim() == '')
+                        patient.izdavanje.trim() == '') ||
+                      (patient.adresa != undefined &&
+                        patient.adresa.trim() == '')
                     "
                   >
                     {{ okText }}
@@ -702,6 +822,7 @@ export default {
         jmbg: "",
         ime: "",
         prezime: "",
+        roditelj: "",
         spol: "",
         site: "",
         __v: 0,
@@ -735,6 +856,7 @@ export default {
 
       ime: "",
       prezime: "",
+      roditelj: "",
       spol: "",
       spolovi: ["MUŠKI", "ŽENSKI"],
       adresa: "",
@@ -1272,6 +1394,8 @@ export default {
       // this.jmbg = this.patient.jmbg;
       this.ime = this.patient.ime;
       this.prezime = this.patient.prezime;
+      this.roditelj = this.patient.roditelj;
+      
       this.spol = this.patient.spol;
       this.adresa = this.patient.adresa;
       this.telefon = this.patient.telefon;
@@ -1283,6 +1407,7 @@ export default {
       if (
         this.ime.trim() === "" ||
         this.prezime.trim() === "" ||
+        this.roditelj.trim() === "" ||
         this.spol.trim() === "" ||
         this.purpose.trim() === ""
       ) {
@@ -1347,6 +1472,7 @@ export default {
                     jmbg: this.jmbg.trim(),
                     ime: this.ime.toUpperCase().trim(),
                     prezime: this.prezime.toUpperCase().trim(),
+                    roditelj: this.roditelj.toUpperCase().trim(),
                     // entry_disabled
                     spol: this.spol.toUpperCase().trim(),
                     duhan: "",

@@ -20,6 +20,8 @@
       <span
         v-if="
           checkState &&
+          
+          label != 'MATIČNI BROJ' &&
           label != 'DATUM ROĐENJA' &&
           label != 'GODINA ROĐENJA' &&
           label != 'DATE OF BIRTH' &&
@@ -44,7 +46,8 @@
       <span
         v-if="
           checkState &&
-          (label === 'DATUM ROĐENJA' ||
+          (label === 'MATIČNI BROJ' ||
+            label === 'DATUM ROĐENJA' ||
             label === 'GODINA ROĐENJA' ||
             label === 'DATE OF BIRTH' ||
             label === 'YEAR OF BIRTH' ||
@@ -150,6 +153,7 @@ export default {
     },
     additionalClasses() {
       if (
+        this.label === "MATIČNI BROJ" ||
         this.label === "DATUM ROĐENJA" ||
         this.label === "GODINA ROĐENJA" ||
         this.label === "DATE OF BIRTH" ||

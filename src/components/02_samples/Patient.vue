@@ -29,6 +29,32 @@
 
                     <div class="col-md-5">
                       <fieldset>
+
+                        <!-- Izbor: Matični broj -->
+                        <div v-if="izbor === 'jmbg'">
+                          <div class="form-group with-icon-left">
+                            <div class="input-group" >
+                              <input
+                                style="color: #e34a4a"
+                                onpaste="return false;"
+                                autocomplete="off"
+                                id="jmbp-input-icon-left"
+                                title=" "
+                                v-model="jmbg"
+                                name="jmbp-input-icon-left"
+                                required
+                              >
+                              <i class="glyphicon glyphicon-pencil icon-left input-icon"></i>
+                              <label
+                                style="color: #e34a4a"
+                                class="control-label"
+                                for="jmbp-input-icon-left"
+                              >{{'DD MM GGG RR BBB K'}}</label>
+                              <!-- Unesite Matični broj pacijenta -->
+                              <i class="bar"></i>
+                            </div>
+                          </div>
+                        </div>
                         <!-- Izbor: Datum rođenja -->
                         <div v-if="izbor === 'datr'">
                           <div class="form-group with-icon-left">
@@ -135,6 +161,31 @@
                           </div>
                         </div>
 
+                        <div class="form-group with-icon-left">
+                          <div class="input-group">
+                            <input
+                              onpaste="return false;"
+                              autocomplete="off"
+                              style="color: #e34a4a"
+                              id="roditelj-input-icon-left"
+                              title=" "
+                              v-model="roditelj"
+                              name="roditelj-input-icon-left"
+                              :required="true"
+                            />
+                            <i
+                              class="glyphicon glyphicon-pencil icon-left input-icon"
+                            ></i>
+                            <label
+                              style="color: #e34a4a"
+                              class="control-label"
+                              for="roditelj-input-icon-left"
+                              >{{ "IME JEDNOG RODITELJA" }}</label
+                            >
+                            <i class="bar"></i>
+                          </div>
+                        </div>
+
                         <vuestic-simple-select
                           :color="'red'"
                           :label="'SPOL'"
@@ -171,41 +222,17 @@
                     </div>
 
                     <div class="col-md-5">
-                      <div v-if="false" class="row">
-                        <div class="col-md-12">
-                          <div class="col-md-1"></div>
-                          <div class="col-md-11">
-                            <div style="min-height: 14px"></div>
-                            <fieldset>
-                              <!-- Izbor: Datum rođenja -->
-                              <postavke-radio-button
-                                :label="'DATUM ROĐENJA'"
-                                :id="'datr'"
-                                :value="'datr'"
-                                :name="'disabled-radio'"
-                                :disabled="false"
-                                v-model="izbor"
-                              />
-
-                              <!-- Izbor: Godište -->
-                              <postavke-radio-button
-                                :label="'GODINA ROĐENJA'"
-                                :id="'god'"
-                                :value="'god'"
-                                :name="'disabled-radio'"
-                                :disabled="true"
-                                v-model="izbor"
-                              />
-                            </fieldset>
-                          </div>
-                        </div>
-                      </div>
+                      
 
                       <!-- 
                       <hr />
                       <div style="min-height: 8px"></div> -->
 
                       <div class="form-group with-icon-left">
+
+                       
+
+
                         <div class="input-group">
                           <input
                             
@@ -245,6 +272,7 @@
                       <div class="form-group with-icon-left">
                         <div class="input-group">
                           <input
+                          style="color: #e34a4a"
                             onpaste="return false;"
                             autocomplete="off"
                             id="prezp-input-icon-left"
@@ -257,6 +285,7 @@
                             class="glyphicon glyphicon-pencil icon-left input-icon"
                           ></i>
                           <label
+                          style="color: #e34a4a"
                             class="control-label"
                             for="prezp-input-icon-left"
                             >{{ "ADRESA STANOVANJA" }}</label
@@ -320,6 +349,46 @@
                         ref="languageSelect"
                         v-bind:options="languages"
                       ></vuestic-multi-select>
+
+
+                      <div v-if="false" class="row">
+                        <div class="col-md-12">
+                          <div class="col-md-1"></div>
+                          <div class="col-md-11">
+                            <div style="min-height: 14px"></div>
+                            <fieldset>
+
+                             <!--   <postavke-radio-button
+                                :label="'MATIČNI BROJ'"
+                                :id="'jmgb'"
+                                :value="'jmbg'"
+                                :name="'disabled-radio'"
+                                :disabled="false"
+                                v-model="izbor"
+                              /> -->
+                              <!-- Izbor: Datum rođenja -->
+                              <postavke-radio-button
+                                :label="'DATUM ROĐENJA'"
+                                :id="'datr'"
+                                :value="'datr'"
+                                :name="'disabled-radio'"
+                                :disabled="false"
+                                v-model="izbor"
+                              />
+
+                              <!-- Izbor: Godište -->
+                             <!--  <postavke-radio-button
+                                :label="'GODINA ROĐENJA'"
+                                :id="'god'"
+                                :value="'god'"
+                                :name="'disabled-radio'"
+                                :disabled="true"
+                                v-model="izbor"
+                              /> -->
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
 
                       <!--                       <div
                         v-show="false"
@@ -554,17 +623,26 @@
                         otežanodisanjeiligubitakdaha == false &&
                         bolilipritisakuprsima == false &&
                         gubitaksposobnostigovorailikretanja == false) ||
+
                       (!Number.isInteger(dateofb) &&
                         dateofb.length != 8 &&
                         izbor === 'datr') ||
+
                       (!Number.isInteger(godiste) &&
                         godiste.length != 4 &&
                         izbor === 'god') ||
+
+                      (!Number.isInteger(jmbg) &&
+                        (jmbg.length != 13) &&
+                        izbor === 'jmbg') ||
+
                       ime.trim() == '' ||
                       prezime.trim() == '' ||
+                      roditelj.trim() == '' ||
                       spol.trim() == '' ||
                       purpose.trim() == '' ||
-                      izdavanje.trim() == '' 
+                      izdavanje.trim() == '' ||
+                      chosenAdress.trim() == ''
                     "
                   >
                     {{ okText }}
@@ -651,6 +729,7 @@ export default {
         "Procjena zdravstvenog stanja",
         "Kontakt sa zaraženom osobom",
       ],
+      roditelj: "",
       analysis: "",
       analyses: ["", "COVID-19 RT-PCR Test", "COVID-19 Antigen Test"],
 
@@ -880,6 +959,14 @@ export default {
     },
 
     jmbg: function () {
+
+      this.jmbg = this.jmbg.trim()
+
+      // console.log(this.jmbg.length + " / " + this.izbor)
+
+      // if (this.jmbg.length > 13) {
+      //   this.jmbg = this.jmbg.slice(0, 13);
+      // }
       if (this.jmbg.length < 13) {
         //
       } else if (this.jmbg.length === 13) {
@@ -1273,7 +1360,8 @@ export default {
         this.ime.trim() === "" ||
         this.prezime.trim() === "" ||
         this.spol.trim() === "" ||
-        this.purpose.trim() === "" 
+        this.purpose.trim() === "" ||
+        this.roditelj.trim() === ""
       ) {
         this.toastText = "Unesite obavezna polja.";
         this.toastIcon = "fa-warning";
@@ -1351,6 +1439,7 @@ export default {
 
                     // Eurofarm Centar
                     purpose: this.purpose,
+                    roditelj: this.roditelj,
                     analysis: this.analysis,
                     izdavanje: this.izdavanje,
                     referenca: (
@@ -1393,6 +1482,7 @@ export default {
                       this.godiste = "";
                       this.ime = "";
                       this.purpose = "";
+                      this.roditelj = "",
                       this.analysis = "";
                       this.izdavanje = "";
                       this.prezime = "";
