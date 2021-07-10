@@ -45,8 +45,7 @@
                       <thead>
                         <tr>
                           <!-- 30 -->
-                          <!-- <td width="7%">{{ "Reject" }}</td>
-                          <td width="7%">{{ "Cito" }}</td> -->
+                         
                           <td width="15%">{{ "" }}</td>
                           <td width="10%">{{ "Uzorak" }}</td>
                           <td width="10%">{{ "Analiza" }}</td>
@@ -70,75 +69,7 @@
                             'table-warning': false,
                           }"
                         >
-                      <!--     <td>
-                            <div
-                              class="form-check abc-checkbox abc-checkbox-primary"
-                            >
-                              <input  
-                                :disabled="!$store.state.Sidebar.includes('CoV2 RT PCR obrada') || element.status === 'ODOBREN'"                             
-                                v-if="element.rejected.status === false"
-                                @click="Reject(element)"
-                                class="form-check-input"
-                                id="checkbox-reject"
-                                type="checkbox"
-                                v-model="element.rejected.status"
-                              />
-                              <input   
-                                :disabled="!$store.state.Sidebar.includes('CoV2 RT PCR obrada') || element.status === 'ODOBREN'"                             
-                                v-if="element.rejected.status === true"
-                                @click="unReject(element)"
-                                class="form-check-input"
-                                id="checkbox-unreject"
-                                type="checkbox"
-                                v-model="element.rejected.status"
-                              />
-                              <label
-                                class="form-check-label"
-                                for="checkbox"
-                              ></label>
-                            </div>
-                          </td> -->
-                          
-                        <!--   <td>
-                            <div
-                              class="form-check abc-checkbox abc-checkbox-primary"
-                            >
-                              <input
-                                :disabled="
-                                element.status === 'ODOBREN'|| 
-                                  element.status === 'VERIFICIRAN' ||
-                                  element.status === 'REALIZOVAN' ||
-                                  (element.site != element.sampled_by &&
-                                    element.sampled_by != null) || element.rejected.status === true
-                                "
-                                v-if="!element.prioritet"
-                                @click="Activate(element)"
-                                class="form-check-input"
-                                id="checkbox-normalan"
-                                type="checkbox"
-                                v-model="element.prioritet"
-                              />
-                              <input
-                                :disabled="
-                                element.status === 'ODOBREN' ||
-                                  element.status === 'VERIFICIRAN' ||
-                                  element.status === 'REALIZOVAN' ||
-                                  (element.site != element.sampled_by &&
-                                    element.sampled_by != null) || element.rejected.status === true
-                                "
-                                v-if="element.prioritet"
-                                @click="Deactivate(element)"
-                                class="form-check-input"
-                                id="checkbox-hitan"
-                                type="checkbox"
-                                v-model="element.prioritet"
-                              />
-                              <label
-                                class="form-check-label"
-                                for="checkbox"
-                              ></label>
-                            </div>
-                          </td> -->
+           
 
                           <td align="left">
 
@@ -326,7 +257,7 @@ export default {
           this.uzorci.forEach((element) => {
             // console.log(element.site + "/" + element.sampled_by);
             if (
-              element.analiza.toLowerCase() === this.analiza.toLowerCase() &&
+             
               (element.ime.toLowerCase().includes(this.text.toLowerCase()) ||
                 element.prezime
                   .toLowerCase()
@@ -413,7 +344,7 @@ export default {
       this.filtered = [];
       this.uzorci.forEach((element) => {
         if (
-          element.analiza.toLowerCase() === this.analiza.toLowerCase() &&
+          
           (element.ime.toLowerCase().includes(this.text.toLowerCase()) ||
             element.prezime.toLowerCase().includes(this.text.toLowerCase()) ||
             element.svrha.toLowerCase().includes(this.text.toLowerCase()) ||
@@ -428,7 +359,7 @@ export default {
       this.filtered = [];
       this.uzorci.forEach((element) => {
         if (
-          element.analiza.toLowerCase() === this.analiza.toLowerCase() &&
+         
           (element.ime.toLowerCase().includes(this.text.toLowerCase()) ||
             element.prezime.toLowerCase().includes(this.text.toLowerCase()) ||
             element.svrha.toLowerCase().includes(this.text.toLowerCase()) ||
@@ -444,111 +375,7 @@ export default {
   beforeDestroy() {},
 
   methods: {
-    Activate(element) {
-      this.isLoading = true;
-      http
-        .post("postavke/uzorak/hitan", {
-          token: this.$store.state.token,
-          site: this.$store.state.site,
-          id: element.rezultat.id,
-        })
-        .then((res) => {
-          http
-            .get(
-              "postavke/list/uzorci?token=" +
-                this.$store.state.token +
-                "&site=" +
-                this.$store.state.site,
-              {}
-            )
-            .then((response) => {
-              if (response.data.success) {
-
-                // console.log(response.data.uzorci);
-
-                this.filtered = [];
-                this.uzorci = response.data.uzorci;
-
-                this.uzorci.forEach((element) => {
-                  if (
-                    element.analiza.toLowerCase() ===
-                      this.analiza.toLowerCase() &&
-                    (element.ime
-                      .toLowerCase()
-                      .includes(this.text.toLowerCase()) ||
-                      element.prezime
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()) ||
-                      element.barcode
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()) ||
-                      element.analiza
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()))
-                  ) {
-                    this.filtered.push(element);
-                  }
-                });
-                this.isLoading = false;
-              } else {
-                this.isLoading = false;
-              }
-            });
-        });
-    },
-
-    Deactivate(element) {
-      this.isLoading = true;
-      http
-        .post("postavke/uzorak/normalan", {
-          token: this.$store.state.token,
-          site: this.$store.state.site,
-          id: element.rezultat.id,
-        })
-        .then((res) => {
-          http
-            .get(
-              "postavke/list/uzorci?token=" +
-                this.$store.state.token +
-                "&site=" +
-                this.$store.state.site,
-              {}
-            )
-            .then((response) => {
-              if (response.data.success) {
-
-                // console.log(response.data.uzorci);
-
-                this.filtered = [];
-                this.uzorci = response.data.uzorci;
-
-                this.uzorci.forEach((element) => {
-                  if (
-                    element.analiza.toLowerCase() ===
-                      this.analiza.toLowerCase() &&
-                    (element.ime
-                      .toLowerCase()
-                      .includes(this.text.toLowerCase()) ||
-                      element.prezime
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()) ||
-                      element.barcode
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()) ||
-                      element.analiza
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()))
-                  ) {
-                    this.filtered.push(element);
-                  }
-                });
-                this.isLoading = false;
-              } else {
-                this.isLoading = false;
-              }
-            });
-        });
-    },
+  
 
 
 
@@ -579,12 +406,18 @@ Download(element) {
               )
               .then((res) => {
                 if (res.status == 200) {
-                  const url = window.URL.createObjectURL(new Blob([res.data]));
-                  const link = document.createElement("a");
-                  link.href = url;
-                  link.setAttribute("download", this.timestamp + ".pdf");
-                  document.body.appendChild(link);
-                  link.click();
+
+                  // const url = window.URL.createObjectURL(new Blob([res.data]));
+                  // const link = document.createElement("a");
+                  // link.href = url;
+                  // link.setAttribute("download", this.timestamp + ".pdf");
+                  // document.body.appendChild(link);
+                  // link.click();
+                  
+                  var blob = new Blob([res.data], {type: 'application/pdf'});
+                  var url = URL.createObjectURL(blob);
+                  var printWindow = window.open(url, '', 'width: 100%; height: 800px; visibility: hidden');
+                  printWindow.print()
 
                   setTimeout(() => {
                     this.timestamp = (
@@ -650,112 +483,9 @@ Download(element) {
 
 
 
-    Reject(element) {
-      this.isLoading = true;
-      http
-        .post("postavke/uzorak/reject", {
-          token: this.$store.state.token,
-          site: this.$store.state.site,
-          id: element.rezultat.id,
-        })
-        .then((res) => {
-          http
-            .get(
-              "postavke/list/uzorci?token=" +
-                this.$store.state.token +
-                "&site=" +
-                this.$store.state.site,
-              {}
-            )
-            .then((response) => {
-              if (response.data.success) {
+   
 
-                // console.log(response.data.uzorci);
-
-                this.filtered = [];
-                this.uzorci = response.data.uzorci;
-
-                this.uzorci.forEach((element) => {
-                  if (
-                    element.analiza.toLowerCase() ===
-                      this.analiza.toLowerCase() &&
-                    (element.ime
-                      .toLowerCase()
-                      .includes(this.text.toLowerCase()) ||
-                      element.prezime
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()) ||
-                      element.barcode
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()) ||
-                      element.analiza
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()))
-                  ) {
-                    this.filtered.push(element);
-                  }
-                });
-                this.isLoading = false;
-              } else {
-                this.isLoading = false;
-              }
-            });
-        });
-    },
-
-    unReject(element) {
-      this.isLoading = true;
-      http
-        .post("postavke/uzorak/unreject", {
-          token: this.$store.state.token,
-          site: this.$store.state.site,
-          id: element.rezultat.id,
-        })
-        .then((res) => {
-          http
-            .get(
-              "postavke/list/uzorci?token=" +
-                this.$store.state.token +
-                "&site=" +
-                this.$store.state.site,
-              {}
-            )
-            .then((response) => {
-              if (response.data.success) {
-
-                // console.log(response.data.uzorci);
-
-                this.filtered = [];
-                this.uzorci = response.data.uzorci;
-
-                this.uzorci.forEach((element) => {
-                  if (
-                    element.analiza.toLowerCase() ===
-                      this.analiza.toLowerCase() &&
-                    (element.ime
-                      .toLowerCase()
-                      .includes(this.text.toLowerCase()) ||
-                      element.prezime
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()) ||
-                      element.barcode
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()) ||
-                      element.analiza
-                        .toLowerCase()
-                        .includes(this.text.toLowerCase()))
-                  ) {
-                    this.filtered.push(element);
-                  }
-                });
-                this.isLoading = false;
-              } else {
-                this.isLoading = false;
-              }
-            });
-        });
-    },
-
+    
 
 
 
@@ -823,8 +553,7 @@ Handle(id) {
 
                 this.uzorci.forEach((element) => {
                   if (
-                    element.analiza.toLowerCase() ===
-                      this.analiza.toLowerCase() &&
+                  
                     (element.ime
                       .toLowerCase()
                       .includes(this.text.toLowerCase()) ||
