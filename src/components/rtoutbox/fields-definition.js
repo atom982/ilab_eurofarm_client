@@ -1,9 +1,16 @@
 export default {
   tableFields: [
+
+    {
+      name: "delivered",
+      title: "",
+      width: "4%"
+    },
+
     {
       name: "rtoutbox",
       title: "",
-      width: "18%"
+      width: "16%"
     },
 
     {
@@ -39,7 +46,7 @@ export default {
     {
       name: "izmjena",
       title: "datum i vrijeme",
-      width: "14%"
+      width: "12%"
     }
   ],
 
