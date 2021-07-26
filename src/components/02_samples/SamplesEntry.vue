@@ -484,6 +484,9 @@ export default {
   },
 
   beforeCreate() {
+
+    this.isLoading = true;
+
     http
       .get(
         "postavke/list/def/uzorak?token=" +
@@ -531,6 +534,7 @@ export default {
                     this.pids = res.data.pids;
                     this.complete = res.data.complete;
                     this.pid = this.pids[0];
+                    this.isLoading = false;
                   });
               });
           } else {
@@ -571,6 +575,7 @@ export default {
                     this.pids = res.data.pids;
                     this.complete = res.data.complete;
                     this.pid = this.pids[0];
+                    this.isLoading = false;
                   });
               });
           }
@@ -1113,6 +1118,7 @@ export default {
 
       http
         .post("/sacuvaj/uzorke", {
+          pacijent: this.$route.params.id,
           site: this.$store.state.site,
           token: this.$store.state.token,
           timestamp: this.timestamp,
