@@ -44,19 +44,20 @@
                     <table class="table table-striped first-td-padding">
                       <thead>
                         <tr>
-                          <!-- 30 -->
+                          <!-- 49 -->
                          
-                          <td width="15%">{{ "" }}</td>
+                          <td width="9%">{{ "" }}</td>
+                           <td width="9%">{{ "" }}</td>
                           <td width="10%">{{ "Uzorak" }}</td>
                           <td width="10%">{{ "Analiza" }}</td>
                           <td width="11%">{{ "Svrha" }}</td>
-                          <!-- 35 -->
+                          <!-- 51 -->
                           <td width="11%">{{ "Ime" }}</td>
                           <td width="15%">{{ "Prezime" }}</td>
-                          <td width="9%">{{ "Godište" }}</td>
+                          <td width="8%">{{ "Godište" }}</td>
                           <td width="9%">{{ "Datum" }}</td>
-                          <td width="7%">{{ "Vrijeme" }}</td>
-                          <td width="3%">{{ "" }}</td>
+                          <td width="6%">{{ "Vrijeme" }}</td>
+                          <td width="2%">{{ "" }}</td>
                         </tr>
                       </thead>
                       <tbody>
@@ -83,8 +84,8 @@
                          
                             border: 0px;
                             border-radius: 0px;
-                            text-transform: none; font-size: 13px;' 
-                          class='btn btn-warning btn-micro'><span class='fa fa-file-pdf-o'></span> {{" Download"}}</button>
+                            text-transform: none; font-size: 12px;' 
+                          class='btn btn-warning btn-micro'><span class='fa fa-file-pdf-o'></span> {{" BA"}}</button>
 
 
 
@@ -93,6 +94,34 @@
 
                          
                           </td>
+
+
+
+
+
+                          <td align="left">
+
+                         
+
+                          
+
+                            
+
+                          <button @click.prevent="DownloadEN(element)" style='
+                         
+                            border: 0px;
+                            border-radius: 0px;
+                            text-transform: none; font-size: 12px;' 
+                          class='btn btn-warning btn-micro'><span class='fa fa-file-pdf-o'></span> {{" EN"}}</button>
+
+
+
+
+                            
+
+                         
+                          </td>
+
                           <td>{{ element.barcode }}</td>
                            <td>{{ element.analiza }}</td>
                           <td>{{ element.svrha }}</td>
@@ -629,6 +658,182 @@ Handle(id) {
         data.izdavanje
       );
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    DownloadEN(element) {
+
+  // console.log(element)
+
+
+
+
+  this.isLoading = true;
+      http
+        .post("popratnice/list/print/en", {
+          token: this.$store.state.token,
+          site: this.$store.state.site,
+          timestamp: this.timestamp,
+          element: element,
+        })
+        .then((res) => {
+          if (res.data.success) {
+            http
+              .get(
+                "popratnice/list/download/en?token=" +
+                  this.$store.state.token +
+                  "&timestamp=" +
+                  this.timestamp,
+                { responseType: "blob" }
+              )
+              .then((res) => {
+                if (res.status == 200) {
+
+                  // const url = window.URL.createObjectURL(new Blob([res.data]));
+                  // const link = document.createElement("a");
+                  // link.href = url;
+                  // link.setAttribute("download", this.timestamp + ".pdf");
+                  // document.body.appendChild(link);
+                  // link.click();
+                  
+                  var blob = new Blob([res.data], {type: 'application/pdf'});
+                  var url = URL.createObjectURL(blob);
+                  var printWindow = window.open(url, '', 'width: 100%; height: 800px; visibility: hidden');
+                  printWindow.print()
+
+                  setTimeout(() => {
+                    this.timestamp = (
+                      new Date().getTime() -
+                      new Date().getTimezoneOffset() * 60000
+                    ).toString();
+
+                    this.isLoading = false;
+                  }, 0);
+                } else {
+                  this.isLoading = false;
+                }
+              });
+          } else {
+            this.isLoading = false;
+          }
+        });
+
+
+
+
+},
   },
 };
 </script>
